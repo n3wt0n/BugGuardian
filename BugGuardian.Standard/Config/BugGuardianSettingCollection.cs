@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DBTek.BugGuardian.Config
+﻿namespace DBTek.BugGuardian.Config
 {
     public class BugGuardianSettingCollection : System.Configuration.ConfigurationElementCollection
     {
@@ -24,13 +18,9 @@ namespace DBTek.BugGuardian.Config
         }
 
         protected override System.Configuration.ConfigurationElement CreateNewElement()
-        {
-            return new BugGuardianSettingElements();
-        }
+            => new BugGuardianSettingElements();        
 
         protected override object GetElementKey(System.Configuration.ConfigurationElement element)
-        {
-            return ((BugGuardianSettingElements)element).Key;
-        }
+            => ((BugGuardianSettingElements)element).Key;        
     }
 }

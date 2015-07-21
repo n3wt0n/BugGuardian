@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-#if !WINDOWS_APP && !WINDOWS_PHONE_APP
+﻿#if !WINDOWS_APP && !WINDOWS_PHONE_APP
 using DBTek.BugGuardian.Config;
 #endif
 namespace DBTek.BugGuardian.Factories

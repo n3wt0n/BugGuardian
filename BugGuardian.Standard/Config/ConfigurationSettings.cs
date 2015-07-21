@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DBTek.BugGuardian.Config
 {
@@ -39,7 +35,6 @@ namespace DBTek.BugGuardian.Config
                 return (NameValueCollection)BugGuardianSettings;
             }
         }
-
 
         #region Private BugGuardianSettingsSection Class
         private class BugGuardianSettingsSection : NameValueCollection

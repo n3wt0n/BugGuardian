@@ -2,16 +2,23 @@
 {
     public class StringToAsciiConverter
     {
-        public static byte[] StringToAscii(string s)
+        /// <summary>
+        /// Convert a string to it's ascii byte array equivalent
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static byte[] StringToAscii(string str)
         {
-            byte[] retval = new byte[s.Length];
-            for (int ix = 0; ix < s.Length; ++ix)
+            byte[] rtn = new byte[str.Length];
+            for (int i = 0; i < str.Length; ++i)
             {
-                char ch = s[ix];
-                if (ch <= 0x7f) retval[ix] = (byte)ch;
-                else retval[ix] = (byte)'?';
+                char ch = str[i];
+                if (ch <= 0x7f)
+                    rtn[i] = (byte)ch;
+                else
+                    rtn[i] = (byte)'?';
             }
-            return retval;
+            return rtn;
         }
     }
 }

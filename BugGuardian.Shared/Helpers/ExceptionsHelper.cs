@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using DBTek.BugGuardian.Extensions;
+using System;
 using System.Text;
-using System.Threading.Tasks;
-using DBTek.BugGuardian.Extensions;
 
 namespace DBTek.BugGuardian.Helpers
 {

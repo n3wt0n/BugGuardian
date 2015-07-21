@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace DBTek.BugGuardian.Helpers
 {
@@ -31,10 +27,7 @@ namespace DBTek.BugGuardian.Helpers
             systemInfoString.AppendFormat("<strong>CLR version:</strong> {0} <br />", Environment.Version);
 #endif
 
-
             return systemInfoString.ToString();
         }
-
-
     }
 }

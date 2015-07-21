@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DBTek.BugGuardian.Config
+﻿namespace DBTek.BugGuardian.Config
 {
     /// <summary>
     /// This class represents the structure of the BugGuardian settings structure 

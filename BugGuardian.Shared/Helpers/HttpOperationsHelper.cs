@@ -1,14 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using DBTek.BugGuardian.Entities;
+using DBTek.BugGuardian.Extensions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using DBTek.BugGuardian.Entities;
-using DBTek.BugGuardian.Extensions;
 
 namespace DBTek.BugGuardian.Helpers
 {
@@ -40,10 +37,7 @@ namespace DBTek.BugGuardian.Helpers
 
             var jsonRequest = JsonConvert.SerializeObject(requestBody);
 
-            var content = new StringContent(
-                jsonRequest,
-                Encoding.UTF8,
-                "application/json-patch+json");
+            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json-patch+json");
 
             try
             {
@@ -68,10 +62,7 @@ namespace DBTek.BugGuardian.Helpers
 
             var jsonRequest = "[" + JsonConvert.SerializeObject(requestBody) + "]";
 
-            var content = new StringContent(
-                jsonRequest,
-                Encoding.UTF8,
-                "application/json");
+            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
             try
             {

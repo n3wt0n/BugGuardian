@@ -14,17 +14,10 @@ namespace DBTek.BugGuardian.Config
         /// Returns an BugGuardianConfiguration instance
         /// </summary>
         public static BugGuardianConfiguration GetConfig()
-        {
-            return (BugGuardianConfiguration)System.Configuration.ConfigurationManager.GetSection(BugGuardianConfiguration.BugGuardianConfigurationSectionConst) ?? new BugGuardianConfiguration();
-        }
+            => (BugGuardianConfiguration)System.Configuration.ConfigurationManager.GetSection(BugGuardianConfiguration.BugGuardianConfigurationSectionConst) ?? new BugGuardianConfiguration();        
 
         [System.Configuration.ConfigurationProperty("BugGuardianSettings")]
         public BugGuardianSettingCollection BugGuardianSettings
-        {
-            get
-            {
-                return (BugGuardianSettingCollection)this["BugGuardianSettings"] ?? new BugGuardianSettingCollection();
-            }
-        }
+            => (BugGuardianSettingCollection)this["BugGuardianSettings"] ?? new BugGuardianSettingCollection();                    
     }
 }
