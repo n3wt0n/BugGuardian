@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DBTek.BugGuardian.Extensions
 {
-    public static class HttpClientExtensions
+    internal static class HttpClientExtensions
     {
         public async static Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent content)
         {

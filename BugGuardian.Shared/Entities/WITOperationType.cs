@@ -1,6 +1,6 @@
 ﻿namespace DBTek.BugGuardian.Entities
 {
-    public enum WITOperationType
+    internal enum WITOperationType
     {
         add,
         remove,

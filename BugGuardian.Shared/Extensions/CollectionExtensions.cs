@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DBTek.BugGuardian.Extensions
 {
-    public static class CollectionExtensions
+    internal static class CollectionExtensions
     {
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T> action)
         {

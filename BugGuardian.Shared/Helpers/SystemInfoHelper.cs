@@ -2,7 +2,7 @@
 
 namespace DBTek.BugGuardian.Helpers
 {
-    public class SystemInfoHelper
+    internal class SystemInfoHelper
     {
         public static string BuildSystemInfoString()
         {

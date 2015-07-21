@@ -3,7 +3,7 @@ using DBTek.BugGuardian.Factories;
 
 namespace DBTek.BugGuardian.Helpers
 {
-    public class AccountHelper
+    internal class AccountHelper
     {
         public static Account GenerateAccount()
             => new Account()

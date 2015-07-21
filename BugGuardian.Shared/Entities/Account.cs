@@ -2,7 +2,7 @@
 
 namespace DBTek.BugGuardian.Entities
 {
-    public class Account
+    internal class Account
     {
         public string AccountName { get; set; }
 

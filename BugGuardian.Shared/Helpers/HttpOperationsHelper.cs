@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DBTek.BugGuardian.Helpers
 {
-    public class HttpOperationsHelper
+    internal class HttpOperationsHelper
     {
         public static async Task<String> GetAsync(HttpClient client, String apiUrl)
         {

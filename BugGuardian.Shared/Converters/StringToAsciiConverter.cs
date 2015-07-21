@@ -1,6 +1,6 @@
 ﻿namespace DBTek.BugGuardian.Converters
 {
-    public class StringToAsciiConverter
+    internal class StringToAsciiConverter
     {
         /// <summary>
         /// Convert a string to it's ascii byte array equivalent

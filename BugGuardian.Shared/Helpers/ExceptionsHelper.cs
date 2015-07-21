@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DBTek.BugGuardian.Helpers
 {
-    public class ExceptionsHelper
+    internal class ExceptionsHelper
     {
         public static string BuildExceptionString(Exception ex)
         {
