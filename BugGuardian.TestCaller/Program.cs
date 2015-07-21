@@ -45,6 +45,9 @@ namespace BugGuardian.TestCaller
             //}
 
             creator.AddBug(new AggregateException());
+
+            Console.WriteLine("Done");
+            Console.ReadLine();
         }
     }
 }

@@ -8,9 +8,7 @@ using System.Threading.Tasks;
 namespace DBTek.BugGuardian
 {
     public class Creator
-    {
-        static String _baseUrl = "https://{0}.visualstudio.com/DefaultCollection";
-
+    {        
         // Get the alternate credentials that you'll use to access the Visual Studio Online account.
         static Account _account;
 
@@ -40,7 +38,7 @@ namespace DBTek.BugGuardian
             //PATCH https://{account}.visualstudio.com/defaultcollection/{project}/_apis/wit/workitems/${workitemtypename}?api-version={version}
             //See https://www.visualstudio.com/integrate/api/wit/fields for the fields explanation
                                   
-            var requestUrl = $"{String.Format(_baseUrl, _account.AccountName)}/{_account.ProjectName}/_apis/wit/workitems/$Bug?{_apiVersion}";
+            var requestUrl = $"{_account.Url}/{_account.CollectionName}/{_account.ProjectName}/_apis/wit/workitems/$Bug?{_apiVersion}";
 
             var workItemCreatePATCHData = new List<VSORequest>();
 
@@ -80,17 +78,22 @@ namespace DBTek.BugGuardian
                         Value = Helpers.SystemInfoHelper.BuildSystemInfoString()
                     });
 
+            var handler = new HttpClientHandler();
 
-            using (HttpClient client = new HttpClient())
+            if (!_account.IsVSO) //is TFS, requires NTLM
+                handler.Credentials = new System.Net.NetworkCredential(_account.Username, _account.Password);
+
+            using (HttpClient client = new HttpClient(handler))
             {
-                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                if (_account.IsVSO) 
+                    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Set alternate credentials
-                string credentials = $"{_account.AltUsername}:{_account.AltPassword}";
+                string credentials = $"{_account.Username}:{_account.Password}";
                 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", 
                     Convert.ToBase64String(Converters.StringToAsciiConverter.StringToAscii(credentials)));
-
+                
                 var responseBody = await Helpers.HttpOperationsHelper.PatchAsync(client, requestUrl, workItemCreatePATCHData);
 
                 //var queueResult = JsonConvert.DeserializeObject<BuildRequest>(responseBody);

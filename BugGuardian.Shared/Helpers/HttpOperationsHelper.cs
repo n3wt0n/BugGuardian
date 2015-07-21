@@ -41,7 +41,7 @@ namespace DBTek.BugGuardian.Helpers
 
             try
             {
-                using (HttpResponseMessage response = client.PatchAsync(apiUrl, content).Result)
+                using (HttpResponseMessage response = await client.PatchAsync(apiUrl, content))
                 {
                     response.EnsureSuccessStatusCode();
                     responseBody = await response.Content.ReadAsStringAsync();

@@ -8,9 +8,10 @@ namespace DBTek.BugGuardian.Helpers
         public static Account GenerateAccount()
             => new Account()
             {
-                AccountName = ConfigurationFactory.AccountName,
-                AltUsername = ConfigurationFactory.AlternateUsername,
-                AltPassword = ConfigurationFactory.AlternatePassword,
+                Url = ConfigurationFactory.Url,
+                Username = ConfigurationFactory.Username,
+                Password = ConfigurationFactory.Password,
+                CollectionName = ConfigurationFactory.CollectiontName,
                 ProjectName = ConfigurationFactory.ProjectName
             };        
     }

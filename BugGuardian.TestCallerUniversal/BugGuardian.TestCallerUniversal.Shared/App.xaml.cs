@@ -102,6 +102,7 @@ namespace BugGuardian.TestCallerUniversal
             }
 
             #region BUGGUARDIAN TEST
+            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://tfs2015-wlkgx03m.cloudapp.net:8080/Tfs", "testUser", "testPassword!2015", "SCRUM-Review");
             var creator = new DBTek.BugGuardian.Creator();
             
 

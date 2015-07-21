@@ -21,10 +21,10 @@ namespace DBTek.BugGuardian.Helpers
             systemInfoString.AppendFormat("<strong>System Hardware Version:</strong> {0} <br />", deviceInfo.SystemHardwareVersion);
 #endif
 #else
-            systemInfoString.AppendFormat("<strong>OS:</strong> {0} <br />", Environment.OSVersion.VersionString);
-            systemInfoString.AppendFormat("<strong>64 bit OS:</strong> {0} <br />", Environment.Is64BitOperatingSystem);
-            systemInfoString.AppendFormat("<strong>64 bit Process:</strong> {0} <br />", Environment.Is64BitProcess);
-            systemInfoString.AppendFormat("<strong>CLR version:</strong> {0} <br />", Environment.Version);
+            //systemInfoString.AppendFormat("<strong>OS:</strong> {0} <br />", Environment.OSVersion.VersionString);
+            //systemInfoString.AppendFormat("<strong>64 bit OS:</strong> {0} <br />", Environment.Is64BitOperatingSystem);
+            //systemInfoString.AppendFormat("<strong>64 bit Process:</strong> {0} <br />", Environment.Is64BitProcess);
+            //systemInfoString.AppendFormat("<strong>CLR version:</strong> {0} <br />", Environment.Version);
 #endif
 
             return systemInfoString.ToString();
