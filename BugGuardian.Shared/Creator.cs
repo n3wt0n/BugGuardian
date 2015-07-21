@@ -29,18 +29,18 @@ namespace DBTek.BugGuardian
             _account = Helpers.AccountHelper.GenerateAccount();
         }
 
+        /// <summary>
+        /// Add a Bug, with the info about the given Exception
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <returns></returns>
         public async Task AddBug(Exception ex)
         {
             //Pattern:
             //PATCH https://{account}.visualstudio.com/defaultcollection/{project}/_apis/wit/workitems/${workitemtypename}?api-version={version}
-
-            //Content-Type: application/json-patch+json
-
-            //https://www.visualstudio.com/integrate/api/wit/fields
-
-            var responseBody = String.Empty;
-            var requestUrl = "{0}/{1}/_apis/wit/workitems/${2}?{3}";
-            requestUrl = String.Format(requestUrl, String.Format(_baseUrl, _account.AccountName), _account.ProjectName, "Bug", _apiVersion);
+            //See https://www.visualstudio.com/integrate/api/wit/fields for the fields explanation
+                                  
+            var requestUrl = $"{String.Format(_baseUrl, _account.AccountName)}/{_account.ProjectName}/_apis/wit/workitems/$Bug?{_apiVersion}";
 
             var workItemCreatePATCHData = new List<VSORequest>();
 
@@ -86,12 +86,12 @@ namespace DBTek.BugGuardian
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Set alternate credentials
-                string credentials = string.Format("{0}:{1}", _account.AltUsername, _account.AltPassword);
+                string credentials = $"{_account.AltUsername}:{_account.AltPassword}";
                 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", 
-                    Convert.ToBase64String(DBTek.BugGuardian.Converters.StringToAsciiConverter.StringToAscii(credentials)));
+                    Convert.ToBase64String(Converters.StringToAsciiConverter.StringToAscii(credentials)));
 
-                responseBody = await Helpers.HttpOperationsHelper.PatchAsync(client, requestUrl, workItemCreatePATCHData);
+                var responseBody = await Helpers.HttpOperationsHelper.PatchAsync(client, requestUrl, workItemCreatePATCHData);
 
                 //var queueResult = JsonConvert.DeserializeObject<BuildRequest>(responseBody);
             }
