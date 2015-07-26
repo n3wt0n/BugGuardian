@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCaller", "BugGuardian.TestCaller\BugGuardian.TestCaller.csproj", "{656977B2-056C-4DEB-87CB-D11366E809B8}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerUniversal.Windows", "BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Windows\BugGuardian.TestCallerUniversal.Windows.csproj", "{1F7FCDB5-10F5-47AC-B69A-B9E1E35CF845}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerUniversal.WindowsPhone", "BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.WindowsPhone\BugGuardian.TestCallerUniversal.WindowsPhone.csproj", "{8C6CF847-351D-4A0F-9B0E-2FED6F073C0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerWeb", "BugGuardian.TestCallerWeb\BugGuardian.TestCallerWeb.csproj", "{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -138,6 +140,22 @@ Global
 		{8C6CF847-351D-4A0F-9B0E-2FED6F073C0C}.Release|x86.ActiveCfg = Release|x86
 		{8C6CF847-351D-4A0F-9B0E-2FED6F073C0C}.Release|x86.Build.0 = Release|x86
 		{8C6CF847-351D-4A0F-9B0E-2FED6F073C0C}.Release|x86.Deploy.0 = Release|x86
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Debug|ARM.Build.0 = Debug|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Debug|x64.Build.0 = Debug|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Debug|x86.Build.0 = Debug|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Release|ARM.ActiveCfg = Release|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Release|ARM.Build.0 = Release|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Release|x64.ActiveCfg = Release|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Release|x64.Build.0 = Release|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Release|x86.ActiveCfg = Release|Any CPU
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -148,5 +166,6 @@ Global
 		{CD985FFF-6F8F-41E3-A9FE-0277680C3492} = {5FFC456B-029C-4FC9-8058-E5B93DB70567}
 		{1F7FCDB5-10F5-47AC-B69A-B9E1E35CF845} = {5FFC456B-029C-4FC9-8058-E5B93DB70567}
 		{8C6CF847-351D-4A0F-9B0E-2FED6F073C0C} = {5FFC456B-029C-4FC9-8058-E5B93DB70567}
+		{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446} = {7D0462B9-3382-4563-B25E-748D54F2E8BD}
 	EndGlobalSection
 EndGlobal

@@ -102,41 +102,32 @@ namespace BugGuardian.TestCallerUniversal
             }
 
             #region BUGGUARDIAN TEST
-            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://tfs2015-wlkgx03m.cloudapp.net:8080/Tfs", "testUser", "testPassword!2015", "SCRUM-Review");
+            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT");
             var creator = new DBTek.BugGuardian.Creator();
+
+
+            creator.AddBug(new Exception());
             
-
-            //creator.AddBug(new Exception());
-
-            //try
-            //{
-            //    System.IO.File.Open(@"C:\pinoNonEsite.docx", System.IO.FileMode.Open);
-            //}
-            //catch (Exception ex)
-            //{
-            //    creator.AddBug(ex);               
-            //}
-
-            //try
-            //{
-            //    string aaaaa = null;
-            //    aaaaa.Substring(0, 12);
-            //}
-            //catch (Exception ex)
-            //{
-            //    creator.AddBug(ex);                
-            //}
+            try
+            {
+                string aaaaa = null;
+                aaaaa.Substring(0, 12);
+            }
+            catch (Exception ex)
+            {
+                creator.AddBug(ex);
+            }
 
 
-            //try
-            //{
-            //    string aaaaa = "sss";
-            //    aaaaa.Substring(0, 12);
-            //}
-            //catch (Exception ex)
-            //{
-            //    creator.AddBug(ex);
-            //}
+            try
+            {
+                string aaaaa = "sss";
+                aaaaa.Substring(0, 12);
+            }
+            catch (Exception ex)
+            {
+                creator.AddBug(ex);
+            }
 
             creator.AddBug(new AggregateException());
             #endregion

@@ -3,6 +3,7 @@ using DBTek.BugGuardian.Extensions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,8 +38,7 @@ namespace DBTek.BugGuardian.Helpers
 
             var jsonRequest = JsonConvert.SerializeObject(requestBody);
 
-            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json-patch+json");
-
+            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json-patch+json");            
             try
             {
                 using (HttpResponseMessage response = await client.PatchAsync(apiUrl, content))
@@ -51,7 +51,8 @@ namespace DBTek.BugGuardian.Helpers
             {
                 //Console.WriteLine(ex.ToString());
                 //Console.ReadLine();
-            }
+                Debug.WriteLine(ex.Message);
+            }            
 
             return responseBody;
         }
@@ -62,8 +63,7 @@ namespace DBTek.BugGuardian.Helpers
 
             var jsonRequest = "[" + JsonConvert.SerializeObject(requestBody) + "]";
 
-            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
-
+            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");           
             try
             {
                 using (HttpResponseMessage response = client.PostAsync(apiUrl, content).Result)
@@ -76,7 +76,6 @@ namespace DBTek.BugGuardian.Helpers
             {
                 //Console.WriteLine(ex.ToString());
             }
-
             return responseBody;
         }
     }

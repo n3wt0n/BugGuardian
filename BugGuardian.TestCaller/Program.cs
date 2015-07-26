@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BugGuardian.TestCaller
@@ -16,7 +17,7 @@ namespace BugGuardian.TestCaller
 
             //try
             //{
-            //    System.IO.File.Open(@"C:\pinoNonEsite.docx", System.IO.FileMode.Open);
+            //    System.IO.File.Open(@"C:\NonExistentFile.docx", System.IO.FileMode.Open);
             //}
             //catch (Exception ex)
             //{
@@ -44,10 +45,15 @@ namespace BugGuardian.TestCaller
             //    creator.AddBug(ex);
             //}
 
-            creator.AddBug(new AggregateException());
+            var innerExceptions = new List<Exception>();
+            innerExceptions.Add(new ArgumentNullException("FakeParam"));
+            innerExceptions.Add(new System.IO.FileNotFoundException("Missing file: ", @"c:\fakefile.doc"));
+            var aex = new AggregateException("This doesn't work", innerExceptions);
+            creator.AddBug(aex);
+            
 
             Console.WriteLine("Done");
             Console.ReadLine();
-        }
+        }       
     }
 }

@@ -48,7 +48,7 @@ namespace DBTek.BugGuardian
                     {
                         Operation = WITOperationType.add,
                         Path = TitleField,
-                        Value = ex.GetType().ToString() + " - " + ex.Message
+                        Value = Helpers.ExceptionsHelper.BuildExceptionTitle(ex)
                     });
 
             //Tags
@@ -94,9 +94,7 @@ namespace DBTek.BugGuardian
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", 
                     Convert.ToBase64String(Converters.StringToAsciiConverter.StringToAscii(credentials)));
                 
-                var responseBody = await Helpers.HttpOperationsHelper.PatchAsync(client, requestUrl, workItemCreatePATCHData);
-
-                //var queueResult = JsonConvert.DeserializeObject<BuildRequest>(responseBody);
+                var responseBody = await Helpers.HttpOperationsHelper.PatchAsync(client, requestUrl, workItemCreatePATCHData);                
             }
         }
     }
