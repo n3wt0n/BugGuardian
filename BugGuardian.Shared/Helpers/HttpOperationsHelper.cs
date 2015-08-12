@@ -26,7 +26,7 @@ namespace DBTek.BugGuardian.Helpers
             }
             catch (Exception ex)
             {
-                //Console.WriteLine(ex.ToString());
+                //TODO: properly catch the exception
             }
 
             return responseBody;
@@ -49,9 +49,7 @@ namespace DBTek.BugGuardian.Helpers
             }
             catch (Exception ex)
             {
-                //Console.WriteLine(ex.ToString());
-                //Console.ReadLine();
-                Debug.WriteLine(ex.Message);
+                //TODO: properly catch the exception
             }            
 
             return responseBody;
@@ -74,7 +72,7 @@ namespace DBTek.BugGuardian.Helpers
             }
             catch (Exception ex)
             {
-                //Console.WriteLine(ex.ToString());
+                //TODO: properly catch the exception
             }
             return responseBody;
         }

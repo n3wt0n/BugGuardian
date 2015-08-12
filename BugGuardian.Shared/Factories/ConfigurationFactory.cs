@@ -118,7 +118,7 @@ namespace DBTek.BugGuardian.Factories
             url = url.Replace(@"\", "/").ToLower();
 
             if (!url.StartsWith("http://") && !url.StartsWith("https://"))
-                url = "http://" + url;
+                url = $"http://{url}";
 
             if (url.EndsWith("/"))
                 url = url.TrimEnd('/');

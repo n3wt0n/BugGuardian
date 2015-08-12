@@ -8,40 +8,13 @@ namespace DBTek.BugGuardian.Extensions
     internal static class HttpClientExtensions
     {
         public async static Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent content)
-        {
-            var method = new HttpMethod("PATCH");
-
-            var request = new HttpRequestMessage(method, requestUri)
-            {
-                Content = content
-            };
-
-            return await client.SendAsync(request);
-        }
+            => await client.PatchAsync(new Uri(requestUri), content, CancellationToken.None);
 
         public async static Task<HttpResponseMessage> PatchAsync(this HttpClient client, Uri requestUri, HttpContent content)
-        {
-            var method = new HttpMethod("PATCH");
-
-            var request = new HttpRequestMessage(method, requestUri)
-            {
-                Content = content
-            };
-
-            return await client.SendAsync(request);
-        }
+            => await client.PatchAsync(requestUri, content, CancellationToken.None);
 
         public async static Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent content, CancellationToken cancellationToken)
-        {
-            var method = new HttpMethod("PATCH");
-
-            var request = new HttpRequestMessage(method, requestUri)
-            {
-                Content = content
-            };
-
-            return await client.SendAsync(request, cancellationToken);
-        }
+            => await client.PatchAsync(new Uri(requestUri), content, cancellationToken);
 
         public async static Task<HttpResponseMessage> PatchAsync(this HttpClient client, Uri requestUri, HttpContent content, CancellationToken cancellationToken)
         {
@@ -51,6 +24,9 @@ namespace DBTek.BugGuardian.Extensions
             {
                 Content = content
             };
+
+            if (cancellationToken == CancellationToken.None)
+                return await client.SendAsync(request);
 
             return await client.SendAsync(request, cancellationToken);
         }

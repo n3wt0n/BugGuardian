@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static byte[] StringToAscii(string str)
+        internal static byte[] StringToAscii(string str)
         {
             byte[] rtn = new byte[str.Length];
             for (int i = 0; i < str.Length; ++i)

@@ -24,7 +24,4 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\HttpOperationsHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\SystemInfoHelper.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Managers\" />
-  </ItemGroup>
 </Project>
