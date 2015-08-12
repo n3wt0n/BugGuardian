@@ -10,16 +10,16 @@ namespace DBTek.BugGuardian
     public class Creator : IDisposable
     {        
         // Get the alternate credentials that you'll use to access the Visual Studio Online account.
-        static Account _account;
+        private Account _account;
 
         //Api version query parameter
-        static String _apiVersion = "api-version=1.0";
+        private string _apiVersion = "api-version=1.0";
 
         //VSOFields
-        const string TitleField = "/fields/System.Title";
-        const string ReproStepsField = "/fields/Microsoft.VSTS.TCM.ReproSteps";
-        const string SystemInfoField = "/fields/Microsoft.VSTS.TCM.SystemInfo";
-        const string TagsField = "/fields/System.Tags";
+        private const string TitleField = "/fields/System.Title";
+        private const string ReproStepsField = "/fields/Microsoft.VSTS.TCM.ReproSteps";
+        private const string SystemInfoField = "/fields/Microsoft.VSTS.TCM.SystemInfo";
+        private const string TagsField = "/fields/System.Tags";
 
 
         public Creator()
