@@ -2,6 +2,6 @@
 {
     internal class VSORequest
     {
-        //Used as base class
+        //Used as placeholder base class
     }
 }

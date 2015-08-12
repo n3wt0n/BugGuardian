@@ -11,20 +11,20 @@ namespace DBTek.BugGuardian.Helpers
 #if WINDOWS_APP || WINDOWS_PHONE_APP
             Windows.Security.ExchangeActiveSyncProvisioning.EasClientDeviceInformation deviceInfo = new Windows.Security.ExchangeActiveSyncProvisioning.EasClientDeviceInformation();
 
-            systemInfoString.AppendFormat("<strong>Operating System:</strong> {0} <br />", deviceInfo.OperatingSystem);
-            systemInfoString.AppendFormat("<strong>Friendly Name:</strong> {0} <br />", deviceInfo.FriendlyName);
-            systemInfoString.AppendFormat("<strong>System Manufacturer:</strong> {0} <br />", deviceInfo.SystemManufacturer);
-            systemInfoString.AppendFormat("<strong>System Product Name:</strong> {0} <br />", deviceInfo.SystemProductName);
-            systemInfoString.AppendFormat("<strong>System SKU:</strong> {0} <br />", deviceInfo.SystemSku);
+            systemInfoString.Append($"<strong>Operating System:</strong>{deviceInfo.OperatingSystem}<br />");
+            systemInfoString.Append($"<strong>Friendly Name:</strong>{deviceInfo.FriendlyName}<br />");
+            systemInfoString.Append($"<strong>System Manufacturer:</strong>{deviceInfo.SystemManufacturer}<br />");
+            systemInfoString.Append($"<strong>System Product Name:</strong>{deviceInfo.SystemProductName}<br />");
+            systemInfoString.Append($"<strong>System SKU:</strong>{deviceInfo.SystemSku}<br />");
 #if WINDOWS_PHONE_APP
-            systemInfoString.AppendFormat("<strong>System Firmware Version:</strong> {0} <br />", deviceInfo.SystemFirmwareVersion);
-            systemInfoString.AppendFormat("<strong>System Hardware Version:</strong> {0} <br />", deviceInfo.SystemHardwareVersion);
+            systemInfoString.Append($"<strong>System Firmware Version:</strong>{deviceInfo.SystemFirmwareVersion}<br />");
+            systemInfoString.Append($"<strong>System Hardware Version:</strong>{deviceInfo.SystemHardwareVersion}<br />");
 #endif
 #else
-            //systemInfoString.AppendFormat("<strong>OS:</strong> {0} <br />", Environment.OSVersion.VersionString);
-            //systemInfoString.AppendFormat("<strong>64 bit OS:</strong> {0} <br />", Environment.Is64BitOperatingSystem);
-            //systemInfoString.AppendFormat("<strong>64 bit Process:</strong> {0} <br />", Environment.Is64BitProcess);
-            //systemInfoString.AppendFormat("<strong>CLR version:</strong> {0} <br />", Environment.Version);
+            systemInfoString.Append($"<strong>OS:</strong>{System.Environment.OSVersion.VersionString}<br />");
+            systemInfoString.Append($"<strong>64 bit OS:</strong>{System.Environment.Is64BitOperatingSystem}<br />");
+            systemInfoString.Append($"<strong>64 bit Process:</strong>{System.Environment.Is64BitProcess}<br />");
+            systemInfoString.Append($"<strong>CLR version:</strong>{System.Environment.Version}<br />");
 #endif
 
             return systemInfoString.ToString();

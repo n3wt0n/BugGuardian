@@ -38,7 +38,6 @@ namespace DBTek.BugGuardian.Helpers
         {
             var title = new StringBuilder();
 
-
             if (ex.GetType().ToString().ToLower() == "system.web.httpunhandledexception" && ex.InnerException != null)
                 title.Append(BuildExceptionTitle(ex.InnerException));
             else
