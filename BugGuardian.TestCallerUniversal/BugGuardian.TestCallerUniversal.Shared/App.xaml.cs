@@ -37,6 +37,37 @@ namespace BugGuardian.TestCallerUniversal
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+
+            #region BUGGUARDIAN TEST
+            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT");
+            var creator = new DBTek.BugGuardian.Creator();
+
+
+            creator.AddBug(new Exception());
+
+            try
+            {
+                string aaaaa = null;
+                aaaaa.Substring(0, 12);
+            }
+            catch (Exception ex)
+            {
+                creator.AddBug(ex);
+            }
+
+
+            try
+            {
+                string aaaaa = "sss";
+                aaaaa.Substring(0, 12);
+            }
+            catch (Exception ex)
+            {
+                creator.AddBug(ex);
+            }
+
+            creator.AddBug(new AggregateException());
+            #endregion
         }
 
         /// <summary>
@@ -99,39 +130,7 @@ namespace BugGuardian.TestCallerUniversal
                 {
                     throw new Exception("Failed to create initial page");
                 }
-            }
-
-            #region BUGGUARDIAN TEST
-            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT");
-            var creator = new DBTek.BugGuardian.Creator();
-
-
-            creator.AddBug(new Exception());
-            
-            try
-            {
-                string aaaaa = null;
-                aaaaa.Substring(0, 12);
-            }
-            catch (Exception ex)
-            {
-                creator.AddBug(ex);
-            }
-
-
-            try
-            {
-                string aaaaa = "sss";
-                aaaaa.Substring(0, 12);
-            }
-            catch (Exception ex)
-            {
-                creator.AddBug(ex);
-            }
-
-            creator.AddBug(new AggregateException());
-            #endregion
-
+            }           
 
             // Ensure the current window is active
             Window.Current.Activate();
