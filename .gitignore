@@ -5,6 +5,6 @@
 **/bin
 **/obj
 **/packages
-
-*.user  
+ 
 *.suo
+*.user
