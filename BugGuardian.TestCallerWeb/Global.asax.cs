@@ -20,13 +20,13 @@ namespace BugGuardian.TestCallerWeb
         void Application_Error(Object sender, EventArgs e)
         {
             Exception ex = Server.GetLastError();
-            var creator = new DBTek.BugGuardian.Creator();
-
-            Task.Run(async () =>
+            using (var creator = new DBTek.BugGuardian.Creator())
             {
-                await creator.AddBug(ex);
-            });
+                Task.Run(async () =>
+                {
+                    await creator.AddBug(ex);
+                }).Wait();
+            }
         }
-
     }
 }

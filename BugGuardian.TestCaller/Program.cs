@@ -11,49 +11,35 @@ namespace BugGuardian.TestCaller
     {
         static void Main(string[] args)
         {
-            var creator = new DBTek.BugGuardian.Creator();
+            AppDomain.CurrentDomain.UnhandledException += BugGuardianExceptionTrapper;
 
-            //creator.AddBug(new Exception());
+            //throw new Exception();
 
-            //try
-            //{
-            //    System.IO.File.Open(@"C:\NonExistentFile.docx", System.IO.FileMode.Open);
-            //}
-            //catch (Exception ex)
-            //{
-            //    creator.AddBug(ex);               
-            //}
+            //System.IO.File.Open(@"C:\NonExistentFile.docx", System.IO.FileMode.Open);
 
-            //try
-            //{
-            //    string aaaaa = null;
-            //    aaaaa.Substring(0, 12);
-            //}
-            //catch (Exception ex)
-            //{
-            //    creator.AddBug(ex);                
-            //}
+            //string aaaaa = null;
+            //aaaaa.Substring(0, 12);
 
+            string aaaaa = "sss";
+            aaaaa.Substring(0, 12);
 
-            //try
-            //{
-            //    string aaaaa = "sss";
-            //    aaaaa.Substring(0, 12);
-            //}
-            //catch (Exception ex)
-            //{
-            //    creator.AddBug(ex);
-            //}
+            //var innerExceptions = new List<Exception>();
+            //innerExceptions.Add(new ArgumentNullException("FakeParam"));
+            //innerExceptions.Add(new System.IO.FileNotFoundException("Missing file: ", @"c:\fakefile.doc"));
+            //var aex = new AggregateException("This doesn't work", innerExceptions);
+            //throw aex;            
+        }
 
-            var innerExceptions = new List<Exception>();
-            innerExceptions.Add(new ArgumentNullException("FakeParam"));
-            innerExceptions.Add(new System.IO.FileNotFoundException("Missing file: ", @"c:\fakefile.doc"));
-            var aex = new AggregateException("This doesn't work", innerExceptions);
-            creator.AddBug(aex);
-            
+        static void BugGuardianExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
+        {
+            using (var creator = new DBTek.BugGuardian.Creator())
+            {
+                Task.Run(async () =>
+                {
+                    await creator.AddBug(e.ExceptionObject as Exception);
+                }).Wait();
+            }
+        }
 
-            Console.WriteLine("Done");
-            Console.ReadLine();
-        }       
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -39,35 +40,31 @@ namespace BugGuardian.TestCallerUniversal
             this.Suspending += this.OnSuspending;
 
             #region BUGGUARDIAN TEST
+            this.UnhandledException += BugGuardianExceptionTrapper;
+
             DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT");
-            var creator = new DBTek.BugGuardian.Creator();
 
+            //throw new Exception());
 
-            creator.AddBug(new Exception());
+            //string nullString = null;
+            //nullString.Substring(0, 12);
 
-            try
-            {
-                string aaaaa = null;
-                aaaaa.Substring(0, 12);
-            }
-            catch (Exception ex)
-            {
-                creator.AddBug(ex);
-            }
+            //string shortString = "sss";
+            //shortString.Substring(0, 12);
 
-
-            try
-            {
-                string aaaaa = "sss";
-                aaaaa.Substring(0, 12);
-            }
-            catch (Exception ex)
-            {
-                creator.AddBug(ex);
-            }
-
-            creator.AddBug(new AggregateException());
+            //throw new AggregateException();
             #endregion
+        }
+
+        private void BugGuardianExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
+        {
+            using (var creator = new DBTek.BugGuardian.Creator())
+            {
+                Task.Run(async () =>
+                {
+                    await creator.AddBug(e.Exception);
+                }).Wait();
+            }
         }
 
         /// <summary>
