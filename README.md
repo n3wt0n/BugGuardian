@@ -8,7 +8,7 @@ It can also be invoked manually in try/catch blocks to keep track of handled exc
 
 **Installation**
 
-The **BugGuardian** library will be shortly available available on [NuGet].
+The **BugGuardian** library will be shortly available available on NuGet.
 Until that, if you want to use it you need to download the sources and to build them by yourself (or to add them to your solution).   
     
     
