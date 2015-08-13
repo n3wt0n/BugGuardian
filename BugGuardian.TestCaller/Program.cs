@@ -33,11 +33,8 @@ namespace BugGuardian.TestCaller
         static void BugGuardianExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
         {
             using (var creator = new DBTek.BugGuardian.Creator())
-            {
-                Task.Run(async () =>
-                {
-                    await creator.AddBug(e.ExceptionObject as Exception);
-                }).Wait();
+            {                
+                creator.AddBug(e.ExceptionObject as Exception);
             }
         }
 

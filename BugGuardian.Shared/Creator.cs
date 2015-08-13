@@ -32,7 +32,15 @@ namespace DBTek.BugGuardian
         /// </summary>
         /// <param name="ex"></param>
         /// <returns></returns>
-        public async Task AddBug(Exception ex)
+        public void AddBug(Exception ex)
+        {
+            Task.Run(async () =>
+            {
+                await AddBugInternal(ex);
+            }).Wait();
+        }
+        
+        private async Task AddBugInternal(Exception ex)
         {
             //Pattern:
             //PATCH https://{account}.visualstudio.com/defaultcollection/{project}/_apis/wit/workitems/${workitemtypename}?api-version={version}

@@ -42,17 +42,7 @@ namespace BugGuardian.TestCallerUniversal
             #region BUGGUARDIAN TEST
             this.UnhandledException += BugGuardianExceptionTrapper;
 
-            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT");
-
-            //throw new Exception());
-
-            //string nullString = null;
-            //nullString.Substring(0, 12);
-
-            //string shortString = "sss";
-            //shortString.Substring(0, 12);
-
-            //throw new AggregateException();
+            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT");                        
             #endregion
         }
 
@@ -60,10 +50,7 @@ namespace BugGuardian.TestCallerUniversal
         {
             using (var creator = new DBTek.BugGuardian.Creator())
             {
-                Task.Run(async () =>
-                {
-                    await creator.AddBug(e.Exception);
-                }).Wait();
+                creator.AddBug(e.Exception);
             }
         }
 
@@ -80,9 +67,20 @@ namespace BugGuardian.TestCallerUniversal
             {
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
-#endif
-
+#endif            
             Frame rootFrame = Window.Current.Content as Frame;
+
+            #region BUGGUARDIAN TEST
+            //throw new Exception());
+
+            string nullString = null;
+            nullString.Substring(0, 12);
+
+            //string shortString = "sss";
+            //shortString.Substring(0, 12);
+
+            //throw new AggregateException();
+            #endregion
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active

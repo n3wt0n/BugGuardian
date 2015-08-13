@@ -22,10 +22,7 @@ namespace BugGuardian.TestCallerWeb
             Exception ex = Server.GetLastError();
             using (var creator = new DBTek.BugGuardian.Creator())
             {
-                Task.Run(async () =>
-                {
-                    await creator.AddBug(ex);
-                }).Wait();
+                creator.AddBug(ex);
             }
         }
     }
