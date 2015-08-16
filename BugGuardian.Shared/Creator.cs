@@ -28,7 +28,7 @@ namespace DBTek.BugGuardian
         }
 
         /// <summary>
-        /// Add a Bug, with the info about the given Exception
+        /// Add a Bug, with the info about the given Exception (internally async)
         /// </summary>
         /// <param name="ex"></param>
         /// <returns></returns>
@@ -39,7 +39,15 @@ namespace DBTek.BugGuardian
                 await AddBugInternal(ex);
             }).Wait();
         }
-        
+
+        /// <summary>
+        /// Add a Bug in async, with the info about the given Exception
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <returns></returns>
+        public async Task AddBugAsync(Exception ex)
+            => await AddBugInternal(ex);        
+
         private async Task AddBugInternal(Exception ex)
         {
             //Pattern:
