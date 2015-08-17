@@ -14,7 +14,7 @@ Until that, if you want to use it you need to download the sources and to build 
     
 **Usage**
 
-Refer to the [project documentation](https://github.com/n3wt0n/BugGuardian/wiki/Home) to find examples about how to use this library. You can also find some code samples in the **BugGuardian.Test*** folders.
+Refer to the [project documentation](https://github.com/n3wt0n/BugGuardian/wiki/Home) to find examples about how to use this library. You can also find some code samples in the **TestApps** folder.
 
 
 **Support**
