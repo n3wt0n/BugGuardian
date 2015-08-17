@@ -9,6 +9,7 @@
     <Import_RootNamespace>BugGuardian.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\BugGuardianResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\StringExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Factories\ConfigurationFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToAsciiConverter.cs" />

@@ -17,7 +17,7 @@ namespace DBTek.BugGuardian.Helpers
 
             try
             {
-                using (HttpResponseMessage response = client.GetAsync(apiUrl).Result)
+                using (HttpResponseMessage response = await client.GetAsync(apiUrl))
                 {
                     response.EnsureSuccessStatusCode();
                     responseBody = await response.Content.ReadAsStringAsync();
@@ -37,19 +37,12 @@ namespace DBTek.BugGuardian.Helpers
 
             var jsonRequest = JsonConvert.SerializeObject(requestBody);
 
-            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json-patch+json");            
-            try
+            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json-patch+json");
+            using (HttpResponseMessage response = await client.PatchAsync(apiUrl, content))
             {
-                using (HttpResponseMessage response = await client.PatchAsync(apiUrl, content))
-                {
-                    response.EnsureSuccessStatusCode();
-                    responseBody = await response.Content.ReadAsStringAsync();
-                }
+                response.EnsureSuccessStatusCode();
+                responseBody = await response.Content.ReadAsStringAsync();
             }
-            catch (Exception ex)
-            {
-                //TODO: properly catch the exception
-            }            
 
             return responseBody;
         }
@@ -60,10 +53,10 @@ namespace DBTek.BugGuardian.Helpers
 
             var jsonRequest = "[" + JsonConvert.SerializeObject(requestBody) + "]";
 
-            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");           
+            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
             try
             {
-                using (HttpResponseMessage response = client.PostAsync(apiUrl, content).Result)
+                using (HttpResponseMessage response = await client.PostAsync(apiUrl, content))
                 {
                     response.EnsureSuccessStatusCode();
                     responseBody = await response.Content.ReadAsStringAsync();

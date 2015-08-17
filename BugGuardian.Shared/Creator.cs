@@ -1,4 +1,5 @@
-﻿using DBTek.BugGuardian.Entities;
+﻿using BugGuardian.Shared.Entities;
+using DBTek.BugGuardian.Entities;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -28,16 +29,16 @@ namespace DBTek.BugGuardian
         }
 
         /// <summary>
-        /// Add a Bug, with the info about the given Exception (internally async)
+        /// Add a Bug, with the info about the given Exception
         /// </summary>
         /// <param name="ex"></param>
         /// <returns></returns>
-        public void AddBug(Exception ex)
+        public BugGuardianResponse AddBug(Exception ex)
         {
-            Task.Run(async () =>
+            return Task.Run<BugGuardianResponse>(async () =>
             {
-                await AddBugAsync(ex);
-            }).Wait();
+                return await AddBugAsync(ex);
+            }).Result;
         }
 
         /// <summary>
@@ -45,7 +46,7 @@ namespace DBTek.BugGuardian
         /// </summary>
         /// <param name="ex"></param>
         /// <returns></returns>
-        public async Task AddBugAsync(Exception ex)
+        public async Task<BugGuardianResponse> AddBugAsync(Exception ex)
         {
             //Pattern:
             //PATCH https://{account}.visualstudio.com/defaultcollection/{project}/_apis/wit/workitems/${workitemtypename}?api-version={version}
@@ -99,15 +100,22 @@ namespace DBTek.BugGuardian
             using (HttpClient client = new HttpClient(handler))
             {
                 if (_account.IsVSO) 
-                    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Set alternate credentials
                 string credentials = $"{_account.Username}:{_account.Password}";
                 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", 
                     Convert.ToBase64String(Converters.StringToAsciiConverter.StringToAscii(credentials)));
-                
-                var responseBody = await Helpers.HttpOperationsHelper.PatchAsync(client, requestUrl, workItemCreatePATCHData);                
+                try
+                {
+                    var responseBody = await Helpers.HttpOperationsHelper.PatchAsync(client, requestUrl, workItemCreatePATCHData);
+                    return new BugGuardianResponse() { Success = true, Response = responseBody };
+                }
+                catch (Exception internalException)
+                {
+                    return new BugGuardianResponse() { Success = false, Response = "An error occured. See the Exception.", Exception = internalException };
+                }                
             }
         }
 

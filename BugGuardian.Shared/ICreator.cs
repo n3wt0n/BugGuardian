@@ -1,11 +1,12 @@
-﻿using System;
+﻿using BugGuardian.Shared.Entities;
+using System;
 using System.Threading.Tasks;
 
 namespace DBTek.BugGuardian
 {
     public interface ICreator : IDisposable
     {
-        void AddBug(Exception ex);
-        Task AddBugAsync(Exception ex);
+        BugGuardianResponse AddBug(Exception ex);
+        Task<BugGuardianResponse> AddBugAsync(Exception ex);
     }
 }
