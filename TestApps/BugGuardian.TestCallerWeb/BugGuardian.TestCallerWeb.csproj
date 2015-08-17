@@ -140,7 +140,7 @@
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BugGuardian.Standard\BugGuardian.Standard.csproj">
+    <ProjectReference Include="..\..\BugGuardian.Standard\BugGuardian.Standard.csproj">
       <Project>{8704c4b4-9174-4f89-8a3a-69cd3313ae51}</Project>
       <Name>BugGuardian.Standard</Name>
     </ProjectReference>

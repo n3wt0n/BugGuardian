@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerConsole", "BugGuardian.TestCaller\BugGuardian.TestCallerConsole.csproj", "{656977B2-056C-4DEB-87CB-D11366E809B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerConsole", "TestApps\BugGuardian.TestCallerConsole\BugGuardian.TestCallerConsole.csproj", "{656977B2-056C-4DEB-87CB-D11366E809B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.Windows", "BugGuardian.Windows\BugGuardian.Windows.csproj", "{90679079-6E6C-41B6-B6A4-0F51400E9522}"
 EndProject
@@ -13,23 +13,23 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BugGuardian.Shared", "BugGu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.Standard", "BugGuardian.Standard\BugGuardian.Standard.csproj", "{8704C4B4-9174-4F89-8A3A-69CD3313AE51}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApps", "TestApps", "{7D0462B9-3382-4563-B25E-748D54F2E8BD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TesterApps", "TesterApps", "{7D0462B9-3382-4563-B25E-748D54F2E8BD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BugGuardian.TestCallerUniversal", "BugGuardian.TestCallerUniversal", "{5FFC456B-029C-4FC9-8058-E5B93DB70567}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BugGuardian.TestCallerUniversal.Shared", "BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.shproj", "{CD985FFF-6F8F-41E3-A9FE-0277680C3492}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BugGuardian.TestCallerUniversal.Shared", "TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.shproj", "{CD985FFF-6F8F-41E3-A9FE-0277680C3492}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerUniversal.Windows", "BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Windows\BugGuardian.TestCallerUniversal.Windows.csproj", "{1F7FCDB5-10F5-47AC-B69A-B9E1E35CF845}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerUniversal.Windows", "TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Windows\BugGuardian.TestCallerUniversal.Windows.csproj", "{1F7FCDB5-10F5-47AC-B69A-B9E1E35CF845}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerUniversal.WindowsPhone", "BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.WindowsPhone\BugGuardian.TestCallerUniversal.WindowsPhone.csproj", "{8C6CF847-351D-4A0F-9B0E-2FED6F073C0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerUniversal.WindowsPhone", "TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.WindowsPhone\BugGuardian.TestCallerUniversal.WindowsPhone.csproj", "{8C6CF847-351D-4A0F-9B0E-2FED6F073C0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerWeb", "BugGuardian.TestCallerWeb\BugGuardian.TestCallerWeb.csproj", "{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerWeb", "TestApps\BugGuardian.TestCallerWeb\BugGuardian.TestCallerWeb.csproj", "{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{8c6cf847-351d-4a0f-9b0e-2fed6f073c0c}*SharedItemsImports = 4
-		BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{cd985fff-6f8f-41e3-a9fe-0277680c3492}*SharedItemsImports = 13
-		BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{1f7fcdb5-10f5-47ac-b69a-b9e1e35cf845}*SharedItemsImports = 4
+		TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{8c6cf847-351d-4a0f-9b0e-2fed6f073c0c}*SharedItemsImports = 4
+		TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{cd985fff-6f8f-41e3-a9fe-0277680c3492}*SharedItemsImports = 13
+		TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{1f7fcdb5-10f5-47ac-b69a-b9e1e35cf845}*SharedItemsImports = 4
 		BugGuardian.Shared\BugGuardian.Shared.projitems*{c5a57b2c-136a-43e6-a957-0b1963ce8aab}*SharedItemsImports = 4
 		BugGuardian.Shared\BugGuardian.Shared.projitems*{90679079-6e6c-41b6-b6a4-0f51400e9522}*SharedItemsImports = 4
 		BugGuardian.Shared\BugGuardian.Shared.projitems*{9868a872-2b5c-4961-84bc-f704240ad1ce}*SharedItemsImports = 13
