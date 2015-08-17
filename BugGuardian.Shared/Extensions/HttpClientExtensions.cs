@@ -7,14 +7,14 @@ namespace DBTek.BugGuardian.Extensions
 {
     internal static class HttpClientExtensions
     {
-        public async static Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent content)
-            => await client.PatchAsync(new Uri(requestUri), content, CancellationToken.None);
+        public static Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent content)
+            => client.PatchAsync(new Uri(requestUri), content, CancellationToken.None);
 
-        public async static Task<HttpResponseMessage> PatchAsync(this HttpClient client, Uri requestUri, HttpContent content)
-            => await client.PatchAsync(requestUri, content, CancellationToken.None);
+        public static Task<HttpResponseMessage> PatchAsync(this HttpClient client, Uri requestUri, HttpContent content)
+            => client.PatchAsync(requestUri, content, CancellationToken.None);
 
-        public async static Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent content, CancellationToken cancellationToken)
-            => await client.PatchAsync(new Uri(requestUri), content, cancellationToken);
+        public static Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent content, CancellationToken cancellationToken)
+            => client.PatchAsync(new Uri(requestUri), content, cancellationToken);
 
         public async static Task<HttpResponseMessage> PatchAsync(this HttpClient client, Uri requestUri, HttpContent content, CancellationToken cancellationToken)
         {
