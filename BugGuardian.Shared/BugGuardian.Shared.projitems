@@ -23,5 +23,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ExceptionsHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\HttpOperationsHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\SystemInfoHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ICreator.cs" />
   </ItemGroup>
 </Project>

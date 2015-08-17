@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DBTek.BugGuardian
 {
-    public class Creator : IDisposable
+    public class Creator : ICreator
     {        
         // Get the alternate credentials that you'll use to access the Visual Studio Online account.
         private Account _account;
