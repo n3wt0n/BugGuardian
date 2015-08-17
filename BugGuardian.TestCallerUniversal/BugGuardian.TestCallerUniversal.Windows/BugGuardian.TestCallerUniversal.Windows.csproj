@@ -7,8 +7,8 @@
     <ProjectGuid>{1F7FCDB5-10F5-47AC-B69A-B9E1E35CF845}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BugGuardian.TestCallerUniversal</RootNamespace>
-    <AssemblyName>BugGuardian.TestCallerUniversal.Windows</AssemblyName>
+    <RootNamespace>DBTek.BugGuardian.TestCallerUniversal</RootNamespace>
+    <AssemblyName>DBTek.BugGuardian.TestCallerUniversal.Windows</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>

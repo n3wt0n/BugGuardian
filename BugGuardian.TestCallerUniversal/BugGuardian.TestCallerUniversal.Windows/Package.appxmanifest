@@ -6,7 +6,7 @@
             Version="1.0.0.0" />
 
   <Properties>
-    <DisplayName>BugGuardian.TestCallerUniversal.Windows</DisplayName>
+    <DisplayName>DBTek.BugGuardian.TestCallerUniversal.Windows</DisplayName>
     <PublisherDisplayName>Davide</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -23,12 +23,12 @@
   <Applications>
     <Application Id="App"
         Executable="$targetnametoken$.exe"
-        EntryPoint="BugGuardian.TestCallerUniversal.Windows.App">
+        EntryPoint="DBTek.BugGuardian.TestCallerUniversal.Windows.App">
         <m2:VisualElements
-            DisplayName="BugGuardian.TestCallerUniversal.Windows"
+            DisplayName="DBTek.BugGuardian.TestCallerUniversal.Windows"
             Square150x150Logo="Assets\Logo.png"
             Square30x30Logo="Assets\SmallLogo.png"
-            Description="BugGuardian.TestCallerUniversal.Windows"
+            Description="DBTek.BugGuardian.TestCallerUniversal.Windows"
             ForegroundText="light"
             BackgroundColor="#464646">
             <m2:SplashScreen Image="Assets\SplashScreen.png" />

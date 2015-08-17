@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageWithError.aspx.cs" Inherits="BugGuardian.TestCallerWeb.WebForms.PageWithError" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageWithError.aspx.cs" Inherits="DBTek.BugGuardian.TestCallerWeb.WebForms.PageWithError" %>
 
 <!DOCTYPE html>
 

@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace BugGuardian.TestCallerWeb.WebForms
+namespace DBTek.BugGuardian.TestCallerWeb.WebForms
 {
     public partial class PageWithError : System.Web.UI.Page
     {

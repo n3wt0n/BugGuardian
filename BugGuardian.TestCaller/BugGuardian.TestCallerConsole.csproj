@@ -7,8 +7,8 @@
     <ProjectGuid>{656977B2-056C-4DEB-87CB-D11366E809B8}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BugGuardian.TestCaller</RootNamespace>
-    <AssemblyName>BugGuardian.TestCaller</AssemblyName>
+    <RootNamespace>DBTek.BugGuardian.TestCallerConsole</RootNamespace>
+    <AssemblyName>DBTek.BugGuardian.TestCallerConsole</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

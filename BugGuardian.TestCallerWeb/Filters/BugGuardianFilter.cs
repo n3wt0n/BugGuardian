@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Filters;
 
-namespace BugGuardian.TestCallerWeb.Filters
+namespace DBTek.BugGuardian.TestCallerWeb.Filters
 {
     public class BugGuardianFilter : IExceptionFilter
     {

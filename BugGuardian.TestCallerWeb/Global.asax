@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="BugGuardian.TestCallerWeb.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="DBTek.BugGuardian.TestCallerWeb.Global" Language="C#" %>

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BugGuardian.TestCallerWeb.WebForms {
+namespace DBTek.BugGuardian.TestCallerWeb.WebForms {
     
     
     public partial class PageWithError {

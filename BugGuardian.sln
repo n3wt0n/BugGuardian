@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCaller", "BugGuardian.TestCaller\BugGuardian.TestCaller.csproj", "{656977B2-056C-4DEB-87CB-D11366E809B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerConsole", "BugGuardian.TestCaller\BugGuardian.TestCallerConsole.csproj", "{656977B2-056C-4DEB-87CB-D11366E809B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.Windows", "BugGuardian.Windows\BugGuardian.Windows.csproj", "{90679079-6E6C-41B6-B6A4-0F51400E9522}"
 EndProject
@@ -13,7 +13,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BugGuardian.Shared", "BugGu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.Standard", "BugGuardian.Standard\BugGuardian.Standard.csproj", "{8704C4B4-9174-4F89-8A3A-69CD3313AE51}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TesterApps", "TesterApps", "{7D0462B9-3382-4563-B25E-748D54F2E8BD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApps", "TestApps", "{7D0462B9-3382-4563-B25E-748D54F2E8BD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BugGuardian.TestCallerUniversal", "BugGuardian.TestCallerUniversal", "{5FFC456B-029C-4FC9-8058-E5B93DB70567}"
 EndProject

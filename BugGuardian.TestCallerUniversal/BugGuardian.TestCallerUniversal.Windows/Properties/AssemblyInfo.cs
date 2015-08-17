@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BugGuardian.TestCallerUniversal.Windows")]
+[assembly: AssemblyTitle("DBTek.BugGuardian.TestCallerUniversal.Windows")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BugGuardian.TestCallerUniversal.Windows")]
+[assembly: AssemblyProduct("DBTek.BugGuardian.TestCallerUniversal.Windows")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

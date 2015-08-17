@@ -8,7 +8,7 @@
   <mp:PhoneIdentity PhoneProductId="05231da0-4ccb-47dc-a5f9-3b65cd1e80d3" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>BugGuardian.TestCallerUniversal.WindowsPhone</DisplayName>
+    <DisplayName>DBTek.BugGuardian.TestCallerUniversal.WindowsPhone</DisplayName>
     <PublisherDisplayName>Davide</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -25,12 +25,12 @@
   <Applications>
     <Application Id="App"
         Executable="$targetnametoken$.exe"
-        EntryPoint="BugGuardian.TestCallerUniversal.WindowsPhone.App">
+        EntryPoint="DBTek.BugGuardian.TestCallerUniversal.WindowsPhone.App">
         <m3:VisualElements
-            DisplayName="BugGuardian.TestCallerUniversal.WindowsPhone"
+            DisplayName="DBTek.BugGuardian.TestCallerUniversal.WindowsPhone"
             Square150x150Logo="Assets\Logo.png"
             Square44x44Logo="Assets\SmallLogo.png"
-            Description="BugGuardian.TestCallerUniversal.WindowsPhone"
+            Description="DBTek.BugGuardian.TestCallerUniversal.WindowsPhone"
             ForegroundText="light"
             BackgroundColor="transparent">
             <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png"/>

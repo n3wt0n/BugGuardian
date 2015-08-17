@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace BugGuardian.TestCallerWeb
+namespace DBTek.BugGuardian.TestCallerWeb
 {
     public static class WebApiConfig
     {

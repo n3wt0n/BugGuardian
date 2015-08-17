@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BugGuardian.TestCallerWeb.Controllers
+namespace DBTek.BugGuardian.TestCallerWeb.Controllers
 {
     public class HomeController : Controller
     {

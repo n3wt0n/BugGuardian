@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BugGuardian.TestCaller
+namespace DBTek.BugGuardian.TestCallerConsole
 {
     class Program
     {
