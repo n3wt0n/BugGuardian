@@ -34,7 +34,7 @@ namespace DBTek.BugGuardian.TestCallerConsole
         {
             using (var creator = new DBTek.BugGuardian.Creator())
             {                
-                creator.AddBug(e.ExceptionObject as Exception);
+                creator.AddBug(e.ExceptionObject as Exception, message: "Unknown exception", tags: new List<string> { "Operation" });
             }
         }
 

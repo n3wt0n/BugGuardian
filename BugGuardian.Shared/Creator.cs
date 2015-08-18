@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DBTek.BugGuardian
 {
     public class Creator : ICreator
-    {        
+    {
         // Get the alternate credentials that you'll use to access the Visual Studio Online account.
         private Account _account;
 
@@ -22,6 +22,7 @@ namespace DBTek.BugGuardian
         private const string SystemInfoField = "/fields/Microsoft.VSTS.TCM.SystemInfo";
         private const string TagsField = "/fields/System.Tags";
 
+        private const string DefaultTags = "BugGuardian;";
 
         public Creator()
         {
@@ -29,29 +30,33 @@ namespace DBTek.BugGuardian
         }
 
         /// <summary>
-        /// Add a Bug, with the info about the given Exception
+        /// Add a Bug, with the info about the given Exception. You can optionally indicate a custom error message and a list of tags.
         /// </summary>
         /// <param name="ex"></param>
+        /// <param name="message"></param>
+        /// <param name="tags"></param>
         /// <returns></returns>
-        public BugGuardianResponse AddBug(Exception ex)
+        public BugGuardianResponse AddBug(Exception ex, string message = null, IEnumerable<string> tags = null)
         {
             return Task.Run<BugGuardianResponse>(async () =>
             {
-                return await AddBugAsync(ex);
+                return await AddBugAsync(ex, message, tags);
             }).Result;
         }
 
         /// <summary>
-        /// Add a Bug in async, with the info about the given Exception
+        /// Add a Bug in async, with the info about the given Exception. You can optionally indicate a custom error message and a list of tags.
         /// </summary>
         /// <param name="ex"></param>
+        /// <param name="message"></param>
+        /// <param name="tags"></param>
         /// <returns></returns>
-        public async Task<BugGuardianResponse> AddBugAsync(Exception ex)
+        public async Task<BugGuardianResponse> AddBugAsync(Exception ex, string message = null, IEnumerable<string> tags = null)
         {
             //Pattern:
             //PATCH https://{account}.visualstudio.com/defaultcollection/{project}/_apis/wit/workitems/${workitemtypename}?api-version={version}
             //See https://www.visualstudio.com/integrate/api/wit/fields for the fields explanation
-                                  
+
             var requestUrl = $"{_account.Url}/{_account.CollectionName}/{_account.ProjectName}/_apis/wit/workitems/$Bug?{_apiVersion}";
 
             var workItemCreatePATCHData = new List<VSORequest>();
@@ -71,7 +76,7 @@ namespace DBTek.BugGuardian
                     {
                         Operation = WITOperationType.add,
                         Path = TagsField,
-                        Value = "BugGuardian"
+                        Value = DefaultTags + (tags != null ? string.Join(";", tags) : String.Empty)
                     });
 
             //Repro Steps: Stack Trace
@@ -80,7 +85,7 @@ namespace DBTek.BugGuardian
                     {
                         Operation = WITOperationType.add,
                         Path = ReproStepsField,
-                        Value = Helpers.ExceptionsHelper.BuildExceptionString(ex)
+                        Value = Helpers.ExceptionsHelper.BuildExceptionString(ex, message)  // Include custom message, if any.
                     });
 
             //System Info
@@ -99,13 +104,13 @@ namespace DBTek.BugGuardian
 
             using (HttpClient client = new HttpClient(handler))
             {
-                if (_account.IsVSO) 
+                if (_account.IsVSO)
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Set alternate credentials
                 string credentials = $"{_account.Username}:{_account.Password}";
-                
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", 
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
                     Convert.ToBase64String(Converters.StringToAsciiConverter.StringToAscii(credentials)));
                 try
                 {
@@ -115,7 +120,7 @@ namespace DBTek.BugGuardian
                 catch (Exception internalException)
                 {
                     return new BugGuardianResponse() { Success = false, Response = "An error occured. See the Exception.", Exception = internalException };
-                }                
+                }
             }
         }
 
@@ -134,9 +139,9 @@ namespace DBTek.BugGuardian
                 disposedValue = true;
             }
         }
-       
+
         public void Dispose()
-        {           
+        {
             Dispose(true);
         }
         #endregion
