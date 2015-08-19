@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BugGuardian.Standard")]
+[assembly: AssemblyTitle("DBTek.BugGuardian")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BugGuardian.Standard")]
+[assembly: AssemblyProduct("DBTek.BugGuardian.Standard")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("eab5816f-3626-4926-b742-a31494434a3c")]
+[assembly: Guid("3c3f7bc4-4a29-4338-9a33-c60a92b76698")]
 
 // Version information for an assembly consists of the following four values:
 //

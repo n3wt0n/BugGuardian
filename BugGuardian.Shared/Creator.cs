@@ -37,12 +37,7 @@ namespace DBTek.BugGuardian
         /// <param name="tags"></param>
         /// <returns></returns>
         public BugGuardianResponse AddBug(Exception ex, string message = null, IEnumerable<string> tags = null)
-        {
-            return Task.Run<BugGuardianResponse>(async () =>
-            {
-                return await AddBugAsync(ex, message, tags);
-            }).Result;
-        }
+            => AddBugAsync(ex, message, tags).Result;        
 
         /// <summary>
         /// Add a Bug in async, with the info about the given Exception. You can optionally indicate a custom error message and a list of tags

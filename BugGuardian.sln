@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.WindowsPhone", 
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BugGuardian.Shared", "BugGuardian.Shared\BugGuardian.Shared.shproj", "{9868A872-2B5C-4961-84BC-F704240AD1CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.Standard", "BugGuardian.Standard\BugGuardian.Standard.csproj", "{8704C4B4-9174-4F89-8A3A-69CD3313AE51}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TesterApps", "TesterApps", "{7D0462B9-3382-4563-B25E-748D54F2E8BD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BugGuardian.TestCallerUniversal", "BugGuardian.TestCallerUniversal", "{5FFC456B-029C-4FC9-8058-E5B93DB70567}"
@@ -29,16 +27,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.NetCore", "BugG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCaller.UWP", "TestApps\BugGuardian.TestCaller.UWP\BugGuardian.TestCaller.UWP.csproj", "{E609CC44-548F-4FE2-99F3-1D8E886D6EC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.Standard", "BugGuardian.Standard\BugGuardian.Standard.csproj", "{3C3F7BC4-4A29-4338-9A33-C60A92B76698}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{8c6cf847-351d-4a0f-9b0e-2fed6f073c0c}*SharedItemsImports = 4
 		TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{cd985fff-6f8f-41e3-a9fe-0277680c3492}*SharedItemsImports = 13
+		BugGuardian.Shared\BugGuardian.Shared.projitems*{3c3f7bc4-4a29-4338-9a33-c60a92b76698}*SharedItemsImports = 4
 		TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{1f7fcdb5-10f5-47ac-b69a-b9e1e35cf845}*SharedItemsImports = 4
 		BugGuardian.Shared\BugGuardian.Shared.projitems*{c5a57b2c-136a-43e6-a957-0b1963ce8aab}*SharedItemsImports = 4
 		BugGuardian.Shared\BugGuardian.Shared.projitems*{90679079-6e6c-41b6-b6a4-0f51400e9522}*SharedItemsImports = 4
 		BugGuardian.Shared\BugGuardian.Shared.projitems*{9868a872-2b5c-4961-84bc-f704240ad1ce}*SharedItemsImports = 13
 		BugGuardian.Shared\BugGuardian.Shared.projitems*{1ddfa344-223a-487e-bdf0-42fe2792d901}*SharedItemsImports = 4
-		BugGuardian.Shared\BugGuardian.Shared.projitems*{8704c4b4-9174-4f89-8a3a-69cd3313ae51}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,16 +91,6 @@ Global
 		{C5A57B2C-136A-43E6-A957-0B1963CE8AAB}.Release|x64.ActiveCfg = Release|Any CPU
 		{C5A57B2C-136A-43E6-A957-0B1963CE8AAB}.Release|x86.ActiveCfg = Release|x86
 		{C5A57B2C-136A-43E6-A957-0B1963CE8AAB}.Release|x86.Build.0 = Release|x86
-		{8704C4B4-9174-4F89-8A3A-69CD3313AE51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8704C4B4-9174-4F89-8A3A-69CD3313AE51}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8704C4B4-9174-4F89-8A3A-69CD3313AE51}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{8704C4B4-9174-4F89-8A3A-69CD3313AE51}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{8704C4B4-9174-4F89-8A3A-69CD3313AE51}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8704C4B4-9174-4F89-8A3A-69CD3313AE51}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8704C4B4-9174-4F89-8A3A-69CD3313AE51}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8704C4B4-9174-4F89-8A3A-69CD3313AE51}.Release|ARM.ActiveCfg = Release|Any CPU
-		{8704C4B4-9174-4F89-8A3A-69CD3313AE51}.Release|x64.ActiveCfg = Release|Any CPU
-		{8704C4B4-9174-4F89-8A3A-69CD3313AE51}.Release|x86.ActiveCfg = Release|Any CPU
 		{1F7FCDB5-10F5-47AC-B69A-B9E1E35CF845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1F7FCDB5-10F5-47AC-B69A-B9E1E35CF845}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F7FCDB5-10F5-47AC-B69A-B9E1E35CF845}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -197,6 +187,22 @@ Global
 		{E609CC44-548F-4FE2-99F3-1D8E886D6EC9}.Release|x86.ActiveCfg = Release|x86
 		{E609CC44-548F-4FE2-99F3-1D8E886D6EC9}.Release|x86.Build.0 = Release|x86
 		{E609CC44-548F-4FE2-99F3-1D8E886D6EC9}.Release|x86.Deploy.0 = Release|x86
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Debug|ARM.Build.0 = Debug|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Debug|x64.Build.0 = Debug|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Debug|x86.Build.0 = Debug|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Release|ARM.ActiveCfg = Release|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Release|ARM.Build.0 = Release|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Release|x64.ActiveCfg = Release|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Release|x64.Build.0 = Release|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Release|x86.ActiveCfg = Release|Any CPU
+		{3C3F7BC4-4A29-4338-9A33-C60A92B76698}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
