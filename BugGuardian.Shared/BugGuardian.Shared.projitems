@@ -6,7 +6,7 @@
     <SharedGUID>9868a872-2b5c-4961-84bc-f704240ad1ce</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>BugGuardian.Shared</Import_RootNamespace>
+    <Import_RootNamespace>DBTek.BugGuardian.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Entities\BugGuardianResponse.cs" />

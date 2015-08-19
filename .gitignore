@@ -11,3 +11,7 @@
 *.user
 **/project.lock.json
 
+/NuGet/Package/lib/dotnet/*
+/NuGet/Package/lib/net45/*
+/NuGet/Package/lib/win8/*
+/NuGet/Package/lib/wp8/*

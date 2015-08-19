@@ -7,8 +7,8 @@
     <ProjectGuid>{1DDFA344-223A-487E-BDF0-42FE2792D901}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BugGuardian.NetCore</RootNamespace>
-    <AssemblyName>BugGuardian.NetCore</AssemblyName>
+    <RootNamespace>DBTek.BugGuardian.NetCore</RootNamespace>
+    <AssemblyName>DBTek.BugGuardian.NetCore</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
@@ -121,6 +121,12 @@
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release (
+xcopy "*BugGuardian*.dll" "$(SolutionDir)NuGet\Package\lib\dotnet" /R /Q /Y
+xcopy "*BugGuardian*.xml" "$(SolutionDir)NuGet\Package\lib\dotnet" /R /Q /Y
+)</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
