@@ -14,7 +14,7 @@ The **BugGuardian** library is available on [NuGet](https://www.nuget.org/packag
 Just search *BugGuardian* in the **Package Manager GUI** or run the following command in the **Package Manager Console**:
 Install-Package DBTek.BugGuardian
 
-**WARNING*: If you are experiencing an error like *BugGuardian already has a dependency defined for XXX*, update your NuGet client to the latest version
+**WARNING**: If you are experiencing an error like *BugGuardian already has a dependency defined for XXX*, update your NuGet client to the latest version
     
 ###Usage###
 
