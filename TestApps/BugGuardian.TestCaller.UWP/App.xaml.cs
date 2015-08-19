@@ -37,8 +37,7 @@ namespace BugGuardian.TestCaller.UWP
             #region BUGGUARDIAN TEST
             this.UnhandledException += BugGuardianExceptionTrapper;
 
-            //DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT");
-            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("https://dbtek.visualstudio.com", "n3wt0n", "Gavioli!2015", "Labs");
+            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT");          
             #endregion
         }
 
