@@ -8,7 +8,7 @@ namespace DBTek.BugGuardian.Helpers
         {
             var systemInfoString = new StringBuilder();
 
-#if WINDOWS_APP || WINDOWS_PHONE_APP
+#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
             Windows.Security.ExchangeActiveSyncProvisioning.EasClientDeviceInformation deviceInfo = new Windows.Security.ExchangeActiveSyncProvisioning.EasClientDeviceInformation();
 
             systemInfoString.Append($"<strong>Operating System:</strong> {deviceInfo.OperatingSystem}<br />");

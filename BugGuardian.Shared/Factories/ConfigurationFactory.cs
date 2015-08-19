@@ -1,4 +1,4 @@
-﻿#if !WINDOWS_APP && !WINDOWS_PHONE_APP
+﻿#if !WINDOWS_APP && !WINDOWS_PHONE_APP && !WINDOWS_UWP
 using DBTek.BugGuardian.Config;
 #endif
 using System;
@@ -53,7 +53,7 @@ namespace DBTek.BugGuardian.Factories
         {
             get
             {
-#if WINDOWS_APP || WINDOWS_PHONE_APP
+#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
                 return CleanUrl(_url);
 #else
                 return CleanUrl(_url ?? ConfigurationSettings.AppSettings["Url"]);
@@ -66,7 +66,7 @@ namespace DBTek.BugGuardian.Factories
         {
             get
             {
-#if WINDOWS_APP || WINDOWS_PHONE_APP
+#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
                 return _username;
 #else
                 return _username ?? ConfigurationSettings.AppSettings["Username"];
@@ -79,7 +79,7 @@ namespace DBTek.BugGuardian.Factories
         {
             get
             {
-#if WINDOWS_APP || WINDOWS_PHONE_APP
+#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
                 return _password;
 #else
                 return _password ?? ConfigurationSettings.AppSettings["Password"];
@@ -92,7 +92,7 @@ namespace DBTek.BugGuardian.Factories
         {
             get
             {
-#if WINDOWS_APP || WINDOWS_PHONE_APP
+#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
                 return _collectionName;
 #else
                 return (_collectionName ?? ConfigurationSettings.AppSettings["CollectionName"]) ?? DefaultCollectionName;
@@ -105,7 +105,7 @@ namespace DBTek.BugGuardian.Factories
         {
             get
             {
-#if WINDOWS_APP || WINDOWS_PHONE_APP
+#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
                 return _projectName;
 #else
                 return _projectName ?? ConfigurationSettings.AppSettings["ProjectName"];
