@@ -10,7 +10,7 @@ namespace DBTek.BugGuardian
 {
     public class Creator : ICreator
     {
-        // Get the alternate credentials that you'll use to access the Visual Studio Online account.
+        // Get the alternate credentials that you'll use to access the Visual Studio Online account
         private Account _account;
 
         //Api version query parameter
@@ -30,7 +30,7 @@ namespace DBTek.BugGuardian
         }
 
         /// <summary>
-        /// Add a Bug, with the info about the given Exception. You can optionally indicate a custom error message and a list of tags.
+        /// Add a Bug, with the info about the given Exception. You can optionally indicate a custom error message and a list of tags
         /// </summary>
         /// <param name="ex"></param>
         /// <param name="message"></param>
@@ -45,7 +45,7 @@ namespace DBTek.BugGuardian
         }
 
         /// <summary>
-        /// Add a Bug in async, with the info about the given Exception. You can optionally indicate a custom error message and a list of tags.
+        /// Add a Bug in async, with the info about the given Exception. You can optionally indicate a custom error message and a list of tags
         /// </summary>
         /// <param name="ex"></param>
         /// <param name="message"></param>
@@ -85,7 +85,7 @@ namespace DBTek.BugGuardian
                     {
                         Operation = WITOperationType.add,
                         Path = ReproStepsField,
-                        Value = Helpers.ExceptionsHelper.BuildExceptionString(ex, message)  // Include custom message, if any.
+                        Value = Helpers.ExceptionsHelper.BuildExceptionString(ex, message)  // Include custom message, if any
                     });
 
             //System Info
