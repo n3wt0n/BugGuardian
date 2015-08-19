@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerWeb",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.NetCore", "BugGuardian.NetCore\BugGuardian.NetCore.csproj", "{1DDFA344-223A-487E-BDF0-42FE2792D901}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCaller.UWP", "BugGuardian.TestCaller.UWP\BugGuardian.TestCaller.UWP.csproj", "{E609CC44-548F-4FE2-99F3-1D8E886D6EC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCaller.UWP", "TestApps\BugGuardian.TestCaller.UWP\BugGuardian.TestCaller.UWP.csproj", "{E609CC44-548F-4FE2-99F3-1D8E886D6EC9}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

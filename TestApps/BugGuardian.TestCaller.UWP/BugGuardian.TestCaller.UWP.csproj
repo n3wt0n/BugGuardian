@@ -131,7 +131,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BugGuardian.NetCore\BugGuardian.NetCore.csproj">
+    <ProjectReference Include="..\..\BugGuardian.NetCore\BugGuardian.NetCore.csproj">
       <Project>{1ddfa344-223a-487e-bdf0-42fe2792d901}</Project>
       <Name>BugGuardian.NetCore</Name>
     </ProjectReference>
