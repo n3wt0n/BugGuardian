@@ -10,8 +10,9 @@ It supports also UWP apps (Windows 10) and .Net Core.
 
 **Installation**
 
-The **BugGuardian** library will be shortly available available on NuGet.
-Until that, if you want to use it you need to download the sources and to build them by yourself (or to add them to your solution).   
+The **BugGuardian** library is available on [NuGet](https://www.nuget.org/packages/DBTek.BugGuardian).
+Just search *BugGuardian* in the **Package Manager GUI** or run the following command in the **Package Manager Console**:
+Install-Package DBTek.BugGuardian
     
     
 **Usage**
