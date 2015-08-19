@@ -1,0 +1,15 @@
+<configuration>  
+  <configSections>
+    <section name="BugGuardianConfiguration" type="DBTek.BugGuardian.Config.BugGuardianConfiguration, DBTek.BugGuardian.Standard" restartOnExternalChanges="false" requirePermission="false" />
+  </configSections>
+  <BugGuardianConfiguration>
+    <BugGuardianSettings>
+      <add key="Url" value="https://XXXXX.visualstudio.com" />
+      <add key="Username" value="USER_NAME" />
+      <add key="Password" value="PASSWORD" />
+      <!-- Optional -->
+      <!--<add key="CollectionName" value="DefaultCollection" />-->
+      <add key="ProjectName" value="PROJECT_NAME" />
+    </BugGuardianSettings>
+  </BugGuardianConfiguration>
+</configuration>
