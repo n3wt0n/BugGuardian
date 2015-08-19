@@ -23,7 +23,7 @@ namespace DBTek.BugGuardian.Helpers
                     responseBody = await response.Content.ReadAsStringAsync();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //TODO: properly catch the exception
             }
@@ -62,7 +62,7 @@ namespace DBTek.BugGuardian.Helpers
                     responseBody = await response.Content.ReadAsStringAsync();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //TODO: properly catch the exception
             }
