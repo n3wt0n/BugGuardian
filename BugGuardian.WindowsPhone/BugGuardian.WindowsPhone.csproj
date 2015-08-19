@@ -114,8 +114,10 @@
   </Target>
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release (
-xcopy "*BugGuardian*.dll" "$(SolutionDir)NuGet\Package\lib\wp8+wpa81" /R /Q /Y
-xcopy "*BugGuardian*.xml" "$(SolutionDir)NuGet\Package\lib\wp8+wpa81" /R /Q /Y
+xcopy "*BugGuardian*.dll" "$(SolutionDir)NuGet\Package\lib\wp8" /R /Q /Y
+xcopy "*BugGuardian*.xml" "$(SolutionDir)NuGet\Package\lib\wp8" /R /Q /Y
+xcopy "*BugGuardian*.dll" "$(SolutionDir)NuGet\Package\lib\wpa81" /R /Q /Y
+xcopy "*BugGuardian*.xml" "$(SolutionDir)NuGet\Package\lib\wpa81" /R /Q /Y
 )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

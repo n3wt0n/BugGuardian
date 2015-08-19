@@ -111,6 +111,8 @@
     <PostBuildEvent>if $(ConfigurationName) == Release (
 xcopy "*BugGuardian*.dll" "$(SolutionDir)NuGet\Package\lib\net40" /R /Q /Y
 xcopy "*BugGuardian*.xml" "$(SolutionDir)NuGet\Package\lib\net40" /R /Q /Y
+xcopy "*BugGuardian*.dll" "$(SolutionDir)NuGet\Package\lib\net45" /R /Q /Y
+xcopy "*BugGuardian*.xml" "$(SolutionDir)NuGet\Package\lib\net45" /R /Q /Y
 )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
