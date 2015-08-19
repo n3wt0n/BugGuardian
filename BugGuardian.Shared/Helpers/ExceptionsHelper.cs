@@ -6,15 +6,19 @@ namespace DBTek.BugGuardian.Helpers
 {
     internal class ExceptionsHelper
     {
-        public static string BuildExceptionString(Exception ex)
+        public static string BuildExceptionString(Exception ex, string message = null)
         {
             var exceptionString = new StringBuilder();
 
-            //Avoid to report the wrapper exception
+            //Avoid to report the wrapper exception.
             if (ex.GetType().ToString().ToLower() == "system.web.httpunhandledexception" && ex.InnerException != null)
                 exceptionString.Append(BuildExceptionString(ex.InnerException));
             else
             {
+                // Add custom message, if any.
+                if (!string.IsNullOrWhiteSpace(message))
+                    exceptionString.Append($"<strong>{message.NormalizeForHtml()}</strong><br /><br />");
+
                 exceptionString.Append($"<strong>{ex.Message.NormalizeForHtml()}</strong><br /><br />{ex.StackTrace.NormalizeForHtml()}");
 
                 var aex = ex as AggregateException;
