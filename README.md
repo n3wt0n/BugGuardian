@@ -8,19 +8,20 @@ It can also be invoked manually in try/catch blocks to keep track of handled exc
 It supports projects with .Net Framework 4.0 and above.
 It supports also UWP apps (Windows 10) and .Net Core.
 
-**Installation**
+###Installation###
 
 The **BugGuardian** library is available on [NuGet](https://www.nuget.org/packages/DBTek.BugGuardian).
 Just search *BugGuardian* in the **Package Manager GUI** or run the following command in the **Package Manager Console**:
 Install-Package DBTek.BugGuardian
+
+**WARNING*: If you are experiencing an error like *BugGuardian already has a dependency defined for XXX*, update your NuGet client to the latest version
     
-    
-**Usage**
+###Usage###
 
 Refer to the [project documentation](https://github.com/n3wt0n/BugGuardian/wiki/Home) to find examples about how to use this library. You can also find some code samples in the **TestApps** folder.
 
 
-**Support**
+###Support###
 
 If you encounter some issues trying this library, please let me know and I'll fix the problem as soon as possible!
 
