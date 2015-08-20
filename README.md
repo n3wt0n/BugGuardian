@@ -25,6 +25,4 @@ Refer to the [project documentation](https://github.com/n3wt0n/BugGuardian/wiki/
 
 ###Support###
 
-If you encounter some issues trying this library, please let me know and I'll fix the problem as soon as possible!
-
-Please keep in mind that this library is currently in preview.
+If you encounter some issues trying this library, please let me know through the [Issues page](https://github.com/n3wt0n/BugGuardian/issues) and I'll fix the problem as soon as possible!
