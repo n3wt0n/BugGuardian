@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BugGuardian.Shared.Entities
+namespace DBTek.BugGuardian.Entities
 {
     public class BugGuardianResponse
     {

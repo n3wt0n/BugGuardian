@@ -51,21 +51,15 @@ namespace DBTek.BugGuardian.Helpers
         {
             var responseBody = String.Empty;
 
-            var jsonRequest = "[" + JsonConvert.SerializeObject(requestBody) + "]";
+            var jsonRequest = JsonConvert.SerializeObject(requestBody);
 
             var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
-            try
+            using (HttpResponseMessage response = await client.PostAsync(apiUrl, content))
             {
-                using (HttpResponseMessage response = await client.PostAsync(apiUrl, content))
-                {
-                    response.EnsureSuccessStatusCode();
-                    responseBody = await response.Content.ReadAsStringAsync();
-                }
+                response.EnsureSuccessStatusCode();
+                responseBody = await response.Content.ReadAsStringAsync();
             }
-            catch (Exception)
-            {
-                //TODO: properly catch the exception
-            }
+
             return responseBody;
         }
     }

@@ -6,6 +6,12 @@ namespace DBTek.BugGuardian.Helpers
 {
     internal class ExceptionsHelper
     {
+        /// <summary>
+        /// Build and return a string for the "value" of the Bug work item containing all the exception info
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public static string BuildExceptionString(Exception ex, string message = null)
         {
             var exceptionString = new StringBuilder();
@@ -38,6 +44,12 @@ namespace DBTek.BugGuardian.Helpers
             return exceptionString.ToString();
         }
 
+
+        /// <summary>
+        /// Build and return a string used for the Title of the Bug work item
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <returns></returns>
         public static string BuildExceptionTitle(Exception ex)
         {
             var title = new StringBuilder();
@@ -49,5 +61,8 @@ namespace DBTek.BugGuardian.Helpers
 
             return title.ToString();
         }
+
+        public static string BuildExceptionHash(Exception ex)
+            => MD5CryptoServiceProvider.GetMd5String(BuildExceptionString(ex));        
     }
 }
