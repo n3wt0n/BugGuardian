@@ -17,6 +17,8 @@ Install-Package DBTek.BugGuardian
 ```
 
 **WARNING**: If you are experiencing an error like *"BugGuardian already has a dependency defined for XXX"*, update your NuGet client to the latest version
+
+**WARNING**: Due to a NuGet 3 limitation, web.config and app.config transformation is not supported in this client version and so you have to add the configuration settings manually. See the [Configuration settings page](https://github.com/n3wt0n/BugGuardian/wiki/Configuration-settings).
     
 ###Usage###
 
