@@ -39,9 +39,8 @@ namespace DBTek.BugGuardian
             var exceptionHash = Helpers.ExceptionsHelper.BuildExceptionHash(ex);
             BugData bugData = null;
 
-            //Check if aready reported
-            var avoidMultipleReport = true; //TODO: pick from config
-            if (avoidMultipleReport)
+            //Check if aready reported            
+            if (Factories.ConfigurationFactory.AvoidMultipleReport)
                 bugData = await Helpers.WorkItemsHelper.GetExistentBugId(exceptionHash, _account);
 
             //Create or Update Work Item

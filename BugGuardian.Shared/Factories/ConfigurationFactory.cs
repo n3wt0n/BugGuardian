@@ -16,9 +16,10 @@ namespace DBTek.BugGuardian.Factories
         /// <param name="username">The username of the account used to connect to the service</param>
         /// <param name="password">The password of the account used to connect to the service</param>        
         /// <param name="projectName">The name of the Team Project where the bugs will be open</param>
-        public static void SetConfiguration(string url, string username, string password, string projectName)
+        /// <param name="avoidMultipleReport">If true, if the application throws the same exception more the once it will be reported only once. If false, every time will be created a new Bug to VSO/TFS.</param>
+        public static void SetConfiguration(string url, string username, string password, string projectName, bool avoidMultipleReport = true)
             => SetConfiguration(url, username, password, null, projectName);
-        
+
         /// <summary>
         /// Allows to set the condifuration from code. If used, overrides the configuration present in the config file
         /// </summary>
@@ -27,7 +28,8 @@ namespace DBTek.BugGuardian.Factories
         /// <param name="password">The password of the account used to connect to the service</param>
         /// <param name="collectionName">The name of the Team Collection that contains the Team Project</param>
         /// <param name="projectName">The name of the Team Project where the bugs will be open</param>
-        public static void SetConfiguration(string url, string username, string password, string collectionName, string projectName)
+        /// <param name="avoidMultipleReport">If true, if the application throws the same exception more the once it will be reported only once. If false, every time will be created a new Bug to VSO/TFS.</param>
+        public static void SetConfiguration(string url, string username, string password, string collectionName, string projectName, bool avoidMultipleReport = true)
         {
             if (string.IsNullOrWhiteSpace(url))
                 throw new ArgumentNullException(nameof(url));
@@ -46,10 +48,11 @@ namespace DBTek.BugGuardian.Factories
             _password = password;
             _collectionName = collectionName ?? DefaultCollectionName;
             _projectName = projectName;
+            _avoidMultipleReport = avoidMultipleReport;
         }
 
         private static string _url;
-        public static string Url
+        internal static string Url
         {
             get
             {
@@ -62,7 +65,7 @@ namespace DBTek.BugGuardian.Factories
         }
 
         private static string _username;
-        public static string Username
+        internal static string Username
         {
             get
             {
@@ -75,7 +78,7 @@ namespace DBTek.BugGuardian.Factories
         }
 
         private static string _password;
-        public static string Password
+        internal static string Password
         {
             get
             {
@@ -88,7 +91,7 @@ namespace DBTek.BugGuardian.Factories
         }
 
         private static string _collectionName;
-        public static string CollectiontName
+        internal static string CollectiontName
         {
             get
             {
@@ -101,7 +104,7 @@ namespace DBTek.BugGuardian.Factories
         }
 
         private static string _projectName;
-        public static string ProjectName
+        internal static string ProjectName
         {
             get
             {
@@ -109,6 +112,19 @@ namespace DBTek.BugGuardian.Factories
                 return _projectName;
 #else
                 return _projectName ?? ConfigurationSettings.AppSettings["ProjectName"];
+#endif
+            }
+        }
+
+        private static bool? _avoidMultipleReport;
+        internal static bool AvoidMultipleReport
+        {
+            get
+            {                
+#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
+                return _avoidMultipleReport ?? true;
+#else
+                return _avoidMultipleReport ?? bool.Parse(ConfigurationSettings.AppSettings["AvoidMultipleReport"] ?? "true");
 #endif
             }
         }
