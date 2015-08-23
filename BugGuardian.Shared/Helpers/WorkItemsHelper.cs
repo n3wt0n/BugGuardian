@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -19,7 +20,8 @@ namespace DBTek.BugGuardian.Helpers
         private const string ReproStepsField = "/fields/Microsoft.VSTS.TCM.ReproSteps";
         private const string SystemInfoField = "/fields/Microsoft.VSTS.TCM.SystemInfo";
         private const string TagsField = "/fields/System.Tags";
-        private const string FoundIN = "/fields/Microsoft.VSTS.Build.FoundIn";
+        private const string FoundInField = "/fields/Microsoft.VSTS.Build.FoundIn";
+        private const string HistoryField = "/fields/System.History";
 
         private const string DefaultTags = "BugGuardian;";
 
@@ -29,9 +31,11 @@ namespace DBTek.BugGuardian.Helpers
         /// <param name="exceptionHash"></param>
         /// <param name="account"></param>
         /// <returns></returns>
-        public static async Task<int> GetExistentBugId(string exceptionHash, Account account)
+        public static async Task<BugData> GetExistentBugId(string exceptionHash, Account account)
         {
-            var requestUrlWIQL = $"{account.Url}/{account.CollectionName}/_apis/wit/wiql?{_apiVersion}";
+            //Pattern:
+            //POST https://{account}.visualstudio.com/defaultcollection/_apis/wit/wiql?api-version={version}
+            var wiqlRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/wiql?{_apiVersion}";            
 
             var workItemQueryPOSTData = new WorkItemWIQLRequest()
             {
@@ -57,17 +61,38 @@ namespace DBTek.BugGuardian.Helpers
 
                 try
                 {
-                    var responseBody = await HttpOperationsHelper.PostAsync(client, requestUrlWIQL, workItemQueryPOSTData);
-                    var responseBodyObj = (dynamic)JsonConvert.DeserializeObject(responseBody);
+                    var responseBody = await HttpOperationsHelper.PostAsync(client, wiqlRequestUrl, workItemQueryPOSTData);
+                    var responseBodyObj = JsonConvert.DeserializeObject<dynamic>(responseBody);
                     var workItems = (JArray)responseBodyObj.workItems;
                     if (workItems.HasValues)
-                        return workItems.First.Value<int>("id");
+                    {
+                        //Retrieve bug data
+                        var id = workItems.First.Value<int>("id");
+
+                        //Pattern:                        
+                        //GET https://{account}.visualstudio.com/defaultcollection/_apis/wit/WorkItems?id={id}&api-version=1.0
+                        var dataRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/WorkItems?id={id}&{_apiVersion}";
+                        responseBody = await HttpOperationsHelper.GetAsync(client, dataRequestUrl);
+                        var bugData = JsonConvert.DeserializeObject<BugData>(responseBody);
+
+                        //Retrieve bug history
+                        //Pattern:                        
+                        //GET https://{account}.visualstudio.com/defaultcollection/_apis/wit/WorkItems/{id}/history
+                        var historyRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/WorkItems/{id}/history";
+                        responseBody = await HttpOperationsHelper.GetAsync(client, historyRequestUrl);
+                        responseBodyObj = JsonConvert.DeserializeObject<dynamic>(responseBody);
+                        var historyItems = (JArray)responseBodyObj.value;
+                        if (historyItems.HasValues)
+                            bugData.History = historyItems.ToObject<List<History>>();
+                        
+                        return bugData;
+                    }
                 }
                 catch (Exception)
                 {
                 }
 
-                return -1;
+                return null;
             }
         }
 
@@ -84,7 +109,7 @@ namespace DBTek.BugGuardian.Helpers
             //Pattern:
             //PATCH https://{account}.visualstudio.com/defaultcollection/{project}/_apis/wit/workitems/${workitemtypename}?api-version={version}
             //See https://www.visualstudio.com/integrate/api/wit/fields for the fields explanation            
-            var requestUrl = $"{account.Url}/{account.CollectionName}/{account.ProjectName}/_apis/wit/workitems/$Bug?{_apiVersion}";
+            var createRequestUrl = $"{account.Url}/{account.CollectionName}/{account.ProjectName}/_apis/wit/workitems/$Bug?{_apiVersion}";
 
             var workItemCreatePATCHData = new List<VSORequest>();
 
@@ -124,12 +149,12 @@ namespace DBTek.BugGuardian.Helpers
                         Value = Helpers.SystemInfoHelper.BuildSystemInfoString()
                     });
 
-            //BISLink: Hash of stack trace
+            //FoundIn: Hash of stack trace
             workItemCreatePATCHData.Add(
                     new WorkItemCreateRequest()
                     {
                         Operation = WITOperationType.add,
-                        Path = FoundIN,
+                        Path = FoundInField,
                         Value = Helpers.ExceptionsHelper.BuildExceptionHash(ex)
                     });
 
@@ -150,29 +175,73 @@ namespace DBTek.BugGuardian.Helpers
                     Convert.ToBase64String(Converters.StringToAsciiConverter.StringToAscii(credentials)));
                 try
                 {
-                    var responseBody = await Helpers.HttpOperationsHelper.PatchAsync(client, requestUrl, workItemCreatePATCHData);
+                    var responseBody = await Helpers.HttpOperationsHelper.PatchAsync(client, createRequestUrl, workItemCreatePATCHData);
                     return new BugGuardianResponse() { Success = true, Response = responseBody };
                 }
                 catch (Exception internalException)
                 {
                     return new BugGuardianResponse() { Success = false, Response = "An error occured. See the Exception.", Exception = internalException };
                 }
-
             }
         }
 
 
-        public static async Task<BugGuardianResponse> UpdateBug (int bugID)
+        public static async Task<BugGuardianResponse> UpdateBug(BugData bugData, Account account)
         {
-            //TODO: Implement
-            try
+            // Pattern:
+            //PATCH https://{account}.visualstudio.com/defaultcollection/_apis/wit/workitems/{wworkitemid}?api-version={version}                         
+            var updateRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/workitems/{bugData.ID}?{_apiVersion}";
+
+            var historyMessage = "Exception thrown again";
+
+            var reportedTimes = (bugData.History?.Where(h => h.Value.Contains(historyMessage)).Count() ?? 1) + 1;
+            var newTitle = $"{bugData.Title.Replace($" ({reportedTimes - 1})",string.Empty)} ({reportedTimes})";            
+
+            var workItemCreatePATCHData = new List<VSORequest>();
+            
+            //Update Title
+            workItemCreatePATCHData.Add(
+                    new WorkItemCreateRequest()
+                    {
+                        Operation = WITOperationType.add,
+                        Path = TitleField,
+                        Value = newTitle
+                    });
+            
+            //Update History
+            workItemCreatePATCHData.Add(
+                    new WorkItemCreateRequest()
+                    {
+                        Operation = WITOperationType.add,
+                        Path = HistoryField,
+                        Value = $"{historyMessage} (Total: {reportedTimes})"
+                    });
+
+            var handler = new HttpClientHandler();
+
+            if (!account.IsVSO) //is TFS, requires NTLM
+                handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
+
+            using (HttpClient client = new HttpClient(handler))
             {
-                return new BugGuardianResponse() { Success = true, Response = "XXX" };
-            }
-            catch (Exception internalException)
-            {
-                return new BugGuardianResponse() { Success = false, Response = "An error occured. See the Exception.", Exception = internalException };
-            }
+                if (account.IsVSO)
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //Set alternate credentials
+                string credentials = $"{account.Username}:{account.Password}";
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                    Convert.ToBase64String(Converters.StringToAsciiConverter.StringToAscii(credentials)));
+                try
+                {
+                    var responseBody = await Helpers.HttpOperationsHelper.PatchAsync(client, updateRequestUrl, workItemCreatePATCHData);
+                    return new BugGuardianResponse() { Success = true, Response = responseBody };
+                }
+                catch (Exception internalException)
+                {
+                    return new BugGuardianResponse() { Success = false, Response = "An error occured. See the Exception.", Exception = internalException };
+                }
+            }            
         }
     }
 }

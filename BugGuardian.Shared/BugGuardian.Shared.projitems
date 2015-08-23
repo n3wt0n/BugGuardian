@@ -9,6 +9,7 @@
     <Import_RootNamespace>DBTek.BugGuardian.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\BugData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\BugGuardianResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\QueryType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\WorkItemWIQLRequest.cs" />

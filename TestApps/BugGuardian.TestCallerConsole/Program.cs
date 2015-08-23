@@ -17,11 +17,11 @@ namespace DBTek.BugGuardian.TestCallerConsole
 
             //System.IO.File.Open(@"C:\NonExistentFile.docx", System.IO.FileMode.Open);
 
-            //string aaaaa = null;
-            //aaaaa.Substring(0, 12);
-
-            string aaaaa = "sss";
+            string aaaaa = null;
             aaaaa.Substring(0, 12);
+
+            //string aaaaa = "sss";
+            //aaaaa.Substring(0, 12);
 
             //var innerExceptions = new List<Exception>();
             //innerExceptions.Add(new ArgumentNullException("FakeParam"));
@@ -37,6 +37,5 @@ namespace DBTek.BugGuardian.TestCallerConsole
                 creator.AddBug(e.ExceptionObject as Exception, message: "Unknown exception", tags: new List<string> { "Operation" });
             }
         }
-
     }
 }

@@ -37,16 +37,16 @@ namespace DBTek.BugGuardian
         public async Task<BugGuardianResponse> AddBugAsync(Exception ex, string message = null, IEnumerable<string> tags = null)
         {                      
             var exceptionHash = Helpers.ExceptionsHelper.BuildExceptionHash(ex);
-            int bugID = -1;
+            BugData bugData = null;
 
             //Check if aready reported
-            var avoidMultipleReport = false; //TODO: pick from config
-            if (avoidMultipleReport)            
-                bugID = await Helpers.WorkItemsHelper.GetExistentBugId(exceptionHash, _account);
+            var avoidMultipleReport = true; //TODO: pick from config
+            if (avoidMultipleReport)
+                bugData = await Helpers.WorkItemsHelper.GetExistentBugId(exceptionHash, _account);
 
             //Create or Update Work Item
-            if (bugID > 0)
-                return await Helpers.WorkItemsHelper.UpdateBug(bugID);
+            if (bugData?.ID > 0)
+                return await Helpers.WorkItemsHelper.UpdateBug(bugData, _account);
 
             return await Helpers.WorkItemsHelper.CreateNewBug(ex, _account, message, tags);
         }

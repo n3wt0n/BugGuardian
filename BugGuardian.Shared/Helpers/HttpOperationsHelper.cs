@@ -15,17 +15,10 @@ namespace DBTek.BugGuardian.Helpers
         {
             var responseBody = String.Empty;
 
-            try
+            using (HttpResponseMessage response = await client.GetAsync(apiUrl))
             {
-                using (HttpResponseMessage response = await client.GetAsync(apiUrl))
-                {
-                    response.EnsureSuccessStatusCode();
-                    responseBody = await response.Content.ReadAsStringAsync();
-                }
-            }
-            catch (Exception)
-            {
-                //TODO: properly catch the exception
+                response.EnsureSuccessStatusCode();
+                responseBody = await response.Content.ReadAsStringAsync();
             }
 
             return responseBody;
