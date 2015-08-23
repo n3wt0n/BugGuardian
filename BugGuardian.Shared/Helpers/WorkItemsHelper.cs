@@ -185,7 +185,12 @@ namespace DBTek.BugGuardian.Helpers
             }
         }
 
-
+        /// <summary>
+        /// Updates the Title and the History of an Existing Bug
+        /// </summary>
+        /// <param name="bugData"></param>
+        /// <param name="account"></param>
+        /// <returns></returns>
         public static async Task<BugGuardianResponse> UpdateBug(BugData bugData, Account account)
         {
             // Pattern:
@@ -194,7 +199,7 @@ namespace DBTek.BugGuardian.Helpers
 
             var historyMessage = "Exception thrown again";
 
-            var reportedTimes = (bugData.History?.Where(h => h.Value.Contains(historyMessage)).Count() ?? 1) + 1;
+            var reportedTimes = (bugData.History?.Where(h => h.Value.Contains(historyMessage)).Count() ?? 0) + 2;
             var newTitle = $"{bugData.Title.Replace($" ({reportedTimes - 1})",string.Empty)} ({reportedTimes})";            
 
             var workItemCreatePATCHData = new List<VSORequest>();
