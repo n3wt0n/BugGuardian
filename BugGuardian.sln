@@ -29,6 +29,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCaller.UWP"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.Standard", "BugGuardian.Standard\BugGuardian.Standard.csproj", "{3C3F7BC4-4A29-4338-9A33-C60A92B76698}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7F79B6C5-F0A1-4B26-9696-C4CAA8A40D95}"
+	ProjectSection(SolutionItems) = preProject
+		ChangeLog.txt = ChangeLog.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{8c6cf847-351d-4a0f-9b0e-2fed6f073c0c}*SharedItemsImports = 4
