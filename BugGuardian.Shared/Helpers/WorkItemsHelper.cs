@@ -119,7 +119,7 @@ namespace DBTek.BugGuardian.Helpers
                     {
                         Operation = WITOperationType.add,
                         Path = TitleField,
-                        Value = Helpers.ExceptionsHelper.BuildExceptionTitle(ex)
+                        Value = ExceptionsHelper.BuildExceptionTitle(ex)
                     });
 
             //Tags
@@ -137,7 +137,7 @@ namespace DBTek.BugGuardian.Helpers
                     {
                         Operation = WITOperationType.add,
                         Path = ReproStepsField,
-                        Value = Helpers.ExceptionsHelper.BuildExceptionString(ex, message)  // Include custom message, if any
+                        Value = ExceptionsHelper.BuildExceptionString(ex, message)  // Include custom message, if any
                     });
 
             //System Info
@@ -146,7 +146,7 @@ namespace DBTek.BugGuardian.Helpers
                     {
                         Operation = WITOperationType.add,
                         Path = SystemInfoField,
-                        Value = Helpers.SystemInfoHelper.BuildSystemInfoString()
+                        Value = SystemInfoHelper.BuildSystemInfoString()
                     });
 
             //FoundIn: Hash of stack trace
@@ -155,7 +155,7 @@ namespace DBTek.BugGuardian.Helpers
                     {
                         Operation = WITOperationType.add,
                         Path = FoundInField,
-                        Value = Helpers.ExceptionsHelper.BuildExceptionHash(ex)
+                        Value = ExceptionsHelper.BuildExceptionHash(ex)
                     });
 
             var handler = new HttpClientHandler();
@@ -175,7 +175,7 @@ namespace DBTek.BugGuardian.Helpers
                     Convert.ToBase64String(Converters.StringToAsciiConverter.StringToAscii(credentials)));
                 try
                 {
-                    var responseBody = await Helpers.HttpOperationsHelper.PatchAsync(client, createRequestUrl, workItemCreatePATCHData);
+                    var responseBody = await HttpOperationsHelper.PatchAsync(client, createRequestUrl, workItemCreatePATCHData);
                     return new BugGuardianResponse() { Success = true, Response = responseBody };
                 }
                 catch (Exception internalException)
