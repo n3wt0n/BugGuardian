@@ -48,7 +48,7 @@ namespace DBTek.BugGuardian.Helpers
                 if (!account.IsVSO) //is TFS, requires NTLM
                     handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
 
-                using (HttpClient client = new HttpClient(handler))
+                using (var client = new HttpClient(handler))
                 {
                     if (account.IsVSO)
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -164,7 +164,7 @@ namespace DBTek.BugGuardian.Helpers
                 if (!account.IsVSO) //is TFS, requires NTLM
                     handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
 
-                using (HttpClient client = new HttpClient(handler))
+                using (var client = new HttpClient(handler))
                 {
                     if (account.IsVSO)
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -229,7 +229,7 @@ namespace DBTek.BugGuardian.Helpers
                 if (!account.IsVSO) //is TFS, requires NTLM
                     handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
 
-                using (HttpClient client = new HttpClient(handler))
+                using (var client = new HttpClient(handler))
                 {
                     if (account.IsVSO)
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -242,7 +242,7 @@ namespace DBTek.BugGuardian.Helpers
 
                     try
                     {
-                        var responseBody = await Helpers.HttpOperationsHelper.PatchAsync(client, updateRequestUrl, workItemCreatePATCHData);
+                        var responseBody = await HttpOperationsHelper.PatchAsync(client, updateRequestUrl, workItemCreatePATCHData);
                         return new BugGuardianResponse() { Success = true, Response = responseBody };
                     }
                     catch (Exception internalException)
