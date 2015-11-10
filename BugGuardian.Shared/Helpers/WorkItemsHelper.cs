@@ -43,56 +43,57 @@ namespace DBTek.BugGuardian.Helpers
                             $"AND [System.TeamProject] = '{account.ProjectName}' AND [Microsoft.VSTS.Build.FoundIn] = '{exceptionHash}'"
             };
 
-            var handlerPre = new HttpClientHandler();
-
-            if (!account.IsVSO) //is TFS, requires NTLM
-                handlerPre.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
-
-            using (HttpClient client = new HttpClient(handlerPre))
+            using (var handler = new HttpClientHandler())
             {
-                if (account.IsVSO)
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                if (!account.IsVSO) //is TFS, requires NTLM
+                    handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
 
-                //Set alternate credentials
-                string credentials = $"{account.Username}:{account.Password}";
-
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
-                    Convert.ToBase64String(Converters.StringToAsciiConverter.StringToAscii(credentials)));
-
-                try
+                using (HttpClient client = new HttpClient(handler))
                 {
-                    var responseBody = await HttpOperationsHelper.PostAsync(client, wiqlRequestUrl, workItemQueryPOSTData);
-                    var responseBodyObj = JsonConvert.DeserializeObject<dynamic>(responseBody);
-                    var workItems = (JArray)responseBodyObj.workItems;
-                    if (workItems.HasValues)
+                    if (account.IsVSO)
+                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    //Set alternate credentials
+                    string credentials = $"{account.Username}:{account.Password}";
+
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                        Convert.ToBase64String(Converters.StringToAsciiConverter.StringToAscii(credentials)));
+
+                    try
                     {
-                        //Retrieve bug data
-                        var id = workItems.First.Value<int>("id");
+                        var responseBody = await HttpOperationsHelper.PostAsync(client, wiqlRequestUrl, workItemQueryPOSTData);
+                        var responseBodyObj = JsonConvert.DeserializeObject<dynamic>(responseBody);
+                        var workItems = (JArray)responseBodyObj.workItems;
+                        if (workItems.HasValues)
+                        {
+                            //Retrieve bug data
+                            var id = workItems.First.Value<int>("id");
 
-                        //Pattern:                        
-                        //GET https://{account}.visualstudio.com/defaultcollection/_apis/wit/WorkItems?id={id}&api-version=1.0
-                        var dataRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/WorkItems?id={id}&{_apiVersion}";
-                        responseBody = await HttpOperationsHelper.GetAsync(client, dataRequestUrl);
-                        var bugData = JsonConvert.DeserializeObject<BugData>(responseBody);
+                            //Pattern:                        
+                            //GET https://{account}.visualstudio.com/defaultcollection/_apis/wit/WorkItems?id={id}&api-version=1.0
+                            var dataRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/WorkItems?id={id}&{_apiVersion}";
+                            responseBody = await HttpOperationsHelper.GetAsync(client, dataRequestUrl);
+                            var bugData = JsonConvert.DeserializeObject<BugData>(responseBody);
 
-                        //Retrieve bug history
-                        //Pattern:                        
-                        //GET https://{account}.visualstudio.com/defaultcollection/_apis/wit/WorkItems/{id}/history
-                        var historyRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/WorkItems/{id}/history";
-                        responseBody = await HttpOperationsHelper.GetAsync(client, historyRequestUrl);
-                        responseBodyObj = JsonConvert.DeserializeObject<dynamic>(responseBody);
-                        var historyItems = (JArray)responseBodyObj.value;
-                        if (historyItems.HasValues)
-                            bugData.History = historyItems.ToObject<List<History>>();
+                            //Retrieve bug history
+                            //Pattern:                        
+                            //GET https://{account}.visualstudio.com/defaultcollection/_apis/wit/WorkItems/{id}/history
+                            var historyRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/WorkItems/{id}/history";
+                            responseBody = await HttpOperationsHelper.GetAsync(client, historyRequestUrl);
+                            responseBodyObj = JsonConvert.DeserializeObject<dynamic>(responseBody);
+                            var historyItems = (JArray)responseBodyObj.value;
+                            if (historyItems.HasValues)
+                                bugData.History = historyItems.ToObject<List<History>>();
 
-                        return bugData;
+                            return bugData;
+                        }
                     }
-                }
-                catch (Exception)
-                {
-                }
+                    catch (Exception)
+                    {
+                    }
 
-                return null;
+                    return null;
+                }
             }
         }
 
@@ -158,29 +159,30 @@ namespace DBTek.BugGuardian.Helpers
                         Value = ExceptionsHelper.BuildExceptionHash(ex)
                     });
 
-            var handler = new HttpClientHandler();
-
-            if (!account.IsVSO) //is TFS, requires NTLM
-                handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
-
-            using (HttpClient client = new HttpClient(handler))
+            using (var handler = new HttpClientHandler())
             {
-                if (account.IsVSO)
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                if (!account.IsVSO) //is TFS, requires NTLM
+                    handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
 
-                //Set alternate credentials
-                string credentials = $"{account.Username}:{account.Password}";
+                using (HttpClient client = new HttpClient(handler))
+                {
+                    if (account.IsVSO)
+                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
-                    Convert.ToBase64String(Converters.StringToAsciiConverter.StringToAscii(credentials)));
-                try
-                {
-                    var responseBody = await HttpOperationsHelper.PatchAsync(client, createRequestUrl, workItemCreatePATCHData);
-                    return new BugGuardianResponse() { Success = true, Response = responseBody };
-                }
-                catch (Exception internalException)
-                {
-                    return new BugGuardianResponse() { Success = false, Response = "An error occured. See the Exception.", Exception = internalException };
+                    //Set alternate credentials
+                    string credentials = $"{account.Username}:{account.Password}";
+
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                        Convert.ToBase64String(Converters.StringToAsciiConverter.StringToAscii(credentials)));
+                    try
+                    {
+                        var responseBody = await HttpOperationsHelper.PatchAsync(client, createRequestUrl, workItemCreatePATCHData);
+                        return new BugGuardianResponse() { Success = true, Response = responseBody };
+                    }
+                    catch (Exception internalException)
+                    {
+                        return new BugGuardianResponse() { Success = false, Response = "An error occured. See the Exception.", Exception = internalException };
+                    }
                 }
             }
         }
