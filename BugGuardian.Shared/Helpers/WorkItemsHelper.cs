@@ -35,7 +35,7 @@ namespace DBTek.BugGuardian.Helpers
         {
             //Pattern:
             //POST https://{account}.visualstudio.com/defaultcollection/_apis/wit/wiql?api-version={version}
-            var wiqlRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/wiql?{_apiVersion}";            
+            var wiqlRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/wiql?{_apiVersion}";
 
             var workItemQueryPOSTData = new WorkItemWIQLRequest()
             {
@@ -84,7 +84,7 @@ namespace DBTek.BugGuardian.Helpers
                         var historyItems = (JArray)responseBodyObj.value;
                         if (historyItems.HasValues)
                             bugData.History = historyItems.ToObject<List<History>>();
-                        
+
                         return bugData;
                     }
                 }
@@ -200,10 +200,10 @@ namespace DBTek.BugGuardian.Helpers
             var historyMessage = "Exception thrown again";
 
             var reportedTimes = (bugData.History?.Where(h => h.Value.Contains(historyMessage)).Count() ?? 0) + 2;
-            var newTitle = $"{bugData.Title.Replace($" ({reportedTimes - 1})",string.Empty)} ({reportedTimes})";            
+            var newTitle = $"{bugData.Title.Replace($" ({reportedTimes - 1})", string.Empty)} ({reportedTimes})";
 
             var workItemCreatePATCHData = new List<VSORequest>();
-            
+
             //Update Title
             workItemCreatePATCHData.Add(
                     new WorkItemCreateRequest()
@@ -212,7 +212,7 @@ namespace DBTek.BugGuardian.Helpers
                         Path = TitleField,
                         Value = newTitle
                     });
-            
+
             //Update History
             workItemCreatePATCHData.Add(
                     new WorkItemCreateRequest()
@@ -222,31 +222,33 @@ namespace DBTek.BugGuardian.Helpers
                         Value = $"{historyMessage} (Total: {reportedTimes})"
                     });
 
-            var handler = new HttpClientHandler();
-
-            if (!account.IsVSO) //is TFS, requires NTLM
-                handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
-
-            using (HttpClient client = new HttpClient(handler))
+            using (var handler = new HttpClientHandler())
             {
-                if (account.IsVSO)
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                if (!account.IsVSO) //is TFS, requires NTLM
+                    handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
 
-                //Set alternate credentials
-                string credentials = $"{account.Username}:{account.Password}";
+                using (HttpClient client = new HttpClient(handler))
+                {
+                    if (account.IsVSO)
+                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
-                    Convert.ToBase64String(Converters.StringToAsciiConverter.StringToAscii(credentials)));
-                try
-                {
-                    var responseBody = await Helpers.HttpOperationsHelper.PatchAsync(client, updateRequestUrl, workItemCreatePATCHData);
-                    return new BugGuardianResponse() { Success = true, Response = responseBody };
+                    //Set alternate credentials
+                    string credentials = $"{account.Username}:{account.Password}";
+
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                        Convert.ToBase64String(Converters.StringToAsciiConverter.StringToAscii(credentials)));
+
+                    try
+                    {
+                        var responseBody = await Helpers.HttpOperationsHelper.PatchAsync(client, updateRequestUrl, workItemCreatePATCHData);
+                        return new BugGuardianResponse() { Success = true, Response = responseBody };
+                    }
+                    catch (Exception internalException)
+                    {
+                        return new BugGuardianResponse() { Success = false, Response = "An error occured. See the Exception.", Exception = internalException };
+                    }
                 }
-                catch (Exception internalException)
-                {
-                    return new BugGuardianResponse() { Success = false, Response = "An error occured. See the Exception.", Exception = internalException };
-                }
-            }            
+            }
         }
     }
 }
