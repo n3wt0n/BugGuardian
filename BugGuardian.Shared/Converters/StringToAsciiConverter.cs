@@ -9,6 +9,9 @@
         /// <returns></returns>
         internal static byte[] StringToAscii(string str)
         {
+            if (str == null)
+                return null;
+
             byte[] rtn = new byte[str.Length];
             for (int i = 0; i < str.Length; ++i)
             {
