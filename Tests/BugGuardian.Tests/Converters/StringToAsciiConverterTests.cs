@@ -5,7 +5,7 @@ using DBTek.BugGuardian.Converters;
 namespace BugGuardian.Tests.Converters
 {
     [TestClass]
-    public class StringToAsciiConverterTest
+    public class StringToAsciiConverterTests
     {
         [TestMethod]
         public void StringToAsciiTest()

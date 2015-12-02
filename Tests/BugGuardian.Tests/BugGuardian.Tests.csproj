@@ -52,8 +52,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Converters\StringToAsciiConverterTest.cs" />
-    <Compile Include="Extensions\StringExtensionsTest.cs" />
+    <Compile Include="Converters\StringToAsciiConverterTests.cs" />
+    <Compile Include="Extensions\StringExtensionsTests.cs" />
+    <Compile Include="Factories\ConfigurationFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

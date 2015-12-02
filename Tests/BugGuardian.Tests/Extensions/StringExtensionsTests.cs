@@ -5,7 +5,7 @@ using DBTek.BugGuardian.Extensions;
 namespace BugGuardian.Tests.Extensions
 {
     [TestClass]
-    public class StringExtensionsTest
+    public class StringExtensionsTests
     {
         [TestMethod]
         public void NormalizeForHtmlTest()
