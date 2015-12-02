@@ -35,7 +35,7 @@ namespace DBTek.BugGuardian
         public async Task<BugGuardianResponse> AddBugAsync(Exception ex, string message = null, IEnumerable<string> tags = null)
         {                      
             var exceptionHash = Helpers.ExceptionsHelper.BuildExceptionHash(ex);
-            BugData bugData = null;
+            WorkItemData bugData = null;
 
             //Check if aready reported            
             if (Factories.ConfigurationFactory.AvoidMultipleReport)
@@ -43,9 +43,42 @@ namespace DBTek.BugGuardian
 
             //Create or Update Work Item
             if (bugData?.ID > 0)
-                return await Helpers.WorkItemsHelper.UpdateBug(bugData, _account);
+                return await Helpers.WorkItemsHelper.UpdateWorkItem(bugData, _account);
 
             return await Helpers.WorkItemsHelper.CreateNewBug(ex, _account, message, tags);
+        }
+
+        /// <summary>
+        /// Add a Task, with the info about the given Exception. You can optionally indicate a custom error message and a list of tags
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <param name="message"></param>
+        /// <param name="tags"></param>
+        /// <returns></returns>
+        public BugGuardianResponse AddTask(Exception ex, string message = null, IEnumerable<string> tags = null)
+            => AddTaskAsync(ex, message, tags).Result;
+
+        /// <summary>
+        /// Add a Task in async, with the info about the given Exception. You can optionally indicate a custom error message and a list of tags
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <param name="message"></param>
+        /// <param name="tags"></param>
+        /// <returns></returns>
+        public async Task<BugGuardianResponse> AddTaskAsync(Exception ex, string message = null, IEnumerable<string> tags = null)
+        {
+            var exceptionHash = Helpers.ExceptionsHelper.BuildExceptionHash(ex);
+            WorkItemData bugData = null;
+
+            //Check if aready reported            
+            if (Factories.ConfigurationFactory.AvoidMultipleReport)
+                bugData = await Helpers.WorkItemsHelper.GetExistentTaskId(exceptionHash, _account);
+
+            //Create or Update Work Item
+            if (bugData?.ID > 0)
+                return await Helpers.WorkItemsHelper.UpdateWorkItem(bugData, _account);
+
+            return await Helpers.WorkItemsHelper.CreateNewTask(ex, _account, message, tags);
         }
 
         #region IDisposable Support

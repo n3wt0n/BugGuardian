@@ -9,16 +9,17 @@
     <Import_RootNamespace>DBTek.BugGuardian.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\BugData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\WorkItemData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\BugGuardianResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\QueryType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\WorkItemType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\WorkItemWIQLRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\StringExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Factories\ConfigurationFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToAsciiConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Creator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Account.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\VSORequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\APIRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\WITOperationType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\WorkItemCreateRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions.cs" />

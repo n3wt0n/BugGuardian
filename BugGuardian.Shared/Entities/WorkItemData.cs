@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DBTek.BugGuardian.Entities
 {
-    public class BugData
+    public class WorkItemData
     {
         [JsonProperty(PropertyName = "id")]
         internal int ID { get; set; }

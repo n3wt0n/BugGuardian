@@ -3,7 +3,7 @@ using Newtonsoft.Json.Converters;
 
 namespace DBTek.BugGuardian.Entities
 {
-    internal class WorkItemCreateRequest : VSTSRequest
+    internal class WorkItemCreateRequest : APIRequest
     {
         [JsonProperty(PropertyName = "op")]
         [JsonConverter(typeof(StringEnumConverter))]

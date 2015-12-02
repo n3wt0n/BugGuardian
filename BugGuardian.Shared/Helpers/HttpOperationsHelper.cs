@@ -24,7 +24,7 @@ namespace DBTek.BugGuardian.Helpers
             return responseBody;
         }
 
-        public static async Task<String> PatchAsync(HttpClient client, String apiUrl, List<VSTSRequest> requestBody)
+        public static async Task<String> PatchAsync(HttpClient client, String apiUrl, List<APIRequest> requestBody)
         {
             var responseBody = String.Empty;
 
@@ -40,7 +40,7 @@ namespace DBTek.BugGuardian.Helpers
             return responseBody;
         }
 
-        public static async Task<String> PostAsync(HttpClient client, String apiUrl, VSTSRequest requestBody)
+        public static async Task<String> PostAsync(HttpClient client, String apiUrl, APIRequest requestBody)
         {
             var responseBody = String.Empty;
 

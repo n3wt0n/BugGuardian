@@ -33,8 +33,10 @@ namespace DBTek.BugGuardian.TestCallerConsole
         static void BugGuardianExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
         {
             using (var creator = new DBTek.BugGuardian.Creator())
-            {                
+            {
                 creator.AddBug(e.ExceptionObject as Exception, message: "Unknown exception", tags: new List<string> { "Operation" });
+
+                creator.AddTask(e.ExceptionObject as Exception, message: "Unknown exception", tags: new List<string> { "Operation" });
             }
         }
     }

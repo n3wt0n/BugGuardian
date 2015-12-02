@@ -18,6 +18,7 @@ namespace DBTek.BugGuardian.Helpers
         //VSTSFields
         private const string TitleField = "/fields/System.Title";
         private const string ReproStepsField = "/fields/Microsoft.VSTS.TCM.ReproSteps";
+        private const string DescriptionField = "/fields/System.Description";
         private const string SystemInfoField = "/fields/Microsoft.VSTS.TCM.SystemInfo";
         private const string TagsField = "/fields/System.Tags";
         private const string FoundInField = "/fields/Microsoft.VSTS.Build.FoundIn";
@@ -31,8 +32,8 @@ namespace DBTek.BugGuardian.Helpers
         /// <param name="exceptionHash"></param>
         /// <param name="account"></param>
         /// <returns></returns>
-        public static async Task<BugData> GetExistentBugId(string exceptionHash, Account account)
-            => await GetExistentWorkItemId(exceptionHash, "Bug", account);
+        public static Task<WorkItemData> GetExistentBugId(string exceptionHash, Account account)
+            => GetExistentWorkItemId(exceptionHash, WorkItemType.Bug, account);
 
         /// <summary>
         /// Check if a Task with the same hash already exists on VSTS/TFS
@@ -40,10 +41,10 @@ namespace DBTek.BugGuardian.Helpers
         /// <param name="exceptionHash"></param>
         /// <param name="account"></param>
         /// <returns></returns>
-        public static async Task<BugData> GetExistentTaskId(string exceptionHash, Account account)
-            => await GetExistentWorkItemId(exceptionHash, "Task", account);
+        public static Task<WorkItemData> GetExistentTaskId(string exceptionHash, Account account)
+            => GetExistentWorkItemId(exceptionHash, WorkItemType.Task, account);
 
-        private static async Task<BugData> GetExistentWorkItemId(string exceptionHash, string workItemType, Account account)
+        private static async Task<WorkItemData> GetExistentWorkItemId(string exceptionHash, WorkItemType workItemType, Account account)
         {
             //Pattern:
             //POST https://{account}.visualstudio.com/defaultcollection/_apis/wit/wiql?api-version={version}
@@ -51,7 +52,7 @@ namespace DBTek.BugGuardian.Helpers
 
             var workItemQueryPOSTData = new WorkItemWIQLRequest()
             {
-                Query = $"Select [System.Id] From WorkItems Where [System.WorkItemType] = '{workItemType}' AND [State] <> 'Done' AND [State] <> 'Removed' " +
+                Query = $"Select [System.Id] From WorkItems Where [System.WorkItemType] = '{workItemType.ToString()}' AND [State] <> 'Done' AND [State] <> 'Removed' " +
                             $"AND [System.TeamProject] = '{account.ProjectName}' AND [Microsoft.VSTS.Build.FoundIn] = '{exceptionHash}'"
             };
 
@@ -85,7 +86,7 @@ namespace DBTek.BugGuardian.Helpers
                             //GET https://{account}.visualstudio.com/defaultcollection/_apis/wit/WorkItems?id={id}&api-version=1.0
                             var dataRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/WorkItems?id={id}&{_apiVersion}";
                             responseBody = await HttpOperationsHelper.GetAsync(client, dataRequestUrl);
-                            var bugData = JsonConvert.DeserializeObject<BugData>(responseBody);
+                            var workItemData = JsonConvert.DeserializeObject<WorkItemData>(responseBody);
 
                             //Retrieve bug history
                             //Pattern:                        
@@ -95,9 +96,9 @@ namespace DBTek.BugGuardian.Helpers
                             responseBodyObj = JsonConvert.DeserializeObject<dynamic>(responseBody);
                             var historyItems = (JArray)responseBodyObj.value;
                             if (historyItems.HasValues)
-                                bugData.History = historyItems.ToObject<List<History>>();
+                                workItemData.History = historyItems.ToObject<List<History>>();
 
-                            return bugData;
+                            return workItemData;
                         }
                     }
                     catch (Exception)
@@ -117,14 +118,28 @@ namespace DBTek.BugGuardian.Helpers
         /// <param name="message"></param>
         /// <param name="tags"></param>
         /// <returns></returns>
-        public static async Task<BugGuardianResponse> CreateNewBug(Exception ex, Account account, string message = null, IEnumerable<string> tags = null)
+        public static Task<BugGuardianResponse> CreateNewBug(Exception ex, Account account, string message = null, IEnumerable<string> tags = null)
+            => CreateNewWorkItem(WorkItemType.Bug, ex, account, message, tags);
+
+        /// <summary>
+        /// Create a new Task Work Item with the given values
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <param name="account"></param>
+        /// <param name="message"></param>
+        /// <param name="tags"></param>
+        /// <returns></returns>
+        public static Task<BugGuardianResponse> CreateNewTask(Exception ex, Account account, string message = null, IEnumerable<string> tags = null)
+            => CreateNewWorkItem(WorkItemType.Task, ex, account, message, tags);
+
+        private static async Task<BugGuardianResponse> CreateNewWorkItem(WorkItemType workItemType, Exception ex, Account account, string message, IEnumerable<string> tags)
         {
             //Pattern:
             //PATCH https://{account}.visualstudio.com/defaultcollection/{project}/_apis/wit/workitems/${workitemtypename}?api-version={version}
             //See https://www.visualstudio.com/integrate/api/wit/fields for the fields explanation            
-            var createRequestUrl = $"{account.Url}/{account.CollectionName}/{account.ProjectName}/_apis/wit/workitems/$Bug?{_apiVersion}";
+            var createRequestUrl = $"{account.Url}/{account.CollectionName}/{account.ProjectName}/_apis/wit/workitems/${workItemType.ToString()}?{_apiVersion}";
 
-            var workItemCreatePATCHData = new List<VSTSRequest>();
+            var workItemCreatePATCHData = new List<APIRequest>();
 
             //Title: Exception Name
             workItemCreatePATCHData.Add(
@@ -149,7 +164,7 @@ namespace DBTek.BugGuardian.Helpers
                     new WorkItemCreateRequest()
                     {
                         Operation = WITOperationType.add,
-                        Path = ReproStepsField,
+                        Path = workItemType == WorkItemType.Bug ? ReproStepsField : DescriptionField,
                         Value = ExceptionsHelper.BuildExceptionString(ex, message)  // Include custom message, if any
                     });
 
@@ -200,23 +215,23 @@ namespace DBTek.BugGuardian.Helpers
         }
 
         /// <summary>
-        /// Updates the Title and the History of an Existing Bug
+        /// Updates the Title and the History of an Existing WorkItem
         /// </summary>
-        /// <param name="bugData"></param>
+        /// <param name="workItemData"></param>
         /// <param name="account"></param>
         /// <returns></returns>
-        public static async Task<BugGuardianResponse> UpdateBug(BugData bugData, Account account)
+        public static async Task<BugGuardianResponse> UpdateWorkItem(WorkItemData workItemData, Account account)
         {
             // Pattern:
             //PATCH https://{account}.visualstudio.com/defaultcollection/_apis/wit/workitems/{wworkitemid}?api-version={version}                         
-            var updateRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/workitems/{bugData.ID}?{_apiVersion}";
+            var updateRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/workitems/{workItemData.ID}?{_apiVersion}";
 
             var historyMessage = "Exception thrown again";
 
-            var reportedTimes = (bugData.History?.Where(h => h.Value.Contains(historyMessage)).Count() ?? 0) + 2;
-            var newTitle = $"{bugData.Title.Replace($" ({reportedTimes - 1})", string.Empty)} ({reportedTimes})";
+            var reportedTimes = (workItemData.History?.Where(h => h.Value.Contains(historyMessage)).Count() ?? 0) + 2;
+            var newTitle = $"{workItemData.Title.Replace($" ({reportedTimes - 1})", string.Empty)} ({reportedTimes})";
 
-            var workItemCreatePATCHData = new List<VSTSRequest>();
+            var workItemCreatePATCHData = new List<APIRequest>();
 
             //Update Title
             workItemCreatePATCHData.Add(

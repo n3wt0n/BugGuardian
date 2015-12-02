@@ -10,5 +10,9 @@ namespace DBTek.BugGuardian
         BugGuardianResponse AddBug(Exception ex, string message = null, IEnumerable<string> tags = null);
 
         Task<BugGuardianResponse> AddBugAsync(Exception ex, string message = null, IEnumerable<string> tags = null);
+
+        BugGuardianResponse AddTask(Exception ex, string message = null, IEnumerable<string> tags = null);
+
+        Task<BugGuardianResponse> AddTaskAsync(Exception ex, string message = null, IEnumerable<string> tags = null);
     }
 }
