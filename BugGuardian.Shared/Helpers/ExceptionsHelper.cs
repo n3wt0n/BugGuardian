@@ -16,6 +16,9 @@ namespace DBTek.BugGuardian.Helpers
         {
             var exceptionString = new StringBuilder();
 
+            if (ex == null)
+                return exceptionString.ToString();
+
             //Avoid to report the wrapper exception
             if (ex.GetType().ToString().ToLower() == "system.web.httpunhandledexception" && ex.InnerException != null)
                 exceptionString.Append(BuildExceptionString(ex.InnerException));
@@ -53,6 +56,9 @@ namespace DBTek.BugGuardian.Helpers
         public static string BuildExceptionTitle(Exception ex)
         {
             var title = new StringBuilder();
+
+            if (ex == null)
+                return title.ToString();
 
             if (ex.GetType().ToString().ToLower() == "system.web.httpunhandledexception" && ex.InnerException != null)
                 title.Append(BuildExceptionTitle(ex.InnerException));
