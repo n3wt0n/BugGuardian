@@ -1,6 +1,6 @@
 ﻿namespace DBTek.BugGuardian.Entities
 {
-    internal class VSORequest
+    internal class VSTSRequest
     {
         //Used as placeholder base class
     }

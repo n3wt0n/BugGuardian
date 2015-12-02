@@ -2,7 +2,7 @@
 
 namespace DBTek.BugGuardian.Entities
 {
-    internal class WorkItemWIQLRequest : VSORequest
+    internal class WorkItemWIQLRequest : VSTSRequest
     {
         [JsonProperty(PropertyName = "query")]
         public string Query { get; set; }

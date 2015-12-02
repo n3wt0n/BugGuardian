@@ -15,7 +15,7 @@ namespace DBTek.BugGuardian.Helpers
         //Api version query parameter
         private static string _apiVersion = "api-version=1.0";
 
-        //VSOFields
+        //VSTSFields
         private const string TitleField = "/fields/System.Title";
         private const string ReproStepsField = "/fields/Microsoft.VSTS.TCM.ReproSteps";
         private const string SystemInfoField = "/fields/Microsoft.VSTS.TCM.SystemInfo";
@@ -26,12 +26,24 @@ namespace DBTek.BugGuardian.Helpers
         private const string DefaultTags = "BugGuardian;";
 
         /// <summary>
-        /// Check if a bug with the same hash already exists on VSO/TFS
+        /// Check if a Bug with the same hash already exists on VSTS/TFS
         /// </summary>
         /// <param name="exceptionHash"></param>
         /// <param name="account"></param>
         /// <returns></returns>
         public static async Task<BugData> GetExistentBugId(string exceptionHash, Account account)
+            => await GetExistentWorkItemId(exceptionHash, "Bug", account);
+
+        /// <summary>
+        /// Check if a Task with the same hash already exists on VSTS/TFS
+        /// </summary>
+        /// <param name="exceptionHash"></param>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public static async Task<BugData> GetExistentTaskId(string exceptionHash, Account account)
+            => await GetExistentWorkItemId(exceptionHash, "Task", account);
+
+        private static async Task<BugData> GetExistentWorkItemId(string exceptionHash, string workItemType, Account account)
         {
             //Pattern:
             //POST https://{account}.visualstudio.com/defaultcollection/_apis/wit/wiql?api-version={version}
@@ -39,18 +51,18 @@ namespace DBTek.BugGuardian.Helpers
 
             var workItemQueryPOSTData = new WorkItemWIQLRequest()
             {
-                Query = "Select [System.Id] From WorkItems Where [System.WorkItemType] = 'Bug' AND [State] <> 'Done' AND [State] <> 'Removed' " +
+                Query = $"Select [System.Id] From WorkItems Where [System.WorkItemType] = '{workItemType}' AND [State] <> 'Done' AND [State] <> 'Removed' " +
                             $"AND [System.TeamProject] = '{account.ProjectName}' AND [Microsoft.VSTS.Build.FoundIn] = '{exceptionHash}'"
             };
 
             using (var handler = new HttpClientHandler())
             {
-                if (!account.IsVSO) //is TFS, requires NTLM
+                if (!account.IsVSTS) //is TFS, requires NTLM
                     handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
 
                 using (var client = new HttpClient(handler))
                 {
-                    if (account.IsVSO)
+                    if (account.IsVSTS)
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                     //Set alternate credentials
@@ -112,7 +124,7 @@ namespace DBTek.BugGuardian.Helpers
             //See https://www.visualstudio.com/integrate/api/wit/fields for the fields explanation            
             var createRequestUrl = $"{account.Url}/{account.CollectionName}/{account.ProjectName}/_apis/wit/workitems/$Bug?{_apiVersion}";
 
-            var workItemCreatePATCHData = new List<VSORequest>();
+            var workItemCreatePATCHData = new List<VSTSRequest>();
 
             //Title: Exception Name
             workItemCreatePATCHData.Add(
@@ -161,12 +173,12 @@ namespace DBTek.BugGuardian.Helpers
 
             using (var handler = new HttpClientHandler())
             {
-                if (!account.IsVSO) //is TFS, requires NTLM
+                if (!account.IsVSTS) //is TFS, requires NTLM
                     handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
 
                 using (var client = new HttpClient(handler))
                 {
-                    if (account.IsVSO)
+                    if (account.IsVSTS)
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                     //Set alternate credentials
@@ -204,7 +216,7 @@ namespace DBTek.BugGuardian.Helpers
             var reportedTimes = (bugData.History?.Where(h => h.Value.Contains(historyMessage)).Count() ?? 0) + 2;
             var newTitle = $"{bugData.Title.Replace($" ({reportedTimes - 1})", string.Empty)} ({reportedTimes})";
 
-            var workItemCreatePATCHData = new List<VSORequest>();
+            var workItemCreatePATCHData = new List<VSTSRequest>();
 
             //Update Title
             workItemCreatePATCHData.Add(
@@ -226,12 +238,12 @@ namespace DBTek.BugGuardian.Helpers
 
             using (var handler = new HttpClientHandler())
             {
-                if (!account.IsVSO) //is TFS, requires NTLM
+                if (!account.IsVSTS) //is TFS, requires NTLM
                     handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
 
                 using (var client = new HttpClient(handler))
                 {
-                    if (account.IsVSO)
+                    if (account.IsVSTS)
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                     //Set alternate credentials
