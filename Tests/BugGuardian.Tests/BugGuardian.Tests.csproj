@@ -57,6 +57,7 @@
     <Compile Include="Extensions\StringExtensionsTests.cs" />
     <Compile Include="Factories\ConfigurationFactoryTests.cs" />
     <Compile Include="Helpers\ExceptionsHelperTests.cs" />
+    <Compile Include="Helpers\MD5HelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

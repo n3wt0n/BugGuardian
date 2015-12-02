@@ -22,8 +22,11 @@ namespace DBTek.BugGuardian.Helpers
                 throw new NotSupportedException();
         }
 
-        static public string GetMd5String(String source)
+        static public string GetMd5String(string source)
         {
+            if (source == null)
+                return string.Empty;
+
             MD5 md = MD5CryptoServiceProvider.Create();
             byte[] hash;
 
