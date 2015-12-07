@@ -1,8 +1,8 @@
 # BugGuardian
 
-Easily track you exceptions on VSO and TFS
+Easily track you exceptions on VSTS and TFS
 ------------------------------------------
-**BugGuardian** is a library, written in C# like Shared Project, that allows to easily create a Bug work item on your *Visual Studio Online* account or on your on-premises *Team Foundation Server 2015* in the case your application throws an Unhandled Exception.
+**BugGuardian** is a library, written in C# like Shared Project, that allows to easily create a Bug or a Task work item on your *Visual Studio Team Services* account or on your on-premises *Team Foundation Server 2015* in the case your application throws an Unhandled Exception.
 It can also be invoked manually in try/catch blocks to keep track of handled exceptions.
 
 It supports projects with .Net Framework 4.0 and above.
