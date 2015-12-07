@@ -23,6 +23,7 @@ namespace DBTek.BugGuardian.Helpers
         private const string TagsField = "/fields/System.Tags";
         private const string FoundInField = "/fields/Microsoft.VSTS.Build.FoundIn";
         private const string HistoryField = "/fields/System.History";
+        private const string IterationIdField = "/fields/System.IterationId";
 
         private const string DefaultTags = "BugGuardian;";
 
@@ -134,24 +135,41 @@ namespace DBTek.BugGuardian.Helpers
                         Path = TagsField,
                         Value = DefaultTags + (tags != null ? string.Join(";", tags) : String.Empty)
                     });
+            
+            if (workItemType == WorkItemType.Bug)
+            {
+                //BUG
 
-            //Repro Steps: Stack Trace
-            workItemCreatePATCHData.Add(
-                    new WorkItemCreateRequest()
-                    {
-                        Operation = WITOperationType.add,
-                        Path = workItemType == WorkItemType.Bug ? ReproStepsField : DescriptionField,
-                        Value = ExceptionsHelper.BuildExceptionString(ex, message)  // Include custom message, if any
+                //Repro Steps: Stack Trace
+                workItemCreatePATCHData.Add(
+                        new WorkItemCreateRequest()
+                        {
+                            Operation = WITOperationType.add,
+                            Path = ReproStepsField,
+                            Value = ExceptionsHelper.BuildExceptionString(ex, message)  // Include custom message, if any
                     });
 
-            //System Info
-            workItemCreatePATCHData.Add(
-                    new WorkItemCreateRequest()
-                    {
-                        Operation = WITOperationType.add,
-                        Path = SystemInfoField,
-                        Value = SystemInfoHelper.BuildSystemInfoString()
-                    });
+                //System Info
+                workItemCreatePATCHData.Add(
+                        new WorkItemCreateRequest()
+                        {
+                            Operation = WITOperationType.add,
+                            Path = SystemInfoField,
+                            Value = SystemInfoHelper.BuildSystemInfoString()
+                        });
+            }
+            else
+            {
+                //TASK
+                //Description: Stack Trace + System info
+                workItemCreatePATCHData.Add(
+                        new WorkItemCreateRequest()
+                        {
+                            Operation = WITOperationType.add,
+                            Path = workItemType == WorkItemType.Bug ? ReproStepsField : DescriptionField,
+                            Value = $"{ExceptionsHelper.BuildExceptionString(ex, message)}<br /><hr /><br />{SystemInfoHelper.BuildSystemInfoString()}"  // Include custom message, if any
+                        });                
+            }            
 
             //FoundIn: Hash of stack trace
             workItemCreatePATCHData.Add(
