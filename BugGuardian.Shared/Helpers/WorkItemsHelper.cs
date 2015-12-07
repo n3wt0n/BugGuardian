@@ -27,24 +27,13 @@ namespace DBTek.BugGuardian.Helpers
         private const string DefaultTags = "BugGuardian;";
 
         /// <summary>
-        /// Check if a Bug with the same hash already exists on VSTS/TFS
+        /// Check if a WorkItem of the given Type and with the same hash already exists on VSTS/TFS
         /// </summary>
-        /// <param name="exceptionHash"></param>
-        /// <param name="account"></param>
+        /// <param name="exceptionHash">The MD5 hash of the exception to report</param>
+        /// <param name="workItemType">The WorkItem Type (Bug or Task)</param>
+        /// <param name="account">Account info for VSTS/TFS</param>
         /// <returns></returns>
-        public static Task<WorkItemData> GetExistentBugId(string exceptionHash, Account account)
-            => GetExistentWorkItemId(exceptionHash, WorkItemType.Bug, account);
-
-        /// <summary>
-        /// Check if a Task with the same hash already exists on VSTS/TFS
-        /// </summary>
-        /// <param name="exceptionHash"></param>
-        /// <param name="account"></param>
-        /// <returns></returns>
-        public static Task<WorkItemData> GetExistentTaskId(string exceptionHash, Account account)
-            => GetExistentWorkItemId(exceptionHash, WorkItemType.Task, account);
-
-        private static async Task<WorkItemData> GetExistentWorkItemId(string exceptionHash, WorkItemType workItemType, Account account)
+        public static async Task<WorkItemData> GetExistentWorkItemId(string exceptionHash, WorkItemType workItemType, Account account)
         {
             //Pattern:
             //POST https://{account}.visualstudio.com/defaultcollection/_apis/wit/wiql?api-version={version}
@@ -111,28 +100,15 @@ namespace DBTek.BugGuardian.Helpers
         }
 
         /// <summary>
-        /// Create a new Bug Work Item with the given values
+        /// Create a new Work Item with the given values
         /// </summary>
-        /// <param name="ex"></param>
-        /// <param name="account"></param>
-        /// <param name="message"></param>
-        /// <param name="tags"></param>
+        /// <param name="workItemType">The WorkItem Type (Bug or Task)</param>
+        /// <param name="ex">The exception to report</param>
+        /// <param name="account">Account info for VSTS/TFS</param>
+        /// <param name="message">Optional message to be added to the WorkItem</param>
+        /// <param name="tags">Optional tags (list separated by comma) to be added to the WorkItem</param>
         /// <returns></returns>
-        public static Task<BugGuardianResponse> CreateNewBug(Exception ex, Account account, string message = null, IEnumerable<string> tags = null)
-            => CreateNewWorkItem(WorkItemType.Bug, ex, account, message, tags);
-
-        /// <summary>
-        /// Create a new Task Work Item with the given values
-        /// </summary>
-        /// <param name="ex"></param>
-        /// <param name="account"></param>
-        /// <param name="message"></param>
-        /// <param name="tags"></param>
-        /// <returns></returns>
-        public static Task<BugGuardianResponse> CreateNewTask(Exception ex, Account account, string message = null, IEnumerable<string> tags = null)
-            => CreateNewWorkItem(WorkItemType.Task, ex, account, message, tags);
-
-        private static async Task<BugGuardianResponse> CreateNewWorkItem(WorkItemType workItemType, Exception ex, Account account, string message, IEnumerable<string> tags)
+        public static async Task<BugGuardianResponse> CreateNewWorkItem(WorkItemType workItemType, Exception ex, Account account, string message, IEnumerable<string> tags)
         {
             //Pattern:
             //PATCH https://{account}.visualstudio.com/defaultcollection/{project}/_apis/wit/workitems/${workitemtypename}?api-version={version}
@@ -217,8 +193,8 @@ namespace DBTek.BugGuardian.Helpers
         /// <summary>
         /// Updates the Title and the History of an Existing WorkItem
         /// </summary>
-        /// <param name="workItemData"></param>
-        /// <param name="account"></param>
+        /// <param name="workItemData">The WorkItem to update</param>
+        /// <param name="account">Account info for VSTS/TFS</param>
         /// <returns></returns>
         public static async Task<BugGuardianResponse> UpdateWorkItem(WorkItemData workItemData, Account account)
         {
