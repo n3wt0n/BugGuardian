@@ -18,4 +18,3 @@
 /NuGet/Package/lib/wp8/*
 /NuGet/Package/lib/wpa81/*
 *.nupkg
-*.nuspec
