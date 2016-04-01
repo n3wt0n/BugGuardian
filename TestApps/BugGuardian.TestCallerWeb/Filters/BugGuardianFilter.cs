@@ -2,19 +2,19 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Filters;
+using System.Web.Mvc;
 
 namespace DBTek.BugGuardian.TestCallerWeb.Filters
 {
-    public class BugGuardianFilter : IExceptionFilter
-    {
-        public bool AllowMultiple
-            => true;
-
-        public Task ExecuteExceptionFilterAsync(HttpActionExecutedContext actionExecutedContext, CancellationToken cancellationToken)
+    public class BugGuardianFilter : HandleErrorAttribute
+    {        
+        public override void OnException(ExceptionContext filterContext)
         {
+            base.OnException(filterContext);
+
             using (var creator = new DBTek.BugGuardian.Creator())
             {
-                return creator.AddBugAsync(actionExecutedContext.Exception);
+                creator.AddBug(filterContext.Exception);
             }
         }
     }

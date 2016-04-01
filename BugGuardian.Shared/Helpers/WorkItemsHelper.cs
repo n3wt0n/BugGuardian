@@ -91,8 +91,9 @@ namespace DBTek.BugGuardian.Helpers
                             return workItemData;
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        int i = 1;
                     }
 
                     return null;

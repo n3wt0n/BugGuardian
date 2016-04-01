@@ -23,7 +23,10 @@ namespace DBTek.BugGuardian
         /// <param name="tags">Optional tags (list separated by comma) to be added to the WorkItem</param>
         /// <returns></returns>
         public BugGuardianResponse AddBug(Exception ex, string message = null, IEnumerable<string> tags = null)
-            => AddWorkItemAsync(WorkItemType.Bug, ex, message, tags).Result;
+            => Task.Factory.StartNew(async delegate
+               {
+                   return await AddWorkItemAsync(WorkItemType.Bug, ex, message, tags);
+               }).Unwrap().Result;
 
         /// <summary>
         /// Add a Bug in async, with the info about the given Exception. You can optionally indicate a custom error message and a list of tags
@@ -33,7 +36,7 @@ namespace DBTek.BugGuardian
         /// <param name="tags">Optional tags (list separated by comma) to be added to the WorkItem</param>
         /// <returns></returns>
         public Task<BugGuardianResponse> AddBugAsync(Exception ex, string message = null, IEnumerable<string> tags = null)
-            => AddWorkItemAsync(WorkItemType.Bug, ex, message, tags);
+                => AddWorkItemAsync(WorkItemType.Bug, ex, message, tags);
 
         /// <summary>
         /// Add a Task, with the info about the given Exception. You can optionally indicate a custom error message and a list of tags
@@ -43,7 +46,10 @@ namespace DBTek.BugGuardian
         /// <param name="tags">Optional tags (list separated by comma) to be added to the WorkItem</param>
         /// <returns></returns>
         public BugGuardianResponse AddTask(Exception ex, string message = null, IEnumerable<string> tags = null)
-            => AddWorkItemAsync(WorkItemType.Task, ex, message, tags).Result;
+            => Task.Factory.StartNew(async delegate
+            {
+                return await AddWorkItemAsync(WorkItemType.Task, ex, message, tags);
+            }).Unwrap().Result;
 
         /// <summary>
         /// Add a Task in async, with the info about the given Exception. You can optionally indicate a custom error message and a list of tags
