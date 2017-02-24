@@ -28,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6CBE106E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.Tests", "Tests\BugGuardian.Tests\BugGuardian.Tests.csproj", "{B566AAED-EAC2-4D87-850F-F2C34552752F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerUWP", "TestApps\BugGuardian.TestCallerUWP\BugGuardian.TestCallerUWP.csproj", "{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{7a34fe4f-ae68-45d7-af4c-aca84ea7ce14}*SharedItemsImports = 4
@@ -151,6 +153,26 @@ Global
 		{B566AAED-EAC2-4D87-850F-F2C34552752F}.Release|x64.Build.0 = Release|Any CPU
 		{B566AAED-EAC2-4D87-850F-F2C34552752F}.Release|x86.ActiveCfg = Release|Any CPU
 		{B566AAED-EAC2-4D87-850F-F2C34552752F}.Release|x86.Build.0 = Release|Any CPU
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Debug|ARM.ActiveCfg = Debug|ARM
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Debug|ARM.Build.0 = Debug|ARM
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Debug|ARM.Deploy.0 = Debug|ARM
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Debug|x64.ActiveCfg = Debug|x64
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Debug|x64.Build.0 = Debug|x64
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Debug|x64.Deploy.0 = Debug|x64
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Debug|x86.ActiveCfg = Debug|x86
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Debug|x86.Build.0 = Debug|x86
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Debug|x86.Deploy.0 = Debug|x86
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Release|Any CPU.ActiveCfg = Release|x86
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Release|ARM.ActiveCfg = Release|ARM
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Release|ARM.Build.0 = Release|ARM
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Release|ARM.Deploy.0 = Release|ARM
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Release|x64.ActiveCfg = Release|x64
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Release|x64.Build.0 = Release|x64
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Release|x64.Deploy.0 = Release|x64
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Release|x86.ActiveCfg = Release|x86
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Release|x86.Build.0 = Release|x86
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -163,5 +185,6 @@ Global
 		{7EBD7552-AB40-4D6C-B8BD-B8B2B27B51B0} = {B913EA7B-C360-467F-AC27-FC3F50B52867}
 		{7A34FE4F-AE68-45D7-AF4C-ACA84EA7CE14} = {B913EA7B-C360-467F-AC27-FC3F50B52867}
 		{B566AAED-EAC2-4D87-850F-F2C34552752F} = {6CBE106E-B171-4B14-A399-EF41A16C1F2D}
+		{CEDC75CA-F920-4D72-A803-5B1ECC6B070D} = {7D0462B9-3382-4563-B25E-748D54F2E8BD}
 	EndGlobalSection
 EndGlobal
