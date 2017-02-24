@@ -39,6 +39,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BugGuardianManager.cs" />
     <Compile Include="Converters\StringToAsciiConverter.cs" />
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\APIRequest.cs" />
@@ -50,15 +51,19 @@
     <Compile Include="Entities\WorkItemType.cs" />
     <Compile Include="Entities\WorkItemWIQLRequest.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\HttpClientExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Factories\ConfigurationFactory.cs" />
     <Compile Include="Helpers\AccountHelper.cs" />
     <Compile Include="Helpers\ExceptionsHelper.cs" />
+    <Compile Include="Helpers\HttpOperationsHelper.cs" />
     <Compile Include="Helpers\MD5Helper.cs" />
+    <Compile Include="Helpers\SystemInfoHelper.cs" />
+    <Compile Include="Helpers\WorkItemsHelper.cs" />
+    <Compile Include="IBugGuardianManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Factories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
