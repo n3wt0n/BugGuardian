@@ -2,8 +2,8 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -13,7 +13,7 @@ namespace DBTek.BugGuardian.Helpers
     internal class WorkItemsHelper
     {
         //Api version query parameter
-        private static string _apiVersion = "api-version=1.0";
+        private static string _apiVersion = "api-version=2.0";
 
         //VSTSFields
         private const string TitleField = "/fields/System.Title";
@@ -136,7 +136,7 @@ namespace DBTek.BugGuardian.Helpers
                         Path = TagsField,
                         Value = DefaultTags + (tags != null ? string.Join(";", tags) : String.Empty)
                     });
-            
+
             if (workItemType == WorkItemType.Bug)
             {
                 //BUG
@@ -148,7 +148,7 @@ namespace DBTek.BugGuardian.Helpers
                             Operation = WITOperationType.add,
                             Path = ReproStepsField,
                             Value = ExceptionsHelper.BuildExceptionString(ex, message)  // Include custom message, if any
-                    });
+                        });
 
                 //System Info
                 workItemCreatePATCHData.Add(
@@ -169,8 +169,8 @@ namespace DBTek.BugGuardian.Helpers
                             Operation = WITOperationType.add,
                             Path = workItemType == WorkItemType.Bug ? ReproStepsField : DescriptionField,
                             Value = $"{ExceptionsHelper.BuildExceptionString(ex, message)}<br /><hr /><br />{SystemInfoHelper.BuildSystemInfoString()}"  // Include custom message, if any
-                        });                
-            }            
+                        });
+            }
 
             //FoundIn: Hash of stack trace
             workItemCreatePATCHData.Add(
