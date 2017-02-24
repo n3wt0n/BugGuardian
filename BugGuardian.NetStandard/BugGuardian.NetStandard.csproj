@@ -39,7 +39,25 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\StringToAsciiConverter.cs" />
+    <Compile Include="Entities\Account.cs" />
+    <Compile Include="Entities\APIRequest.cs" />
+    <Compile Include="Entities\BugGuardianResponse.cs" />
+    <Compile Include="Entities\QueryType.cs" />
+    <Compile Include="Entities\WITOperationType.cs" />
+    <Compile Include="Entities\WorkItemCreateRequest.cs" />
+    <Compile Include="Entities\WorkItemData.cs" />
+    <Compile Include="Entities\WorkItemType.cs" />
+    <Compile Include="Entities\WorkItemWIQLRequest.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Helpers\AccountHelper.cs" />
+    <Compile Include="Helpers\ExceptionsHelper.cs" />
+    <Compile Include="Helpers\MD5Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Factories\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
