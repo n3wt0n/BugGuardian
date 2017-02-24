@@ -8,6 +8,7 @@ namespace DBTek.BugGuardian.TestCallerWeb.Filters
         {
             base.OnException(filterContext);
 
+            BugGuardian.Factories.ConfigurationFactory.SetConfiguration("myurl", "username", "password", "project");
             using (var manager = new BugGuardianManager())
             {
                 manager.AddBug(filterContext.Exception);
