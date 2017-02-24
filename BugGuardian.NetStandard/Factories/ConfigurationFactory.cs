@@ -18,7 +18,7 @@ namespace DBTek.BugGuardian.Factories
         /// <param name="projectName">The name of the Team Project where the bugs will be open</param>
         /// <param name="avoidMultipleReport">If true, if the application throws the same exception more the once it will be reported only once. If false, every time will be created a new Bug to VSTS/TFS.</param>
         public static void SetConfiguration(string url, string username, string password, string projectName, bool avoidMultipleReport = true)
-            => SetConfiguration(url, username, password, null, projectName);
+            => SetConfiguration(url, username, password, null, projectName, avoidMultipleReport);
 
         /// <summary>
         /// Allows to set the condifuration from code. If used, overrides the configuration present in the config file
