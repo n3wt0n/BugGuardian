@@ -12,6 +12,6 @@
 
         public string ProjectName { get; set; }
 
-        public bool IsVSTS => Url.Contains("visualstudio.com");
+        public bool IsVSTS => Url?.Contains("visualstudio.com") ?? false;
     }
 }

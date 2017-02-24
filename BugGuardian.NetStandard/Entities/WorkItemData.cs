@@ -7,11 +7,11 @@ namespace DBTek.BugGuardian.Entities
     {
         [JsonProperty(PropertyName = "id")]
         internal int ID { get; set; }
-        
+
         internal List<History> History { get; set; }
 
         internal string Title
-            => Fields.Title;
+            => Fields?.Title;
 
         [JsonProperty(PropertyName = "fields")]
         internal Fields Fields { get; set; }
@@ -25,7 +25,7 @@ namespace DBTek.BugGuardian.Entities
 
     internal class History
     {
-        [JsonProperty(PropertyName = "value")]        
+        [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
     }
 }
