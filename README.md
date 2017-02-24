@@ -1,5 +1,5 @@
-# BugGuardian
-![](https://dbtek.visualstudio.com/_apis/public/build/definitions/31dcc845-6a11-47d7-90a5-1c340cebf0f1/24/badge)
+# BugGuardian 2.0 [BETA]
+![](https://dbtek.visualstudio.com/_apis/public/build/definitions/31dcc845-6a11-47d7-90a5-1c340cebf0f1/37/badge)
 
 Easily track you exceptions on VSTS and TFS
 ------------------------------------------
