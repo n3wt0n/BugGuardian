@@ -14,7 +14,7 @@ namespace DBTek.BugGuardian
         {
             _account = Helpers.AccountHelper.GenerateAccount();
 
-            if (_account.IsValid)
+            if (!_account.IsValid)
                 throw new BugGuardianConfigurationException();
         }
 
