@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace BugGuardian.TestCaller.UWP
@@ -37,16 +27,16 @@ namespace BugGuardian.TestCaller.UWP
             #region BUGGUARDIAN TEST
             this.UnhandledException += BugGuardianExceptionTrapper;
 
-            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT");          
+            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT");
             #endregion
         }
 
         private void BugGuardianExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
         {
-            using (var creator = new DBTek.BugGuardian.Creator())
+            using (var manager = new DBTek.BugGuardian.BugGuardianManager())
             {
-                creator.AddBug(e.Exception);
-            }            
+                manager.AddBug(e.Exception);
+            }
         }
 
         /// <summary>

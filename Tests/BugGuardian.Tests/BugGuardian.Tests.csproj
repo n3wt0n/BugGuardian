@@ -61,12 +61,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BugGuardian.Standard\BugGuardian.Standard.csproj">
-      <Project>{3c3f7bc4-4a29-4338-9a33-c60a92b76698}</Project>
-      <Name>BugGuardian.Standard</Name>
+    <ProjectReference Include="..\..\BugGuardian.NetStandard\BugGuardian.NetStandard.csproj">
+      <Project>{df98e6d3-65fa-4769-95f3-168adee69561}</Project>
+      <Name>BugGuardian.NetStandard</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

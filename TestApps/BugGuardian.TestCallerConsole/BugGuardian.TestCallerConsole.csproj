@@ -70,14 +70,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BugGuardian.Standard\BugGuardian.Standard.csproj">
-      <Project>{8704c4b4-9174-4f89-8a3a-69cd3313ae51}</Project>
-      <Name>BugGuardian.Standard</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BugGuardian.NetStandard\BugGuardian.NetStandard.csproj">
+      <Project>{df98e6d3-65fa-4769-95f3-168adee69561}</Project>
+      <Name>BugGuardian.NetStandard</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

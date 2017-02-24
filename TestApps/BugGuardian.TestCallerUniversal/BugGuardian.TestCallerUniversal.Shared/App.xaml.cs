@@ -48,9 +48,9 @@ namespace DBTek.BugGuardian.TestCallerUniversal
 
         private void BugGuardianExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
         {
-            using (var creator = new DBTek.BugGuardian.Creator())
+            using (var manager = new DBTek.BugGuardian.BugGuardianManager())
             {
-                creator.AddBug(e.Exception);
+                manager.AddBug(e.Exception);
             }
         }
 

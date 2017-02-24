@@ -131,9 +131,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BugGuardian.NetCore\BugGuardian.NetCore.csproj">
-      <Project>{1ddfa344-223a-487e-bdf0-42fe2792d901}</Project>
-      <Name>BugGuardian.NetCore</Name>
+    <ProjectReference Include="..\..\BugGuardian.NetStandard\BugGuardian.NetStandard.csproj">
+      <Project>{df98e6d3-65fa-4769-95f3-168adee69561}</Project>
+      <Name>BugGuardian.NetStandard</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
