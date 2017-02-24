@@ -56,11 +56,11 @@ namespace DBTek.BugGuardian.Factories
         {
             get
             {
-//#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
+                //#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
                 return CleanUrl(_url);
-//#else
-//                return CleanUrl(_url ?? ConfigurationSettings.AppSettings["Url"]);
-//#endif
+                //#else
+                //                return CleanUrl(_url ?? ConfigurationSettings.AppSettings["Url"]);
+                //#endif
             }
         }
 
@@ -69,11 +69,11 @@ namespace DBTek.BugGuardian.Factories
         {
             get
             {
-//#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
+                //#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
                 return _username;
-//#else
-//                return _username ?? ConfigurationSettings.AppSettings["Username"];
-//#endif
+                //#else
+                //                return _username ?? ConfigurationSettings.AppSettings["Username"];
+                //#endif
             }
         }
 
@@ -82,11 +82,11 @@ namespace DBTek.BugGuardian.Factories
         {
             get
             {
-//#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
+                //#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
                 return _password;
-//#else
-//                return _password ?? ConfigurationSettings.AppSettings["Password"];
-//#endif
+                //#else
+                //                return _password ?? ConfigurationSettings.AppSettings["Password"];
+                //#endif
             }
         }
 
@@ -95,11 +95,11 @@ namespace DBTek.BugGuardian.Factories
         {
             get
             {
-//#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
+                //#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
                 return _collectionName;
-//#else
-//                return (_collectionName ?? ConfigurationSettings.AppSettings["CollectionName"]) ?? DefaultCollectionName;
-//#endif
+                //#else
+                //                return (_collectionName ?? ConfigurationSettings.AppSettings["CollectionName"]) ?? DefaultCollectionName;
+                //#endif
             }
         }
 
@@ -108,11 +108,11 @@ namespace DBTek.BugGuardian.Factories
         {
             get
             {
-//#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
+                //#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
                 return _projectName;
-//#else
-//                return _projectName ?? ConfigurationSettings.AppSettings["ProjectName"];
-//#endif
+                //#else
+                //                return _projectName ?? ConfigurationSettings.AppSettings["ProjectName"];
+                //#endif
             }
         }
 
@@ -120,25 +120,27 @@ namespace DBTek.BugGuardian.Factories
         internal static bool AvoidMultipleReport
         {
             get
-            {                
-//#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
+            {
+                //#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
                 return _avoidMultipleReport ?? true;
-//#else
-//                return _avoidMultipleReport ?? bool.Parse(ConfigurationSettings.AppSettings["AvoidMultipleReport"] ?? "true");
-//#endif
+                //#else
+                //                return _avoidMultipleReport ?? bool.Parse(ConfigurationSettings.AppSettings["AvoidMultipleReport"] ?? "true");
+                //#endif
             }
         }
 
         private static string CleanUrl(string url)
         {
-            url = url.Replace(@"\", "/").ToLower();
+            if (!string.IsNullOrWhiteSpace(url))
+            {
+                url = url.Replace(@"\", "/").ToLower();
 
-            if (!url.StartsWith("http://") && !url.StartsWith("https://"))
-                url = $"http://{url}";
+                if (!url.StartsWith("http://") && !url.StartsWith("https://"))
+                    url = $"http://{url}";
 
-            if (url.EndsWith("/"))
-                url = url.TrimEnd('/');
-                    
+                if (url.EndsWith("/"))
+                    url = url.TrimEnd('/');
+            }
             return url;
         }
     }

@@ -43,6 +43,7 @@
     <Compile Include="Converters\StringToAsciiConverter.cs" />
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\APIRequest.cs" />
+    <Compile Include="Entities\BugGuardianConfigurationException.cs" />
     <Compile Include="Entities\BugGuardianResponse.cs" />
     <Compile Include="Entities\QueryType.cs" />
     <Compile Include="Entities\WITOperationType.cs" />
