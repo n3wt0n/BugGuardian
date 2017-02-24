@@ -106,9 +106,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\..\..\BugGuardian.Windows\BugGuardian.Windows.csproj">
-      <Project>{90679079-6e6c-41b6-b6a4-0f51400e9522}</Project>
-      <Name>BugGuardian.Windows</Name>
+    <ProjectReference Include="..\..\..\BugGuardian.NetStandard\BugGuardian.NetStandard.csproj">
+      <Project>{df98e6d3-65fa-4769-95f3-168adee69561}</Project>
+      <Name>BugGuardian.NetStandard</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
