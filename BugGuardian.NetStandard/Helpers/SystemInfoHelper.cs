@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Runtime.InteropServices;
+using System.Text;
 
 namespace DBTek.BugGuardian.Helpers
 {
@@ -21,11 +22,16 @@ namespace DBTek.BugGuardian.Helpers
             //            systemInfoString.Append($"<strong>System Hardware Version:</strong> {deviceInfo.SystemHardwareVersion}<br />");
             //#endif
             //#else
-            //            systemInfoString.Append($"<strong>OS:</strong> {System.Environment.OSVersion.VersionString}<br />");
-            //            systemInfoString.Append($"<strong>64 bit OS:</strong> {System.Environment.Is64BitOperatingSystem}<br />");
-            //            systemInfoString.Append($"<strong>64 bit Process:</strong> {System.Environment.Is64BitProcess}<br />");
-            //            systemInfoString.Append($"<strong>CLR version:</strong> {System.Environment.Version}<br />");
+            //systemInfoString.Append($"<strong>OS:</strong> {System.Environment.OSVersion.VersionString}<br />");
+            //systemInfoString.Append($"<strong>64 bit OS:</strong> {System.Environment.Is64BitOperatingSystem}<br />");
+            //systemInfoString.Append($"<strong>64 bit Process:</strong> {System.Environment.Is64BitProcess}<br />");
+            //systemInfoString.Append($"<strong>CLR version:</strong> {System.Environment.Version}<br />");            
             //#endif
+
+            systemInfoString.Append($"<strong>OS:</strong> {RuntimeInformation.OSDescription}<br />");
+            systemInfoString.Append($"<strong>OS Architecture:</strong> {RuntimeInformation.OSArchitecture}<br />");
+            systemInfoString.Append($"<strong>Framework:</strong> {RuntimeInformation.FrameworkDescription}<br />");
+            systemInfoString.Append($"<strong>Process Architecture:</strong> {RuntimeInformation.ProcessArchitecture}<br />");
 
             return systemInfoString.ToString();
         }
