@@ -138,6 +138,9 @@ namespace DBTek.BugGuardian.Factories
                 if (!url.StartsWith("http://") && !url.StartsWith("https://"))
                     url = $"http://{url}";
 
+                if (url.Contains("visualstudio.com"))
+                    url = url.Replace("http", "https");
+
                 if (url.EndsWith("/"))
                     url = url.TrimEnd('/');
             }
