@@ -3,11 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7F79B6C5-F0A1-4B26-9696-C4CAA8A40D95}"
-	ProjectSection(SolutionItems) = preProject
-		ChangeLog.txt = ChangeLog.txt
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.NetStandard", "BugGuardian.NetStandard\BugGuardian.NetStandard.csproj", "{DF98E6D3-65FA-4769-95F3-168ADEE69561}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6CBE106E-B171-4B14-A399-EF41A16C1F2D}"

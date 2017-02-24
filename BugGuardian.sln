@@ -9,11 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TesterApps", "TesterApps", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerWeb", "TestApps\BugGuardian.TestCallerWeb\BugGuardian.TestCallerWeb.csproj", "{16F039D1-1A0F-4CBE-91D2-C2F08AA3A446}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7F79B6C5-F0A1-4B26-9696-C4CAA8A40D95}"
-	ProjectSection(SolutionItems) = preProject
-		ChangeLog.txt = ChangeLog.txt
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.NetStandard", "BugGuardian.NetStandard\BugGuardian.NetStandard.csproj", "{DF98E6D3-65FA-4769-95F3-168ADEE69561}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BugGuardian.TestCallerUniversal", "BugGuardian.TestCallerUniversal", "{B913EA7B-C360-467F-AC27-FC3F50B52867}"
