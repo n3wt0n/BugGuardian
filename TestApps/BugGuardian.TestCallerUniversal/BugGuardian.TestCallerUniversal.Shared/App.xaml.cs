@@ -40,7 +40,7 @@ namespace BugGuardian.TestCallerUniversal
 
             #region BUGGUARDIAN TEST
 
-            this.UnhandledException += BugGuardianExceptionTrapper;            
+            this.UnhandledException += BugGuardianExceptionTrapper;
             DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT", avoidMultipleReport: false);
 
             #endregion
