@@ -11,8 +11,8 @@ namespace DBTek.BugGuardian.Helpers
                 Url = ConfigurationFactory.Url,
                 Username = ConfigurationFactory.Username,
                 Password = ConfigurationFactory.Password,
-                CollectionName = ConfigurationFactory.CollectiontName,
+                CollectionName = ConfigurationFactory.CollectionName,
                 ProjectName = ConfigurationFactory.ProjectName
-            };        
+            };
     }
 }

@@ -44,90 +44,28 @@ namespace DBTek.BugGuardian.Factories
                 throw new ArgumentNullException(nameof(projectName));
 
             _url = url;
-            _username = username;
-            _password = password;
-            _collectionName = collectionName ?? DefaultCollectionName;
-            _projectName = projectName;
+            Username = username;
+            Password = password;
+            CollectionName = collectionName ?? DefaultCollectionName;
+            ProjectName = projectName;
             _avoidMultipleReport = avoidMultipleReport;
         }
 
         private static string _url;
         internal static string Url
-        {
-            get
-            {
-                //#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
-                return CleanUrl(_url);
-                //#else
-                //                return CleanUrl(_url ?? ConfigurationSettings.AppSettings["Url"]);
-                //#endif
-            }
-        }
+            => CleanUrl(_url);
 
-        private static string _username;
-        internal static string Username
-        {
-            get
-            {
-                //#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
-                return _username;
-                //#else
-                //                return _username ?? ConfigurationSettings.AppSettings["Username"];
-                //#endif
-            }
-        }
+        internal static string Username { private set; get; }
 
-        private static string _password;
-        internal static string Password
-        {
-            get
-            {
-                //#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
-                return _password;
-                //#else
-                //                return _password ?? ConfigurationSettings.AppSettings["Password"];
-                //#endif
-            }
-        }
+        internal static string Password { private set; get; }
 
-        private static string _collectionName;
-        internal static string CollectiontName
-        {
-            get
-            {
-                //#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
-                return _collectionName;
-                //#else
-                //                return (_collectionName ?? ConfigurationSettings.AppSettings["CollectionName"]) ?? DefaultCollectionName;
-                //#endif
-            }
-        }
+        internal static string CollectionName { private set; get; }
 
-        private static string _projectName;
-        internal static string ProjectName
-        {
-            get
-            {
-                //#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
-                return _projectName;
-                //#else
-                //                return _projectName ?? ConfigurationSettings.AppSettings["ProjectName"];
-                //#endif
-            }
-        }
+        internal static string ProjectName { private set; get; }
 
         private static bool? _avoidMultipleReport;
         internal static bool AvoidMultipleReport
-        {
-            get
-            {
-                //#if WINDOWS_APP || WINDOWS_PHONE_APP || WINDOWS_UWP
-                return _avoidMultipleReport ?? true;
-                //#else
-                //                return _avoidMultipleReport ?? bool.Parse(ConfigurationSettings.AppSettings["AvoidMultipleReport"] ?? "true");
-                //#endif
-            }
-        }
+            => _avoidMultipleReport ?? true;
 
         private static string CleanUrl(string url)
         {
