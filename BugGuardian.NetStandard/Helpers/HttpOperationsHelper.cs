@@ -1,7 +1,6 @@
 ﻿using DBTek.BugGuardian.Entities;
 using DBTek.BugGuardian.Extensions;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -11,9 +10,9 @@ namespace DBTek.BugGuardian.Helpers
 {
     internal class HttpOperationsHelper
     {
-        public static async Task<String> GetAsync(HttpClient client, String apiUrl)
+        public static async Task<string> GetAsync(HttpClient client, string apiUrl)
         {
-            var responseBody = String.Empty;
+            var responseBody = string.Empty;
 
             using (HttpResponseMessage response = await client.GetAsync(apiUrl))
             {
@@ -24,9 +23,9 @@ namespace DBTek.BugGuardian.Helpers
             return responseBody;
         }
 
-        public static async Task<String> PatchAsync(HttpClient client, String apiUrl, List<APIRequest> requestBody)
+        public static async Task<string> PatchAsync(HttpClient client, string apiUrl, List<APIRequest> requestBody)
         {
-            var responseBody = String.Empty;
+            var responseBody = string.Empty;
 
             var jsonRequest = JsonConvert.SerializeObject(requestBody);
 
@@ -40,9 +39,9 @@ namespace DBTek.BugGuardian.Helpers
             return responseBody;
         }
 
-        public static async Task<String> PostAsync(HttpClient client, String apiUrl, APIRequest requestBody)
+        public static async Task<string> PostAsync(HttpClient client, string apiUrl, APIRequest requestBody)
         {
-            var responseBody = String.Empty;
+            var responseBody = string.Empty;
 
             var jsonRequest = JsonConvert.SerializeObject(requestBody);
 
