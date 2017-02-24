@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.TestCallerConsole", "TestApps\BugGuardian.TestCallerConsole\BugGuardian.TestCallerConsole.csproj", "{656977B2-056C-4DEB-87CB-D11366E809B8}"
 EndProject
@@ -38,16 +38,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CC0269F2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.Tests", "Tests\BugGuardian.Tests\BugGuardian.Tests.csproj", "{CCAD3002-6B0E-4214-B878-D038167FBD00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugGuardian.NetStandard", "BugGuardian.NetStandard\BugGuardian.NetStandard.csproj", "{DF98E6D3-65FA-4769-95F3-168ADEE69561}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{8c6cf847-351d-4a0f-9b0e-2fed6f073c0c}*SharedItemsImports = 4
-		TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{cd985fff-6f8f-41e3-a9fe-0277680c3492}*SharedItemsImports = 13
-		BugGuardian.Shared\BugGuardian.Shared.projitems*{3c3f7bc4-4a29-4338-9a33-c60a92b76698}*SharedItemsImports = 4
+		BugGuardian.Shared\BugGuardian.Shared.projitems*{1ddfa344-223a-487e-bdf0-42fe2792d901}*SharedItemsImports = 4
 		TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{1f7fcdb5-10f5-47ac-b69a-b9e1e35cf845}*SharedItemsImports = 4
-		BugGuardian.Shared\BugGuardian.Shared.projitems*{c5a57b2c-136a-43e6-a957-0b1963ce8aab}*SharedItemsImports = 4
+		BugGuardian.Shared\BugGuardian.Shared.projitems*{3c3f7bc4-4a29-4338-9a33-c60a92b76698}*SharedItemsImports = 4
+		TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{8c6cf847-351d-4a0f-9b0e-2fed6f073c0c}*SharedItemsImports = 4
 		BugGuardian.Shared\BugGuardian.Shared.projitems*{90679079-6e6c-41b6-b6a4-0f51400e9522}*SharedItemsImports = 4
 		BugGuardian.Shared\BugGuardian.Shared.projitems*{9868a872-2b5c-4961-84bc-f704240ad1ce}*SharedItemsImports = 13
-		BugGuardian.Shared\BugGuardian.Shared.projitems*{1ddfa344-223a-487e-bdf0-42fe2792d901}*SharedItemsImports = 4
+		BugGuardian.Shared\BugGuardian.Shared.projitems*{c5a57b2c-136a-43e6-a957-0b1963ce8aab}*SharedItemsImports = 4
+		TestApps\BugGuardian.TestCallerUniversal\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems*{cd985fff-6f8f-41e3-a9fe-0277680c3492}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -228,6 +230,22 @@ Global
 		{CCAD3002-6B0E-4214-B878-D038167FBD00}.Release|x64.Build.0 = Release|Any CPU
 		{CCAD3002-6B0E-4214-B878-D038167FBD00}.Release|x86.ActiveCfg = Release|Any CPU
 		{CCAD3002-6B0E-4214-B878-D038167FBD00}.Release|x86.Build.0 = Release|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Debug|ARM.Build.0 = Debug|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Debug|x64.Build.0 = Debug|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Debug|x86.Build.0 = Debug|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Release|ARM.ActiveCfg = Release|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Release|ARM.Build.0 = Release|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Release|x64.ActiveCfg = Release|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Release|x64.Build.0 = Release|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Release|x86.ActiveCfg = Release|Any CPU
+		{DF98E6D3-65FA-4769-95F3-168ADEE69561}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
