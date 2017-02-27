@@ -27,7 +27,7 @@ It can be used on every kind of project, including:
 - Xamarin
 		</description>
 		<summary>A library that allows to easily create a Bug or Task work item on your Visual Studio Team Services account or on your on-premises Team Foundation Server</summary>
-		<releaseNotes>This release contains Breaking Changes from versions 1.*</releaseNotes>		
+		<releaseNotes>This release contains Breaking Changes from versions 1.*. Be sure to have a look at the documentation: https://github.com/n3wt0n/BugGuardian/wiki/Changes-from-v1.*-to-v2.0</releaseNotes>		
         <copyright>Davide Benvegnù - 2017</copyright>
 		<tags>Bug TFS VSTS Team Foundation Server Visual Studio Team Services Unhandled Exceptions Exception</tags>
 		<dependencies>
