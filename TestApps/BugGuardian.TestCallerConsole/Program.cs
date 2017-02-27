@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace DBTek.BugGuardian.TestCallerConsole
 {
@@ -32,11 +28,12 @@ namespace DBTek.BugGuardian.TestCallerConsole
 
         static void BugGuardianExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
         {
-            using (var creator = new DBTek.BugGuardian.Creator())
+            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT");
+            using (var manager = new BugGuardianManager())
             {
-                creator.AddBug(e.ExceptionObject as Exception, message: "Unknown exception", tags: new List<string> { "Operation" });
+                manager.AddBug(e.ExceptionObject as Exception, message: "Unknown exception", tags: new List<string> { "Operation" });
 
-                creator.AddTask(e.ExceptionObject as Exception, message: "Unknown exception", tags: new List<string> { "Operation" });
+                manager.AddTask(e.ExceptionObject as Exception, message: "Unknown exception", tags: new List<string> { "Operation" });
             }
         }
     }

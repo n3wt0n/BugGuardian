@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -19,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
-namespace DBTek.BugGuardian.TestCallerUniversal
+namespace BugGuardian.TestCallerUniversal
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -40,17 +39,18 @@ namespace DBTek.BugGuardian.TestCallerUniversal
             this.Suspending += this.OnSuspending;
 
             #region BUGGUARDIAN TEST
-            this.UnhandledException += BugGuardianExceptionTrapper;
 
-            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT", avoidMultipleReport: false);                        
+            this.UnhandledException += BugGuardianExceptionTrapper;
+            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT", avoidMultipleReport: false);
+
             #endregion
         }
 
         private void BugGuardianExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
         {
-            using (var creator = new DBTek.BugGuardian.Creator())
+            using (var manager = new DBTek.BugGuardian.BugGuardianManager())
             {
-                creator.AddBug(e.Exception);
+                manager.AddBug(e.Exception);            
             }
         }
 
@@ -67,10 +67,12 @@ namespace DBTek.BugGuardian.TestCallerUniversal
             {
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
-#endif            
+#endif
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             #region BUGGUARDIAN TEST
+
             //throw new Exception());
 
             string nullString = null;
@@ -80,6 +82,7 @@ namespace DBTek.BugGuardian.TestCallerUniversal
             //shortString.Substring(0, 12);
 
             //throw new AggregateException();
+
             #endregion
 
             // Do not repeat app initialization when the Window already has content,
@@ -125,7 +128,7 @@ namespace DBTek.BugGuardian.TestCallerUniversal
                 {
                     throw new Exception("Failed to create initial page");
                 }
-            }           
+            }
 
             // Ensure the current window is active
             Window.Current.Activate();

@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
 
-  <Identity Name="e62ef240-d0ec-4b0c-8caa-8b0e01226613"
+  <Identity Name="7f4fa59f-7971-44b1-82f4-28ffe9995723"
             Publisher="CN=Davide"
             Version="1.0.0.0" />
 
   <Properties>
-    <DisplayName>DBTek.BugGuardian.TestCallerUniversal.Windows</DisplayName>
+    <DisplayName>BugGuardian.TestCallerUniversal.Windows</DisplayName>
     <PublisherDisplayName>Davide</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -23,12 +23,12 @@
   <Applications>
     <Application Id="App"
         Executable="$targetnametoken$.exe"
-        EntryPoint="DBTek.BugGuardian.TestCallerUniversal.Windows.App">
+        EntryPoint="BugGuardian.TestCallerUniversal.Windows.App">
         <m2:VisualElements
-            DisplayName="DBTek.BugGuardian.TestCallerUniversal.Windows"
+            DisplayName="BugGuardian.TestCallerUniversal.Windows"
             Square150x150Logo="Assets\Logo.png"
             Square30x30Logo="Assets\SmallLogo.png"
-            Description="DBTek.BugGuardian.TestCallerUniversal.Windows"
+            Description="BugGuardian.TestCallerUniversal.Windows"
             ForegroundText="light"
             BackgroundColor="#464646">
             <m2:SplashScreen Image="Assets\SplashScreen.png" />

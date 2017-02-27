@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1F7FCDB5-10F5-47AC-B69A-B9E1E35CF845}</ProjectGuid>
+    <ProjectGuid>{7EBD7552-AB40-4D6C-B8BD-B8B2B27B51B0}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DBTek.BugGuardian.TestCallerUniversal</RootNamespace>
-    <AssemblyName>DBTek.BugGuardian.TestCallerUniversal.Windows</AssemblyName>
+    <RootNamespace>BugGuardian.TestCallerUniversal</RootNamespace>
+    <AssemblyName>BugGuardian.TestCallerUniversal.Windows</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
@@ -16,8 +16,6 @@
     <SynthesizeLinkMetadata>true</SynthesizeLinkMetadata>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>BugGuardian.TestCallerUniversal.Windows_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -106,9 +104,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\..\..\BugGuardian.Windows\BugGuardian.Windows.csproj">
-      <Project>{90679079-6e6c-41b6-b6a4-0f51400e9522}</Project>
-      <Name>BugGuardian.Windows</Name>
+    <ProjectReference Include="..\..\..\BugGuardian.NetStandard\BugGuardian.NetStandard.csproj">
+      <Project>{df98e6d3-65fa-4769-95f3-168adee69561}</Project>
+      <Name>BugGuardian.NetStandard</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -137,12 +135,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.29\lib\win8\System.Net.Http.Extensions.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.29\lib\win8\System.Net.Http.Primitives.dll</HintPath>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\win8\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -151,13 +149,6 @@
   </PropertyGroup>
   <Import Project="..\BugGuardian.TestCallerUniversal.Shared\BugGuardian.TestCallerUniversal.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

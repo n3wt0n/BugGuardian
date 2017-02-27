@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace DBTek.BugGuardian.TestCallerUniversal
+namespace BugGuardian.TestCallerUniversal
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -43,9 +43,6 @@ namespace DBTek.BugGuardian.TestCallerUniversal
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
-
-            var creator = new DBTek.BugGuardian.Creator();
-
         }
     }
 }
