@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>DBTek.BugGuardian</id>
-		<version>2.0.1</version>
+		<version>2.1.0</version>
 		<title>BugGuardian</title>
 		<authors>Davide Benvegnu</authors>    
 		<owners>Davide Benvegnu</owners>
@@ -60,7 +60,7 @@ It can be used on every kind of project, including:
 		</dependencies>
 	</metadata>
 		<files>
-			<file src="..\BugGuardian.NetStandard\bin\Release\BugGuardian.NetStandard.dll" target="lib\netstandard1.1\BugGuardian.NetStandard.dll" />			
-			<file src="..\BugGuardian.NetStandard\bin\Release\BugGuardian.NetStandard.dll" target="lib\portable-net45+wp80+win8+wpa81\BugGuardian.NetStandard.dll" />	
+			<file src="..\BugGuardian.NetStandard\bin\Release\DBTek.BugGuardian.dll" target="lib\netstandard1.1\DBTek.BugGuardian.dll" />			
+			<file src="..\BugGuardian.NetStandard\bin\Release\DBTek.BugGuardian.dll" target="lib\portable-net45+wp80+win8+wpa81\DBTek.BugGuardian.dll" />	
 		</files>
 </package>
