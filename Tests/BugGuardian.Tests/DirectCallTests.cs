@@ -11,7 +11,7 @@ namespace BugGuardian.Tests
     {
         public DirectCallTests()
         {
-            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("https://dbtek.visualstudio.com", "davidebenvegnu", "Gavioli!2017", "Labs", false);
+            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("https://MY_URL:8080/TFS", "USERNAME", "PASSWORD", "PROJECT_NAME", false);
         }
 
         [TestMethod]
