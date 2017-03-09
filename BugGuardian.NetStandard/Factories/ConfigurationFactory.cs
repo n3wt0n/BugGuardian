@@ -1,7 +1,4 @@
-﻿//#if !WINDOWS_APP && !WINDOWS_PHONE_APP && !WINDOWS_UWP
-//using DBTek.BugGuardian.Config;
-//#endif
-using System;
+﻿using System;
 
 namespace DBTek.BugGuardian.Factories
 {
@@ -17,8 +14,9 @@ namespace DBTek.BugGuardian.Factories
         /// <param name="password">The password of the account used to connect to the service</param>        
         /// <param name="projectName">The name of the Team Project where the bugs will be open</param>
         /// <param name="avoidMultipleReport">If true, if the application throws the same exception more the once it will be reported only once. If false, every time will be created a new Bug to VSTS/TFS.</param>
-        public static void SetConfiguration(string url, string username, string password, string projectName, bool avoidMultipleReport = true)
-            => SetConfiguration(url, username, password, null, projectName, avoidMultipleReport);
+        /// <param name="assignToCurrentIteration">If true, when a new Work Item will be created, is assigned to the Current Sprint / Iteration</param>
+        public static void SetConfiguration(string url, string username, string password, string projectName, bool avoidMultipleReport = true, bool assignToCurrentIteration = true)
+            => SetConfiguration(url, username, password, null, projectName, avoidMultipleReport, assignToCurrentIteration);
 
         /// <summary>
         /// Allows to set the condifuration from code. If used, overrides the configuration present in the config file
@@ -29,7 +27,8 @@ namespace DBTek.BugGuardian.Factories
         /// <param name="collectionName">The name of the Team Collection that contains the Team Project</param>
         /// <param name="projectName">The name of the Team Project where the bugs will be open</param>
         /// <param name="avoidMultipleReport">If true, if the application throws the same exception more the once it will be reported only once. If false, every time will be created a new Bug to VSTS/TFS.</param>
-        public static void SetConfiguration(string url, string username, string password, string collectionName, string projectName, bool avoidMultipleReport = true)
+        /// /// <param name="assignToCurrentIteration">If true, when a new Work Item will be created, is assigned to the Current Sprint / Iteration</param>
+        public static void SetConfiguration(string url, string username, string password, string collectionName, string projectName, bool avoidMultipleReport = true, bool assignToCurrentIteration = true)
         {
             if (string.IsNullOrWhiteSpace(url))
                 throw new ArgumentNullException(nameof(url));
@@ -49,6 +48,7 @@ namespace DBTek.BugGuardian.Factories
             CollectionName = collectionName ?? DefaultCollectionName;
             ProjectName = projectName;
             _avoidMultipleReport = avoidMultipleReport;
+            _assignToCurrentIteration = assignToCurrentIteration;
         }
 
         private static string _url;
