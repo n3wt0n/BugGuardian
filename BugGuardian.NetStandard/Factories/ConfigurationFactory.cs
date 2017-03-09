@@ -67,6 +67,10 @@ namespace DBTek.BugGuardian.Factories
         internal static bool AvoidMultipleReport
             => _avoidMultipleReport ?? true;
 
+        private static bool? _assignToCurrentIteration;
+        internal static bool AssignToCurrentIteration
+            => _assignToCurrentIteration ?? true;
+
         private static string CleanUrl(string url)
         {
             if (!string.IsNullOrWhiteSpace(url))

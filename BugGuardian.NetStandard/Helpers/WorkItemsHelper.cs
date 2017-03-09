@@ -24,6 +24,7 @@ namespace DBTek.BugGuardian.Helpers
         private const string FoundInField = "/fields/Microsoft.VSTS.Build.FoundIn";
         private const string HistoryField = "/fields/System.History";
         private const string IterationIdField = "/fields/System.IterationId";
+        private const string IterationPathField = "/fields/System.IterationPath";
 
         private const string DefaultTags = "BugGuardian;";
 
@@ -180,6 +181,21 @@ namespace DBTek.BugGuardian.Helpers
                         Path = FoundInField,
                         Value = ExceptionsHelper.BuildExceptionHash(ex)
                     });
+
+            //Iteration
+            if (Factories.ConfigurationFactory.AssignToCurrentIteration)
+            {
+                var iterationsHelper = new IterationsHelper();
+                string iterationPath = await iterationsHelper.GetCurrentIteration(account);
+
+                workItemCreatePATCHData.Add(
+                    new WorkItemCreateRequest()
+                    {
+                        Operation = WITOperationType.add,
+                        Path = IterationPathField,
+                        Value = iterationPath
+                    });
+            }
 
             using (var handler = new HttpClientHandler())
             {
