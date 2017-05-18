@@ -10,7 +10,7 @@ It supports projects with .Net Framework 4.5 and above. It supports also UWP app
   
 >If you need to target projects that use the .Net Framework 4.0, you have to install the [version 1.3 of the library](https://github.com/n3wt0n/BugGuardian/releases/tag/v1.3.0)
 
-###Installation###
+### Installation ###
 
 The **BugGuardian** library is available on [NuGet](https://www.nuget.org/packages/DBTek.BugGuardian).
 Just search *BugGuardian* in the **Package Manager GUI** or run the following command in the **Package Manager Console**:
@@ -21,11 +21,11 @@ Install-Package DBTek.BugGuardian
 **WARNING**: If you are experiencing an error like *"BugGuardian already has a dependency defined for XXX"*, update your NuGet client to the latest version
 
     
-###Usage###
+### Usage ###
 
 Refer to the [project documentation](https://github.com/n3wt0n/BugGuardian/wiki/Home) to find examples about how to use this library. You can also find some code samples in the **TestApps** folder.
 
 
-###Support###
+### Support ###
 
 If you encounter some issues trying this library, please let me know through the [Issues page](https://github.com/n3wt0n/BugGuardian/issues) and I'll fix the problem as soon as possible!
