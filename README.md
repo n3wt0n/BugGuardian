@@ -25,6 +25,11 @@ Install-Package DBTek.BugGuardian
 
 Refer to the [project documentation](https://github.com/n3wt0n/BugGuardian/wiki/Home) to find examples about how to use this library. You can also find some code samples in the **TestApps** folder.
 
+### Other Versions ###
+
+BugGuardian Middleware for Asp.Net Core: https://github.com/n3wt0n/BugGuardian.AspNetCore   
+BugGuardian Extension for Asp.Net MVC: https://github.com/n3wt0n/BugGuardian.MVC    
+BugGuardian Extension for Asp.Net WebForms: https://github.com/n3wt0n/BugGuardian.WebForms   
 
 ### Support ###
 
