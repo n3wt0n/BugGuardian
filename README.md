@@ -1,9 +1,9 @@
 # BugGuardian 2
-![](https://dbtek.visualstudio.com/_apis/public/build/definitions/31dcc845-6a11-47d7-90a5-1c340cebf0f1/37/badge)
+![CI Status](https://dbtek.visualstudio.com/_apis/public/build/definitions/31dcc845-6a11-47d7-90a5-1c340cebf0f1/37/badge)
 
-Easily track you exceptions on VSTS and TFS
+Easily track you exceptions on Azure DevOps and TFS
 ------------------------------------------
-**BugGuardian** is a library, written in C# and targeting the .Net Standard 1.1, that allows to easily create a Bug or a Task work item on your *Visual Studio Team Services* account or on your on-premises *Team Foundation Server 2015+* in the case your application throws an Unhandled Exception.
+**BugGuardian** is a library, written in C# and targeting the .Net Standard 1.1, that allows to easily create a Bug or a Task work item on your *Azure DevOps* account or on your on-premises *Azure DevOps Server* or *Team Foundation Server 2015+* when your application throws an Unhandled Exception.
 It can also be invoked manually in try/catch blocks to keep track of handled exceptions.
 
 It supports projects with .Net Framework 4.5 and above. It supports also UWP apps (Windows 10), .Net Core and Xamarin.
