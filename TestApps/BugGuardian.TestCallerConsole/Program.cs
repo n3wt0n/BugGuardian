@@ -28,7 +28,7 @@ namespace DBTek.BugGuardian.TestCallerConsole
 
         static void BugGuardianExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
         {
-            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("dev.azure.com", "mmauwzufvzbpq7g3tsk6kqxixvbd5uc6oouuk3whso76g5c3jeqq", "mmauwzufvzbpq7g3tsk6kqxixvbd5uc6oouuk3whso76g5c3jeqq", "dbtek", "BugGuardian");
+            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("https://dev.azure.com", "MY_USERNAME", "MY_PASSWORD", "MY_ORG", "MY_PROJECT");
             using (var manager = new BugGuardianManager())
             {
                 manager.AddBug(e.ExceptionObject as Exception, message: "Unknown exception", tags: new List<string> { "Operation" });
