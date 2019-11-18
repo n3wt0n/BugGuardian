@@ -8,6 +8,11 @@
 
         public string Password { get; set; }
 
+        /// <summary>
+        /// This represent either the Organization in Azure DevOps (the XXX in https://dev.azure.com/XXX)
+        /// or
+        /// the Team Project Collection in Azure DevOps Server and TFS
+        /// </summary>
         public string CollectionName { get; set; }
 
         public string ProjectName { get; set; }
