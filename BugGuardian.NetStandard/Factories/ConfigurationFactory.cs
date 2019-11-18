@@ -80,7 +80,7 @@ namespace DBTek.BugGuardian.Factories
                 if (!url.StartsWith("http://") && !url.StartsWith("https://"))
                     url = $"http://{url}";
 
-                if (url.Contains("visualstudio.com") && !url.Contains("https://"))
+                if ((url.Contains("visualstudio.com") || url.Contains("dev.azure.com")) && !url.Contains("https://"))
                     url = url.Replace("http://", "https://");
 
                 if (url.EndsWith("/"))
