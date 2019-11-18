@@ -49,12 +49,12 @@ namespace DBTek.BugGuardian.Helpers
 
             using (var handler = new HttpClientHandler())
             {
-                if (!account.IsVSTS) //is TFS, requires NTLM
+                if (!account.isAzDO) //is TFS, requires NTLM
                     handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
 
                 using (var client = new HttpClient(handler))
                 {
-                    if (account.IsVSTS)
+                    if (account.isAzDO)
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                     //Set alternate credentials
@@ -199,12 +199,12 @@ namespace DBTek.BugGuardian.Helpers
 
             using (var handler = new HttpClientHandler())
             {
-                if (!account.IsVSTS) //is TFS, requires NTLM
+                if (!account.isAzDO) //is TFS, requires NTLM
                     handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
 
                 using (var client = new HttpClient(handler))
                 {
-                    if (account.IsVSTS)
+                    if (account.isAzDO)
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                     //Set alternate credentials
@@ -264,12 +264,12 @@ namespace DBTek.BugGuardian.Helpers
 
             using (var handler = new HttpClientHandler())
             {
-                if (!account.IsVSTS) //is TFS, requires NTLM
+                if (!account.isAzDO) //is TFS, requires NTLM
                     handler.Credentials = new System.Net.NetworkCredential(account.Username, account.Password);
 
                 using (var client = new HttpClient(handler))
                 {
-                    if (account.IsVSTS)
+                    if (account.isAzDO)
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                     //Set alternate credentials

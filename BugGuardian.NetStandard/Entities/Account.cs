@@ -17,8 +17,11 @@
 
         public string ProjectName { get; set; }
 
-        public bool IsVSTS
-            => Url?.Contains("visualstudio.com") ?? false;
+        /// <summary>
+        /// Checks if the provided url is the online version of the service
+        /// </summary>
+        public bool isAzDO
+            => (Url?.ToLower().Contains("visualstudio.com") ?? false) || (Url?.ToLower().Contains("dev.azure.com") ?? false);
 
         public bool IsValid
         {
@@ -34,6 +37,9 @@
                     return false;
 
                 if (string.IsNullOrWhiteSpace(ProjectName))
+                    return false;
+
+                if (string.IsNullOrWhiteSpace(CollectionName))
                     return false;
 
                 return true;
