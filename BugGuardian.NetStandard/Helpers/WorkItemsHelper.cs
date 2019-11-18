@@ -38,7 +38,7 @@ namespace DBTek.BugGuardian.Helpers
         public static async Task<WorkItemData> GetExistentWorkItemId(string exceptionHash, WorkItemType workItemType, Account account)
         {
             //Pattern:
-            //POST https://{account}.visualstudio.com/defaultcollection/_apis/wit/wiql?api-version={version}
+            //POST https://dev.azure.com/{ORG_or_COLLECTION_NAME}/_apis/wit/wiql?api-version={version}
             var wiqlRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/wiql?{_apiVersion}";
 
             var workItemQueryPOSTData = new WorkItemWIQLRequest()
@@ -74,14 +74,14 @@ namespace DBTek.BugGuardian.Helpers
                             var id = workItems.First.Value<int>("id");
 
                             //Pattern:                        
-                            //GET https://{account}.visualstudio.com/defaultcollection/_apis/wit/WorkItems?id={id}&api-version=1.0
+                            //GET https://dev.azure.com/{ORG_or_COLLECTION_NAME}/_apis/wit/WorkItems?id={id}&api-version=1.0
                             var dataRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/WorkItems?id={id}&{_apiVersion}";
                             responseBody = await HttpOperationsHelper.GetAsync(client, dataRequestUrl);
                             var workItemData = JsonConvert.DeserializeObject<WorkItemData>(responseBody);
 
                             //Retrieve bug history
                             //Pattern:                        
-                            //GET https://{account}.visualstudio.com/defaultcollection/_apis/wit/WorkItems/{id}/history
+                            //GET https://dev.azure.com/{ORG_or_COLLECTION_NAME}/_apis/wit/WorkItems/{id}/history
                             var historyRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/WorkItems/{id}/history";
                             responseBody = await HttpOperationsHelper.GetAsync(client, historyRequestUrl);
                             responseBodyObj = JsonConvert.DeserializeObject<dynamic>(responseBody);
@@ -114,7 +114,7 @@ namespace DBTek.BugGuardian.Helpers
         public static async Task<BugGuardianResponse> CreateNewWorkItem(WorkItemType workItemType, Exception ex, Account account, string message, IEnumerable<string> tags)
         {
             //Pattern:
-            //PATCH https://{account}.visualstudio.com/defaultcollection/{project}/_apis/wit/workitems/${workitemtypename}?api-version={version}
+            //PATCH https://dev.azure.com/{ORG_or_COLLECTION_NAME}/{project}/_apis/wit/workitems/${workitemtypename}?api-version={version}
             //See https://www.visualstudio.com/integrate/api/wit/fields for the fields explanation            
             var createRequestUrl = $"{account.Url}/{account.CollectionName}/{account.ProjectName}/_apis/wit/workitems/${workItemType.ToString()}?{_apiVersion}";
 
@@ -234,7 +234,7 @@ namespace DBTek.BugGuardian.Helpers
         public static async Task<BugGuardianResponse> UpdateWorkItem(WorkItemData workItemData, Account account)
         {
             // Pattern:
-            //PATCH https://{account}.visualstudio.com/defaultcollection/_apis/wit/workitems/{wworkitemid}?api-version={version}                         
+            //PATCH https://dev.azure.com/{ORG_or_COLLECTION_NAME}/_apis/wit/workitems/{wworkitemid}?api-version={version}                         
             var updateRequestUrl = $"{account.Url}/{account.CollectionName}/_apis/wit/workitems/{workItemData.ID}?{_apiVersion}";
 
             var historyMessage = "Exception thrown again";

@@ -28,7 +28,7 @@ namespace DBTek.BugGuardian.TestCallerConsole
 
         static void BugGuardianExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
         {
-            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("http://MY_TFS_SERVER:8080/Tfs", "MY_USERNAME", "MY_PASSWORD", "MY_PROJECT");
+            DBTek.BugGuardian.Factories.ConfigurationFactory.SetConfiguration("dev.azure.com", "mmauwzufvzbpq7g3tsk6kqxixvbd5uc6oouuk3whso76g5c3jeqq", "mmauwzufvzbpq7g3tsk6kqxixvbd5uc6oouuk3whso76g5c3jeqq", "dbtek", "BugGuardian");
             using (var manager = new BugGuardianManager())
             {
                 manager.AddBug(e.ExceptionObject as Exception, message: "Unknown exception", tags: new List<string> { "Operation" });
