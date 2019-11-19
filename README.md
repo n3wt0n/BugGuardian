@@ -29,9 +29,9 @@ Refer to the [project documentation](https://github.com/n3wt0n/BugGuardian/wiki/
 
 ### Other Versions ###
 
-BugGuardian Middleware for Asp.Net Core: https://github.com/n3wt0n/BugGuardian.AspNetCore   
-BugGuardian Extension for Asp.Net MVC: https://github.com/n3wt0n/BugGuardian.MVC    
-BugGuardian Extension for Asp.Net WebForms: https://github.com/n3wt0n/BugGuardian.WebForms   
+BugGuardian Middleware for **Asp.Net Core**: https://github.com/n3wt0n/BugGuardian.AspNetCore   
+BugGuardian Extension for **Asp.Net MVC**: https://github.com/n3wt0n/BugGuardian.MVC    
+BugGuardian Extension for **Asp.Net WebForms**: https://github.com/n3wt0n/BugGuardian.WebForms   
 
 ### Support ###
 
