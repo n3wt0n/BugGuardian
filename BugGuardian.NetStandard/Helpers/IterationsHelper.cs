@@ -16,7 +16,7 @@ namespace DBTek.BugGuardian.Helpers
         public async Task<string> GetCurrentIteration(Account account)
         {
             //Pattern:            
-            //GET https://{account}.visualstudio.com/{Collection}/{Project}/_apis/work/teamsettings/iterations?$timeframe=current&api-version={version}
+            //GET https://dev.azure.com/{ORG_or_COLLECTION_NAME}/{Project}/_apis/work/teamsettings/iterations?$timeframe=current&api-version={version}
             var currentIterationRequestUrl = $"{account.Url}/{account.CollectionName}/{account.ProjectName}/_apis/work/teamsettings/iterations?$timeframe=current&{_apiVersion}";
 
             using (var handler = new HttpClientHandler())
