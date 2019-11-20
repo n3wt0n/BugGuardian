@@ -7,7 +7,7 @@ namespace DBTek.BugGuardian
 {
     public class BugGuardianManager : IBugGuardianManager
     {
-        // Get the alternate credentials that you'll use to access the Visual Studio Online account
+        // Get the alternate credentials that you'll use to access the Azure DevOps / Azure DevOps Server / TFS account
         private Account _account;
 
         public BugGuardianManager()

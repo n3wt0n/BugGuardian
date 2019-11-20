@@ -9,7 +9,7 @@ namespace DBTek.BugGuardian.Factories
         /// <summary>
         /// Allows to set the condifuration from code. If used, overrides the configuration present in the config file
         /// </summary>
-        /// <param name="url">The url of VSTS or the TFS Server to target</param>
+        /// <param name="url">The url of Azure DevOps / Azure DevOps Server / TFS to target</param>
         /// <param name="username">The username of the account used to connect to the service</param>
         /// <param name="password">The password of the account used to connect to the service</param>        
         /// <param name="projectName">The name of the Team Project where the bugs will be open</param>
@@ -21,12 +21,12 @@ namespace DBTek.BugGuardian.Factories
         /// <summary>
         /// Allows to set the condifuration from code. If used, overrides the configuration present in the config file
         /// </summary>
-        /// <param name="url">The url of VSTS or the TFS Server to target</param>
+        /// <param name="url">The url of Azure DevOps / Azure DevOps Server / TFS to target</param>
         /// <param name="username">The username of the account used to connect to the service</param>
         /// <param name="password">The password of the account used to connect to the service</param>
-        /// <param name="collectionName">The name of the Team Collection that contains the Team Project</param>
+        /// <param name="collectionName">The name of the Organization or Team Collection that contains the Team Project</param>
         /// <param name="projectName">The name of the Team Project where the bugs will be open</param>
-        /// <param name="avoidMultipleReport">If true, if the application throws the same exception more the once it will be reported only once. If false, every time will be created a new Bug to VSTS/TFS.</param>
+        /// <param name="avoidMultipleReport">If true, if the application throws the same exception more the once it will be reported only once. If false, every time will be created a new Bug to Azure DevOps / Azure DevOps Server / TFS.</param>
         /// /// <param name="assignToCurrentIteration">If true, when a new Work Item will be created, is assigned to the Current Sprint / Iteration</param>
         public static void SetConfiguration(string url, string username, string password, string collectionName, string projectName, bool avoidMultipleReport = true, bool assignToCurrentIteration = true)
         {

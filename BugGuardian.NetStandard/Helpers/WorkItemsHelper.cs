@@ -29,11 +29,11 @@ namespace DBTek.BugGuardian.Helpers
         private const string DefaultTags = "BugGuardian;";
 
         /// <summary>
-        /// Check if a WorkItem of the given Type and with the same hash already exists on VSTS/TFS
+        /// Check if a WorkItem of the given Type and with the same hash already exists on Azure DevOps / Azure DevOps Server / TFS
         /// </summary>
         /// <param name="exceptionHash">The MD5 hash of the exception to report</param>
         /// <param name="workItemType">The WorkItem Type (Bug or Task)</param>
-        /// <param name="account">Account info for VSTS/TFS</param>
+        /// <param name="account">Account info for Azure DevOps / Azure DevOps Server / TFS</param>
         /// <returns></returns>
         public static async Task<WorkItemData> GetExistentWorkItemId(string exceptionHash, WorkItemType workItemType, Account account)
         {
@@ -107,7 +107,7 @@ namespace DBTek.BugGuardian.Helpers
         /// </summary>
         /// <param name="workItemType">The WorkItem Type (Bug or Task)</param>
         /// <param name="ex">The exception to report</param>
-        /// <param name="account">Account info for VSTS/TFS</param>
+        /// <param name="account">Account info for Azure DevOps / Azure DevOps Server / TFS</param>
         /// <param name="message">Optional message to be added to the WorkItem</param>
         /// <param name="tags">Optional tags (list separated by comma) to be added to the WorkItem</param>
         /// <returns></returns>
@@ -229,7 +229,7 @@ namespace DBTek.BugGuardian.Helpers
         /// Updates the Title and the History of an Existing WorkItem
         /// </summary>
         /// <param name="workItemData">The WorkItem to update</param>
-        /// <param name="account">Account info for VSTS/TFS</param>
+        /// <param name="account">Account info for Azure DevOps / Azure DevOps Server / TFS</param>
         /// <returns></returns>
         public static async Task<BugGuardianResponse> UpdateWorkItem(WorkItemData workItemData, Account account)
         {
