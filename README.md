@@ -20,12 +20,13 @@ Just search *BugGuardian* in the **Package Manager GUI** or run the following co
 Install-Package DBTek.BugGuardian
 ```
 
-**WARNING**: If you are experiencing an error like *"BugGuardian already has a dependency defined for XXX"*, update your NuGet client to the latest version
+> **WARNING**: If you are experiencing an error like *"BugGuardian already has a dependency defined for XXX"*, update your NuGet client to the latest version
 
-    
 ### Usage ###
 
 Refer to the [project documentation](https://github.com/n3wt0n/BugGuardian/wiki/Home) to find examples about how to use this library. You can also find some code samples in the **TestApps** folder.
+
+> **WARNING**: From Dec 9, 2019 onwards, Azure DevOps will not support "Alternate Credentials" anymore. Please be sure to use a "Personal Access Token" instead (more info: https://devblogs.microsoft.com/devops/azure-devops-will-no-longer-support-alternate-credentials-authentication/)
 
 ### Other Versions ###
 
