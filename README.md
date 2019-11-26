@@ -16,7 +16,7 @@ It supports projects with .Net Framework 4.5 and above. It supports also UWP app
 
 The **BugGuardian** library is available on [NuGet](https://www.nuget.org/packages/DBTek.BugGuardian).
 Just search *BugGuardian* in the **Package Manager GUI** or run the following command in the **Package Manager Console**:
-```
+```Powershell
 Install-Package DBTek.BugGuardian
 ```
 
