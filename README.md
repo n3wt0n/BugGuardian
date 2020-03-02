@@ -26,7 +26,7 @@ Install-Package DBTek.BugGuardian
 
 Refer to the [project documentation](https://github.com/n3wt0n/BugGuardian/wiki/Home) to find examples about how to use this library. You can also find some code samples in the **TestApps** folder.
 
-> **WARNING**: From Dec 9, 2019 onwards, Azure DevOps will not support "Alternate Credentials" anymore. Please be sure to use a "Personal Access Token" instead (more info: https://devblogs.microsoft.com/devops/azure-devops-will-no-longer-support-alternate-credentials-authentication/)
+> **WARNING**: From Dec 9, 2019 Azure DevOps does not support "Alternate Credentials" anymore. Please be sure to use a "Personal Access Token" instead (more info: https://devblogs.microsoft.com/devops/azure-devops-will-no-longer-support-alternate-credentials-authentication/)
 
 ### Other Versions ###
 
