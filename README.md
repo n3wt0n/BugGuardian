@@ -1,5 +1,5 @@
 # BugGuardian 2
-![CI Status](https://dbtek.visualstudio.com/_apis/public/build/definitions/31dcc845-6a11-47d7-90a5-1c340cebf0f1/37/badge)
+![CI Status](https://github.com/n3wt0n/BugGuardian/workflows/CI/badge.svg)
 [![Release](https://img.shields.io/github/release/n3wt0n/BugGuardian.svg)](https://github.com/n3wt0n/BugGuardian/releases/latest)
 [![License](https://img.shields.io/github/license/n3wt0n/BugGuardian.svg)](https://github.com/n3wt0n/BugGuardian/blob/master/LICENSE)
 
