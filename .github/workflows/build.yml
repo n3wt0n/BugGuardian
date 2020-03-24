@@ -28,4 +28,4 @@ jobs:
       run: nuget restore BugGuardian.LibraryOnly.sln
 
     - name: Build the Solution
-      run: msbuild BugGuardian.LibraryOnly.sln
+      run: msbuild BugGuardian.LibraryOnly.sln /p:Configuration=Release
